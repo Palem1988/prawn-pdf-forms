@@ -1,0 +1,163 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+
+  activerecord:
+    attributes:
+      usuario:
+        movil: 'Mobile'
+        nombre: 'Name'
+        nombre_marca: 'Trademark'
+        tipo_documento: 'Type of id document'
+    models:
+      usuario: 'User'
+
+  actualizar_usuarios:
+    new_actualizar_contrasena:
+      titulo: Update Password
+    edit_url_notificacion_pago:
+      titulo: Set or Update Url for payment notification
+      
+  cobro_por_correos:
+    campos:
+      valor: Value
+    generar_pinbit:
+      cobro_enviado_por: Charge sent by
+      operacion_no_exitosa: Sorry. Operation Failed
+      titulo: PinBit to pay
+      valor: Value
+    index:
+      codigo_recaudo: Charge code
+      correo: Email
+      fecha: Date
+      titulo: Charges by email paid
+      valor: Value
+    new:
+      enviar: Send
+      titulo: Send a charge by email
+      
+  docs:
+    getting_started:
+      details: More info...
+      pinbit_request: Request a PinBit associated to some value.
+      show_pinbit: Show received PinBit to your customer.
+      steps: "To receive payments you must:"
+      verify_payment_info: Verify payment information.
+      wait_for_payment_notification: Wait for a payment notification associated to your PinBit.
+        
+  layouts:
+    footer:
+      documentacion: Documentation
+    menu_principal:
+      cobro_por_correo: Mail charges
+      nuevo_cobro: Send charge
+      cobros_por_correo_pagados: Charges paid
+
+  menu_docs:
+    payment_notification: Payment notification
+    pinbit_request: Request a PinBit
+    validate_payment: Validate payment
+        
+  accion_exitosa: "Done."
+  accion_exitosa_pendiente: "Pending authorization."
+  accion_no_autorizada: "Not authorized."
+  accion_no_realizada: "Unable to perfom request."
+  actual_password: "Actual password"
+  actualizacion_exitosa: "Update successful."
+  admin_dispositivos: "Device management"
+  agregar_dispositivo: "Add device"
+  codigo: "Code"
+  codigo_movil: "Greetings from PinBit. Your activation code: %{codigo}"
+  confirmacion_contraseña: "Confirm password"
+  confirmar_accion: "Please confirm."
+  contraseña_incorrecta: "Wrong password."
+  cuenta_bloqueda_correctamente: "Account has been blocked."
+  cuenta_no_existe: "Account does not exist."
+  cuenta_no_pudo_ser_bloqueda:  "Account could not be blocked."
+  cuentas_bancarias: "Bank accounts"
+  datos_incorrectos: "Please verify your data and try again."
+  depositos: "Deposits"
+  deposito_exitoso: "Deposit pending. ¡¡¡¡¡Thank you very much!!!!!"
+  descripcion: "Description"
+  destino: "Destination"
+  dispositivo_actualizado_correctamente: "Device have been updated."
+  dispositivo_agregado_correctamente: "Device successfully added."
+  dispositivo_no_valido: "Not valid device."
+  dispositivo_de_registro: "Device of registry"
+  editar: "Edit"
+  editar_rol: "Edit role"
+  eliminar: "Delete"
+  estado_de_cuenta: "Account movements"
+  falla_en_el_servidor: "Server failed, please try again or contact us."
+  fallo_el_pago_del_cobro: "Payment unsuccessful."
+  fallo_pago_factura: "Payment unsuccessful."
+  fallo_mensaje_pago: "Payment successful, but we could not send a confirmation message. Confirmation code: %{codigo_recaudo}"          
+  ingresar_codigo: "Please enter the activation code that was sent to your mobile number."
+  limite_intentos_numero_movil_superado: "You have exceeded the limit of mobile number changes . Please contact an advisor."
+  link_caducado: "The link has expired. Restart the process."
+  mes_anio: "Valid until (MM / YY)"
+  missing-input-response: "Am I human?"
+  movil: "Mobile"
+  nombre_usuario: "Username"
+  notificaciones_pago: "Payment notifications"
+  nuevo_password: "New password"
+  numero_movil_en_uso: "The phone number is already registered."
+  numero_tarjeta: "Card number: %{numero_tarjeta}"
+  numero_tarjeta_credito: "Credit card number"
+  olvide_contraseña: "Forgot password"
+  pago_exitoso: "Payment successful."
+  pago_reembolsado_con_anterioridad: "Refund made previously: %{fecha}."
+  password: "Password"
+  procesando: "Processing..."
+  realizar_transaccion: "Perform transaction"
+  registrar_usuario: "Register user"
+  registro_eliminado: "Successful removal."
+  rol_usuario:
+    - Titular
+    - Authorizer
+    - Manager
+  saldo_insuficiente: "Not enough funds for this operation."
+  sistema_operativo: "Operating System"
+  sitio_actualizado_correctamente: "Site updated successfully."
+  sitio_creado_correctamente: "Site added."
+  sms_confirmacion_pago: "Payment confirmation. \n Origin: %{remitente}. \n Code: %{codigo}. \n Value: $%{valor}."
+  sms_pin: "Greetings from PinBit, your pin is: %{codigo}"
+  solicitar_iniciar_sesion: "Please log in."
+  solicitar_seleccionar_cuenta: "Please select an account."
+  tarjeta: "Card"
+  tarjeta_inicial: "Credit card used on registry."
+  terminos_y_condiciones: "Terms of service"
+  tipo_cuenta_bancaria:
+    'savings account': 'Savings account'
+    'current account': 'Current account'
+  transferencia_realizada: 'Successful transfer.'
+  movil_confirmado: "Your mobile number has been confirmed."
+  usuario_bloqueado: "User has been blocked for a violation to the terms and conditions of use."
+  valor: "Value"
+  valor_a_cobrar: 'Value receivables'
+  valor_a_depositar: 'Deposit value'
+  ver_valor_a_pagar: 'See amount payable'
+  verifique_los_datos: 'Verify your data and try again.'
+  verifique_su_correo: "We have sent you a confirmation link to your email, please click it to update your email address."
+  vuelva_a_intentar: "You can retry after %{fecha}"
+  wallet_blocked: "This wallet has been blocked."

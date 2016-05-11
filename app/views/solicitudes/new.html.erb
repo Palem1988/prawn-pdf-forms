@@ -1,0 +1,13 @@
+<% provide(:titulo, t('.titulo')) %>
+<div class="container col-md-12">
+  <h1><%= t('.titulo') %></h1>
+  
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@solicitud, url: solicitud_path) do |f| %>
+        <%= render 'campos', f: f %>
+        <%= f.submit  "Procesar", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
