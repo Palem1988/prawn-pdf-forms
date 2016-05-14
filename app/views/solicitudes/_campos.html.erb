@@ -186,4 +186,150 @@
     </div>
   </div>
 </div>
+<h2>Manejo de Herramientas de Seguridad</h2>
+<div class="checkbox">
+  <%= f.check_box :modulo_basico_afs %>
+  <%= f.label "", "Módulo Básico - AFS" %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :modulo_avanzado_cybersource %>
+  <%= f.label "", "Módulo Avanzado - Cybersource" %>
+</div>
 
+<h2>Sección Dirección del Establecimiento</h2>
+<%= f.label :direccion_del_establecimiento %>
+<%= f.text_field :direccion_del_establecimiento, class: 'form-control' %>
+<%= f.label :telefono_del_establecimiento %>
+<%= f.text_field :telefono_del_establecimiento, class: 'form-control' %>
+<%= f.label :celular %>
+<%= f.text_field :celular, class: 'form-control' %>
+<%= f.label :fax %>
+<%= f.text_field :fax, class: 'form-control' %>
+<%= f.label :codigo_ciudad %>
+<%= f.text_field :codigo_ciudad, class: 'form-control' %>
+<%= f.label :codigo_departamento %>
+<%= f.text_field :codigo_departamento, class: 'form-control' %>
+
+<h2>Sección Dirección de Correspondencia/Notificaciones</h2>
+<%= f.label :direccion_correspondencia %>
+<%= f.text_field :direccion_correspondencia, class: 'form-control' %>
+<%= f.label :telefono_correspondencia %>
+<%= f.text_field :telefono_correspondencia, class: 'form-control' %>
+<%= f.label :ciudad_correspondencia %>
+<%= f.text_field :ciudad_correspondencia, class: 'form-control' %>
+<%= f.label "Horario de atención" %>
+<div class="radio">
+  <%= f.radio_button :horario_atencion, "Diurno" %>
+  <%= f.label "Diurno" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :horario_atencion, "Nocturno" %>
+  <%= f.label "Nocturno" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :horario_atencion, "24 horas" %>
+  <%= f.label "24 horas" %>
+</div>
+<%= f.label :correo_electronico %>
+<%= f.text_field :correo_electronico, class: 'form-control' %>
+<%= f.label :direccion_pagina_web %>
+<%= f.text_field :direccion_pagina_web, class: 'form-control' %>
+<h2>Sección Redes Sociales</h2>
+<div class="checkbox">
+  <%= f.check_box :facebook %>
+  <%= f.label :facebook %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :twitter %>
+  <%= f.label :twitter %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :youtube %>
+  <%= f.label :youtube %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :foursquare %>
+  <%= f.label :foursquare %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :flickr %>
+  <%= f.label :flickr %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :linkedin %>
+  <%= f.label :linkedin %>
+</div>
+
+<h2>Sección Tipo de Establecimiento</h2>
+<%= f.label :tipo_de_establecimiento %>
+<div class="radio">
+  <%= f.radio_button :tipo_de_establecimiento, "Principal" %>
+  <%= f.label "Principal" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_de_establecimiento, "Sucursal" %>
+  <%= f.label "Sucursal" %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :afiliado_a_otro_sistema %>
+  <%= f.label :afiliado_a_otro_sistema %>
+</div>
+<%= f.label :codigo_unico %>
+<%= f.text_field :codigo_unico, class: 'form-control' %>
+<div class="row">
+  <div class="col-md-6">
+    <div class="checkbox">
+      <%= f.check_box :posee_medio_de_acceso %>
+      <%= f.label :posee_medio_de_acceso %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="radio">
+      <%= f.radio_button :tipo_medio_acceso, "Dial/Lan" %>
+      <%= f.label "", "Dial/Lan" %>
+    </div>
+    <div class="radio">    
+      <%= f.radio_button :tipo_medio_acceso, "GPRS" %>
+      <%= f.label "", "GPRS" %>
+    </div>
+    <div class="radio">    
+      <%= f.radio_button :tipo_medio_acceso, "MPOS" %>
+      <%= f.label "", "MPOS" %>
+    </div>
+  </div>
+</div>
+<%= f.label "", "Propietario del medio de acceso" %>
+<div class="radio">
+  <%= f.radio_button :propietario_medio_acceso, "Credibanco" %>
+  <%= f.label "Credibanco" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :propietario_medio_acceso, "Otra red" %>
+  <%= f.label "Otra red" %>
+</div>
+<%= f.label "", "Indique si tiene exenciones tributarias" %>
+<div class="checkbox">
+  <%= f.check_box :exento_de_retencion_de_iva %>
+  <%= f.label "", "Retención de IVA" %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :exento_de_retencion_de_ica %>
+  <%= f.label "", "Retención de ICA" %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :exento_de_retencion_en_la_fuente %>
+  <%= f.label "", "Retención en la fuente" %>
+</div>
+<%= f.label "", "Indique si requiere propina" %>
+<div class="checkbox">
+  <%= f.check_box :requiere_propina %>
+  <%= f.label :requiere_propina %>
+</div>
+<%= f.label :porcentaje_de_iva %>
+<%= f.text_field :porcentaje_de_iva, class: 'form-control' %>
+<%= f.label :porcentaje_de_reteica %>
+<%= f.text_field :porcentaje_de_reteica, class: 'form-control' %>
+<%= f.label :porcentaje_de_retefuente %>
+<%= f.text_field :porcentaje_de_retefuente, class: 'form-control' %>
+<%= f.label :porcentaje_de_impuesto_al_consumo %>
+<%= f.text_field :porcentaje_de_impuesto_al_consumo, class: 'form-control' %>

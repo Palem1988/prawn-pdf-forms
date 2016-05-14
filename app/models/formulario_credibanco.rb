@@ -120,6 +120,97 @@ class FormularioCredibanco
     pdf.draw_text 'X', size: 10, at: [180, pos_y-24] if params[:api] == "1"
     pdf.draw_text 'X', size: 10, at: [256, pos_y-24] if params[:boton_de_pagos] == "1"
     pdf.draw_text 'X', size: 10, at: [324, pos_y-24] if params[:mall_virtual] == "1"
+    pdf.draw_text 'X', size: 10, at: [527, pos_y-12] if params[:modulo_basico_afs] == "1"
+    pdf.draw_text 'X', size: 10, at: [527, pos_y-24] if params[:modulo_avanzado_cybersource] == "1"
+    
+    # Sección Dirección del establecimiento
+    pdf.move_down 65
+    pos_y = pdf.cursor
+    pdf.text_box params[:direccion_del_establecimiento], size: 7, at: [1, pos_y+13],
+        width: 160
+    pdf.draw_text params[:telefono_del_establecimiento], size: 10, at: [175, pos_y]
+    pdf.draw_text params[:celular], size: 10, at: [285, pos_y]
+    pdf.draw_text params[:fax], size: 10, at: [395, pos_y]
+    pdf.text_box params[:codigo_ciudad], size: 9, width: 30,
+            at: [509, pos_y+21], character_spacing: 4.8
+    pdf.text_box params[:codigo_departamento], size: 9, width: 30,
+            at: [509, pos_y+9], character_spacing: 4.8
+
+    # Sección Dirección de correspondencia/notificaciones
+    pdf.move_down 25
+    pos_y = pdf.cursor
+    pdf.text_box params[:direccion_correspondencia], size: 7, at: [1, pos_y+13],
+        width: 160
+    pdf.draw_text params[:telefono_correspondencia], size: 10, at: [175, pos_y]
+    pdf.text_box params[:ciudad_correspondencia], size: 7, at: [285, pos_y+13],
+        width: 110
+    case params[:horario_atencion]
+    when "Diurno"
+      pdf.draw_text 'X', size: 10, at: [421, pos_y+1]
+    when "Nocturno"
+      pdf.draw_text 'X', size: 10, at: [473, pos_y+1]
+    when "24 horas"
+      pdf.draw_text 'X', size: 10, at: [523, pos_y+1]
+    end
+
+    # Sección presencia en Internet
+    pdf.text_box params[:correo_electronico], size: 7, at: [1, pos_y-16],
+        width: 160
+    pdf.text_box params[:direccion_pagina_web], size: 7, at: [175, pos_y-16],
+        width: 160
+    pdf.draw_text 'X', size: 9, at: [463, pos_y-13] if params[:facebook] == "1"
+    pdf.draw_text 'X', size: 9, at: [510, pos_y-13] if params[:twitter] == "1"
+    pdf.draw_text 'X', size: 9, at: [557.5, pos_y-13] if params[:youtube] == "1"
+    pdf.draw_text 'X', size: 9, at: [351, pos_y-27] if params[:foursquare] == "1"
+    pdf.draw_text 'X', size: 9, at: [391, pos_y-27] if params[:flickr] == "1"
+    pdf.draw_text 'Linkedin', size: 9, at: [454, pos_y-24] if params[:linkedin] == "1"
+
+    # Sección tipo de establecimiento
+    pdf.move_down 60
+    pos_y = pdf.cursor
+    case params[:tipo_de_establecimiento]
+    when "Principal"
+      pdf.draw_text 'X', size: 9, at: [127, pos_y]
+    when "Sucursal"
+      pdf.draw_text 'X', size: 9, at: [178, pos_y]
+    end
+    pdf.draw_text 'X', size: 9, at: [287, pos_y] if params[:afiliado_a_otro_sistema] == "1"
+    pdf.draw_text 'X', size: 9, at: [314, pos_y] if params[:afiliado_a_otro_sistema] == "0"
+    pdf.text_box params[:codigo_unico], size: 9, width: 50,
+            at: [382, pos_y+6], character_spacing: 4.5
+    pdf.draw_text 'X', size: 9, at: [99, pos_y-15] if params[:posee_medio_de_acceso] == "1"
+    pdf.draw_text 'X', size: 9, at: [127, pos_y-15] if params[:posee_medio_de_acceso] == "0"
+    case params[:tipo_medio_acceso]
+    when "Dial/Lan"
+      pdf.draw_text 'X', size: 9, at: [178, pos_y-15]
+    when "GPRS"
+      pdf.draw_text 'X', size: 9, at: [219, pos_y-15]
+    when "MPOS"
+      pdf.draw_text 'X', size: 9, at: [266, pos_y-15]
+    end
+    case params[:propietario_medio_acceso]
+    when "Credibanco"
+      pdf.draw_text 'X', size: 9, at: [497, pos_y-15]
+    when "Otra red"
+      pdf.draw_text 'X', size: 9, at: [546, pos_y-15]
+    end
+
+    # Sección exenciones tributarias
+    pdf.move_down 32
+    pos_y = pdf.cursor
+    pdf.draw_text 'X', size: 9, at: [97, pos_y] if params[:exento_de_retencion_de_iva] == "1"
+    pdf.draw_text 'X', size: 9, at: [173, pos_y] if params[:exento_de_retencion_de_ica] == "1"
+    pdf.draw_text 'X', size: 9, at: [269, pos_y] if params[:exento_de_retencion_en_la_fuente] == "1"
+    pdf.draw_text 'X', size: 9, at: [359, pos_y] if params[:requiere_propina] == "1"
+    pdf.draw_text 'X', size: 9, at: [390, pos_y] if params[:requiere_propina] == "0"
+
+    # Sección porcentajes de impuestos
+    pdf.move_down 15
+    pos_y = pdf.cursor
+    pdf.draw_text params[:porcentaje_de_iva], size: 9, at: [55, pos_y]
+    pdf.draw_text params[:porcentaje_de_reteica], size: 9, at: [145, pos_y]
+    pdf.draw_text params[:porcentaje_de_retefuente], size: 9, at: [241, pos_y]
+    pdf.draw_text params[:porcentaje_de_impuesto_al_consumo], size: 9, at: [377, pos_y]
 
     pdf
   end

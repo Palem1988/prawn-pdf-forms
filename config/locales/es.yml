@@ -200,8 +200,18 @@ es:
   activemodel:
     attributes:
       solicitud:
+        ciudad_correspondencia: Ciudad / Departamento
+        codigo_ciudad: Código de la ciudad (Máximo 5 dígitos)
+        codigo_departamento: Código del departamento (Máximo 5 dígitos)
+        codigo_unico: Código único
+        correo_electronico: Correo electrónico oficina principal
+        direccion_correspondencia: Dirección de correspondencia
+        direccion_del_establecimiento: Dirección del establecimiento
+        direccion_pagina_web: Dirección página Web
         razon_social: 'Nombres y Apellidos completos o Razón Social'
         responsabilidad_tributaria: Responsabilidad Tributaria (Ver campo 53 RUT. Escribir los códigos separados por coma, guión o espacio)
+        telefono_correspondencia: Teléfono
+        telefono_del_establecimiento: Teléfono
 
   actualizar_usuarios:
     new_actualizar_contrasena:
