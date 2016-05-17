@@ -333,3 +333,32 @@
 <%= f.text_field :porcentaje_de_retefuente, class: 'form-control' %>
 <%= f.label :porcentaje_de_impuesto_al_consumo %>
 <%= f.text_field :porcentaje_de_impuesto_al_consumo, class: 'form-control' %>
+
+<h2>Sección Cuenta Bancaria Para Abonos</h2>
+<%= f.label :numero_de_cuenta %>
+<%= f.text_field :numero_de_cuenta, class: 'form-control' %>
+<%= f.label :codigo_banco %>
+<%= f.text_field :codigo_banco, class: 'form-control' %>
+<%= f.label :nombre_del_banco %>
+<%= f.text_field :nombre_del_banco, class: 'form-control' %>
+<%= f.label :codigo_sucursal_banco %>
+<%= f.text_field :codigo_sucursal_banco, class: 'form-control' %>
+<%= f.label :titular_cuenta %>
+<%= f.text_field :titular_cuenta, class: 'form-control' %>
+<%= f.label :nit_cc %>
+<%= f.text_field :nit_cc, class: 'form-control' %>
+<%= f.label "", "Tipo de Cuenta" %>
+<div class="radio">
+  <%= f.radio_button :tipo_de_cuenta, "Ahorro" %>
+  <%= f.label "Ahorro" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_de_cuenta, "Corriente" %>
+  <%= f.label "Corriente" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_de_cuenta, "Fiduciaria" %>
+  <%= f.label "Fiduciaria" %>
+</div>
+<%= f.label :nit_de_la_fiduciaria %>
+<%= f.text_field :nit_de_la_fiduciaria, class: 'form-control' %>

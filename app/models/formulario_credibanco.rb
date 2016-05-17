@@ -212,6 +212,28 @@ class FormularioCredibanco
     pdf.draw_text params[:porcentaje_de_retefuente], size: 9, at: [241, pos_y]
     pdf.draw_text params[:porcentaje_de_impuesto_al_consumo], size: 9, at: [377, pos_y]
 
+    # Sección cuenta bancaria para abonos
+    pdf.move_down 36
+    pos_y = pdf.cursor
+    pdf.text_box params[:numero_de_cuenta], size: 10, width: 100,
+            at: [2, pos_y+8], character_spacing: 5.7
+    pdf.text_box params[:codigo_banco], size: 10, width: 20,
+            at: [188, pos_y+8], character_spacing: 11
+    pdf.draw_text params[:nombre_del_banco], size: 9, at: [222, pos_y]
+    pdf.text_box params[:codigo_sucursal_banco], size: 10, width: 30,
+            at: [511, pos_y+8], character_spacing: 11
+    pdf.draw_text params[:titular_cuenta], size: 7, at: [4, pos_y-25]
+    pdf.draw_text params[:nit_cc], size: 9, at: [222, pos_y-25]
+    case params[:tipo_de_cuenta]
+    when "Ahorro"
+      pdf.draw_text 'X', size: 8, at: [463, pos_y-12]
+    when "Corriente"
+      pdf.draw_text 'X', size: 8, at: [512.2, pos_y-12]
+    when "Fiduciaria"
+      pdf.draw_text 'X', size: 8, at: [558, pos_y-12]
+    end
+    pdf.draw_text params[:nit_de_la_fiduciaria], size: 9, at: [453, pos_y-24]
+
     pdf
   end
   

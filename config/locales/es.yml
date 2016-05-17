@@ -201,6 +201,7 @@ es:
     attributes:
       solicitud:
         ciudad_correspondencia: Ciudad / Departamento
+        codigo_banco: Código del banco
         codigo_ciudad: Código de la ciudad (Máximo 5 dígitos)
         codigo_departamento: Código del departamento (Máximo 5 dígitos)
         codigo_unico: Código único
@@ -208,6 +209,7 @@ es:
         direccion_correspondencia: Dirección de correspondencia
         direccion_del_establecimiento: Dirección del establecimiento
         direccion_pagina_web: Dirección página Web
+        nit_cc: "Nit/C.C."
         razon_social: 'Nombres y Apellidos completos o Razón Social'
         responsabilidad_tributaria: Responsabilidad Tributaria (Ver campo 53 RUT. Escribir los códigos separados por coma, guión o espacio)
         telefono_correspondencia: Teléfono
