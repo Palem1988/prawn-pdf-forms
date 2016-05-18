@@ -200,20 +200,34 @@ es:
   activemodel:
     attributes:
       solicitud:
+        cargo_rl: Cargo
         ciudad_correspondencia: Ciudad / Departamento
+        ciudad_expedicion_documento_rl: Ciudad de expedición
+        ciudad_nacimiento_rl: Ciudad de nacimiento
+        ciudad_residencia_rl: Ciudad de residencia
         codigo_banco: Código del banco
         codigo_ciudad: Código de la ciudad (Máximo 5 dígitos)
         codigo_departamento: Código del departamento (Máximo 5 dígitos)
         codigo_unico: Código único
         correo_electronico: Correo electrónico oficina principal
+        correo_electronico_rl: Correo electrónico
+        departamento_nacimiento_rl: Departamento de nacimiento
         direccion_correspondencia: Dirección de correspondencia
         direccion_del_establecimiento: Dirección del establecimiento
         direccion_pagina_web: Dirección página Web
+        direccion_residencia_rl: Dirección de residencia
+        fecha_de_nacimiento_rl: Fecha de nacimiento
+        fecha_expedicion_documento_rl: Fecha de expedición
         nit_cc: "Nit/C.C."
+        nombres_y_apellidos_completos_rl: Nombres y Apellidos completos del Representante Legal
+        numero_documento_rl: Número del documento
+        profesion_ocupacion_rl: Profesión u Ocupación
         razon_social: 'Nombres y Apellidos completos o Razón Social'
+        sexo_rl: Sexo
         responsabilidad_tributaria: Responsabilidad Tributaria (Ver campo 53 RUT. Escribir los códigos separados por coma, guión o espacio)
         telefono_correspondencia: Teléfono
         telefono_del_establecimiento: Teléfono
+        telefono_rl: Teléfono
 
   actualizar_usuarios:
     new_actualizar_contrasena:

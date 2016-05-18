@@ -234,6 +234,43 @@ class FormularioCredibanco
     end
     pdf.draw_text params[:nit_de_la_fiduciaria], size: 9, at: [453, pos_y-24]
 
+    # Sección datos del representante legal
+    pdf.move_down 84
+    pos_y = pdf.cursor
+    pdf.draw_text params[:nombres_y_apellidos_completos_rl], size: 9, at: [127, pos_y-24]
+    case params[:tipo_documento_rl]
+    when "NIT"
+      pdf.draw_text 'X', size: 8, at: [146, pos_y-38]
+    when "C.C."
+      pdf.draw_text 'X', size: 8, at: [182, pos_y-38]
+    when "C.E."
+      pdf.draw_text 'X', size: 8, at: [220, pos_y-38]
+    end
+    pdf.text_box params[:numero_documento_rl], size: 8, width: 60,
+            at: [299, pos_y-32], character_spacing: 6.7
+    pdf.draw_text ("%02d" % params["fecha_expedicion_documento_rl(3i)"]), size: 9, at: [194, pos_y-50]
+    pdf.draw_text ("%02d" % params["fecha_expedicion_documento_rl(2i)"]), size: 9, at: [209, pos_y-50]
+    pdf.draw_text params["fecha_expedicion_documento_rl(1i)"], size: 9, at: [224, pos_y-50]
+    pdf.draw_text params[:ciudad_expedicion_documento_rl], size: 9, at: [415, pos_y-49]
+    pdf.draw_text ("%02d" % params["fecha_de_nacimiento_rl(3i)"]), size: 9, at: [10, pos_y-76]
+    pdf.draw_text ("%02d" % params["fecha_de_nacimiento_rl(2i)"]), size: 9, at: [25, pos_y-76]
+    pdf.draw_text params["fecha_de_nacimiento_rl(1i)"], size: 9, at: [40, pos_y-76]
+    pdf.draw_text params[:ciudad_nacimiento_rl], size: 8, at: [190, pos_y-63]
+    pdf.draw_text params[:departamento_nacimiento_rl], size: 7, at: [213, pos_y-76]
+    case params[:sexo_rl]
+    when "Femenino"
+      pdf.draw_text 'X', size: 8, at: [409, pos_y-77]
+    when "Masculino"
+      pdf.draw_text 'X', size: 8, at: [467, pos_y-77]
+    end
+    pdf.draw_text params[:direccion_residencia_rl], size: 7, at: [4, pos_y-100]
+    pdf.text_box params[:ciudad_residencia_rl], size: 7, width: 80,
+            at: [285, pos_y-85]
+    pdf.draw_text params[:telefono_rl], size: 9, at: [415, pos_y-100]
+    pdf.draw_text params[:correo_electronico_rl], size: 7, at: [4, pos_y-124]
+    pdf.draw_text params[:profesion_ocupacion_rl], size: 8, at: [210, pos_y-124]
+    pdf.draw_text params[:cargo_rl], size: 8, at: [421, pos_y-124]
+
     pdf
   end
   

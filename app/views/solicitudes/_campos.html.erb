@@ -362,3 +362,57 @@
 </div>
 <%= f.label :nit_de_la_fiduciaria %>
 <%= f.text_field :nit_de_la_fiduciaria, class: 'form-control' %>
+
+<h2>Sección Datos Representante Legal</h2>
+<%= f.label :nombres_y_apellidos_completos_rl %>
+<%= f.text_field :nombres_y_apellidos_completos_rl, class: 'form-control' %>
+<%= f.label "", "Tipo de documento" %>
+<div class="radio">
+  <%= f.radio_button :tipo_documento_rl, "NIT" %>
+  <%= f.label "", "NIT" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_documento_rl, "C.C." %>
+  <%= f.label "", "C.C." %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_documento_rl, "C.E." %>
+  <%= f.label "", "C.E." %>
+</div>
+<%= f.label :numero_documento_rl %>
+<%= f.text_field :numero_documento_rl, class: 'form-control' %>
+<div class="radio">
+  <%= f.label :fecha_expedicion_documento_rl %>
+  <%= f.date_select :fecha_expedicion_documento_rl, start_year: 1940 %>
+</div>
+<%= f.label :ciudad_expedicion_documento_rl %>
+<%= f.text_field :ciudad_expedicion_documento_rl, class: 'form-control' %>
+<div class="radio">
+  <%= f.label :fecha_de_nacimiento_rl %>
+  <%= f.date_select :fecha_de_nacimiento_rl, start_year: 1920 %>
+</div>
+<%= f.label :ciudad_nacimiento_rl %>
+<%= f.text_field :ciudad_nacimiento_rl, class: 'form-control' %>
+<%= f.label :departamento_nacimiento_rl %>
+<%= f.text_field :departamento_nacimiento_rl, class: 'form-control' %>
+<%= f.label :sexo_rl %>
+<div class="radio">
+  <%= f.radio_button :sexo_rl, "Femenino" %>
+  <%= f.label "Femenino" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :sexo_rl, "Masculino" %>
+  <%= f.label "Masculino" %>
+</div>
+<%= f.label :direccion_residencia_rl %>
+<%= f.text_field :direccion_residencia_rl, class: 'form-control' %>
+<%= f.label :ciudad_residencia_rl %>
+<%= f.text_field :ciudad_residencia_rl, class: 'form-control' %>
+<%= f.label :telefono_rl %>
+<%= f.text_field :telefono_rl, class: 'form-control' %>
+<%= f.label :correo_electronico_rl %>
+<%= f.email_field :correo_electronico_rl, class: 'form-control' %>
+<%= f.label :profesion_ocupacion_rl %>
+<%= f.text_field :profesion_ocupacion_rl, class: 'form-control' %>
+<%= f.label :cargo_rl %>
+<%= f.text_field :cargo_rl, class: 'form-control' %>
