@@ -416,3 +416,36 @@
 <%= f.text_field :profesion_ocupacion_rl, class: 'form-control' %>
 <%= f.label :cargo_rl %>
 <%= f.text_field :cargo_rl, class: 'form-control' %>
+
+<h2>Sección Datos Socios</h2>
+<%= f.fields_for :socios do |f_socio| %>
+  <%= f_socio.label :nombres_y_apellidos %>
+  <%= f_socio.text_field :nombres_y_apellidos, class: 'form-control' %>
+  <%= f_socio.label "", "Tipo de documento" %>
+  <div class="radio">
+    <%= f_socio.radio_button :tipo_documento, "NIT" %>
+    <%= f_socio.label "", "NIT" %>
+  </div>
+  <div class="radio">
+    <%= f_socio.radio_button :tipo_documento, "C.C." %>
+    <%= f_socio.label "", "C.C." %>
+  </div>
+  <div class="radio">
+    <%= f_socio.radio_button :tipo_documento, "C.E." %>
+    <%= f_socio.label "", "C.E." %>
+  </div>
+  <%= f_socio.label :numero_documento %>
+  <%= f_socio.text_field :numero_documento, class: 'form-control' %>
+  <%= f_socio.label :direccion %>
+  <%= f_socio.text_field :direccion, class: 'form-control' %>
+  <%= f_socio.label :ciudad %>
+  <%= f_socio.text_field :ciudad, class: 'form-control' %>
+  <%= f_socio.label :telefono %>
+  <%= f_socio.text_field :telefono, class: 'form-control' %>
+  <%= f_socio.label :celular %>
+  <%= f_socio.text_field :celular, class: 'form-control' %>
+  <%= f_socio.label :correo_electronico %>
+  <%= f_socio.email_field :correo_electronico, class: 'form-control' %>
+  <br><br>
+<% end %>
+

@@ -199,6 +199,12 @@ es:
   
   activemodel:
     attributes:
+      referencia:
+        correo_electronico: Correo Electrónico
+        direccion: Dirección
+        numero_documento: Número de documento
+        telefono: Teléfono
+        
       solicitud:
         cargo_rl: Cargo
         ciudad_correspondencia: Ciudad / Departamento

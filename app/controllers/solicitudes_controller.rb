@@ -14,6 +14,10 @@ class SolicitudesController < ApplicationController
   
   def new
     @solicitud = Solicitud.new
+    @solicitud.socios = []
+    3.times do
+      @solicitud.socios << Socio.new
+    end
   end
   
   private
@@ -86,6 +90,14 @@ class SolicitudesController < ApplicationController
                                         :requiere_propina,
                                         :responsabilidad_tributaria,
                                         :sexo_rl,
+                                        {socios_attributes: [:celular,
+                                                             :ciudad,
+                                                             :correo_electronico,
+                                                             :direccion,
+                                                             :nombres_y_apellidos,
+                                                             :numero_documento,
+                                                             :telefono,
+                                                             :tipo_documento]},
                                         :telefono_correspondencia,
                                         :telefono_del_establecimiento,
                                         :telefono_rl,

@@ -106,4 +106,8 @@ class Solicitud
     :visa_distribucion,
     :web_de_pagos,
     :youtube
+    
+    def socios_attributes=(attributes)
+      logger.info "PARAMETROS DESCONOCIDOS #{attributes}"
+    end
 end

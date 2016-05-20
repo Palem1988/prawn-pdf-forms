@@ -271,15 +271,44 @@ class FormularioCredibanco
     pdf.draw_text params[:profesion_ocupacion_rl], size: 8, at: [210, pos_y-124]
     pdf.draw_text params[:cargo_rl], size: 8, at: [421, pos_y-124]
 
+    # Sección datos del representante legal
+    pdf.move_down 166
+    imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
+    pdf.move_down 15
+    imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
+    pdf.move_down 15
+    imprimir_datos_socio(pdf, params[:socios_attributes]["2"])
+
     pdf
   end
   
   private
   
-  def self.preprocesar(codigos_responsabilidad_tributaria)
-    # Primero eliminar los separadores que pueden ser: espacio, guión o coma.
-    arreglo = codigos_responsabilidad_tributaria.split((%r{,|-|\s+}))
-    # Se retorna un string concatenando las subcadenas del arreglo
-    arreglo.join
-  end
+    def self.imprimir_datos_socio(pdf, params)
+      pos_y = pdf.cursor
+      pdf.draw_text params[:nombres_y_apellidos], size: 7, at: [1, pos_y]
+      case params[:tipo_documento]
+      when "NIT"
+        pdf.draw_text 'NIT', size: 7, at: [127, pos_y]
+      when "C.C."
+        pdf.draw_text 'C.C.', size: 7, at: [127, pos_y]
+      when "C.E."
+        pdf.draw_text 'C.E.', size: 7, at: [127, pos_y]
+      end
+      pdf.draw_text params[:numero_documento], size: 7, at: [150, pos_y]
+      pdf.text_box params[:direccion], size: 5, width: 90,
+            at: [210, pos_y+8]
+      pdf.text_box params[:ciudad], size: 5, width: 60,
+            at: [300, pos_y+8]
+      pdf.draw_text params[:telefono], size: 7, at: [362, pos_y]
+      pdf.draw_text params[:celular], size: 7, at: [410, pos_y]
+      pdf.draw_text params[:correo_electronico], size: 6, at: [464, pos_y]
+    end
+    
+    def self.preprocesar(codigos_responsabilidad_tributaria)
+      # Primero eliminar los separadores que pueden ser: espacio, guión o coma.
+      arreglo = codigos_responsabilidad_tributaria.split((%r{,|-|\s+}))
+      # Se retorna un string concatenando las subcadenas del arreglo
+      arreglo.join
+    end
 end
