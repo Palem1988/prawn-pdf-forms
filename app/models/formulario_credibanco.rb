@@ -279,6 +279,18 @@ class FormularioCredibanco
     pdf.move_down 15
     imprimir_datos_socio(pdf, params[:socios_attributes]["2"])
 
+    # Sección referencias personales del propietario
+    pdf.move_down 51
+    imprimir_referencia(pdf, params[:referencias_personales_attributes]["0"])
+    pdf.move_down 12
+    imprimir_referencia(pdf, params[:referencias_personales_attributes]["1"])
+
+    # Sección referencias comerciales del establecimiento
+    pdf.move_down 34
+    imprimir_referencia(pdf, params[:referencias_comerciales_attributes]["0"])
+    pdf.move_down 12
+    imprimir_referencia(pdf, params[:referencias_comerciales_attributes]["1"])
+
     pdf
   end
   
@@ -303,6 +315,18 @@ class FormularioCredibanco
       pdf.draw_text params[:telefono], size: 7, at: [362, pos_y]
       pdf.draw_text params[:celular], size: 7, at: [410, pos_y]
       pdf.draw_text params[:correo_electronico], size: 6, at: [464, pos_y]
+    end
+    
+    def self.imprimir_referencia(pdf, params)
+      pos_y = pdf.cursor
+      pdf.draw_text params[:nombres_y_apellidos], size: 7, at: [1, pos_y]
+      pdf.text_box params[:direccion], size: 5, width: 120,
+            at: [132, pos_y+8]
+      pdf.text_box params[:ciudad], size: 5, width: 70,
+            at: [251, pos_y+8]
+      pdf.draw_text params[:telefono], size: 7, at: [322, pos_y]
+      pdf.draw_text params[:celular], size: 7, at: [376, pos_y]
+      pdf.draw_text params[:correo_electronico], size: 6, at: [435, pos_y]
     end
     
     def self.preprocesar(codigos_responsabilidad_tributaria)

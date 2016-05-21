@@ -14,6 +14,14 @@ class SolicitudesController < ApplicationController
   
   def new
     @solicitud = Solicitud.new
+    @solicitud.referencias_comerciales = []
+    2.times do
+      @solicitud.referencias_comerciales << Referencia.new
+    end
+    @solicitud.referencias_personales = []
+    2.times do
+      @solicitud.referencias_personales << Referencia.new
+    end
     @solicitud.socios = []
     3.times do
       @solicitud.socios << Socio.new
@@ -86,6 +94,18 @@ class SolicitudesController < ApplicationController
                                         :pse,
                                         :razon_social,
                                         :recurrente,
+                                        {referencias_comerciales_attributes: [:celular,
+                                                             :ciudad,
+                                                             :correo_electronico,
+                                                             :direccion,
+                                                             :nombres_y_apellidos,
+                                                             :telefono]},
+                                        {referencias_personales_attributes: [:celular,
+                                                             :ciudad,
+                                                             :correo_electronico,
+                                                             :direccion,
+                                                             :nombres_y_apellidos,
+                                                             :telefono]},
                                         :requiere_impuestos_av,
                                         :requiere_propina,
                                         :responsabilidad_tributaria,

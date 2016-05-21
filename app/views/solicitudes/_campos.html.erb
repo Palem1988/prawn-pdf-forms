@@ -417,7 +417,7 @@
 <%= f.label :cargo_rl %>
 <%= f.text_field :cargo_rl, class: 'form-control' %>
 
-<h2>Sección Datos Socios</h2>
+<h2>Sección Datos Socios con más del 5% del capital social, aporte o participación</h2>
 <%= f.fields_for :socios do |f_socio| %>
   <%= f_socio.label :nombres_y_apellidos %>
   <%= f_socio.text_field :nombres_y_apellidos, class: 'form-control' %>
@@ -449,3 +449,36 @@
   <br><br>
 <% end %>
 
+<h2>Sección Referencias Personales del Propietario</h2>
+<%= f.fields_for :referencias_personales do |form| %>
+  <%= form.label :nombres_y_apellidos %>
+  <%= form.text_field :nombres_y_apellidos, class: 'form-control' %>
+  <%= form.label :direccion %>
+  <%= form.text_field :direccion, class: 'form-control' %>
+  <%= form.label :ciudad %>
+  <%= form.text_field :ciudad, class: 'form-control' %>
+  <%= form.label :telefono %>
+  <%= form.text_field :telefono, class: 'form-control' %>
+  <%= form.label :celular %>
+  <%= form.text_field :celular, class: 'form-control' %>
+  <%= form.label :correo_electronico %>
+  <%= form.email_field :correo_electronico, class: 'form-control' %>
+  <br><br>
+<% end %>
+
+<h2>Sección Referencias Comerciales Del Establecimiento</h2>
+<%= f.fields_for :referencias_comerciales do |form| %>
+  <%= form.label :nombres_y_apellidos %>
+  <%= form.text_field :nombres_y_apellidos, class: 'form-control' %>
+  <%= form.label :direccion %>
+  <%= form.text_field :direccion, class: 'form-control' %>
+  <%= form.label :ciudad %>
+  <%= form.text_field :ciudad, class: 'form-control' %>
+  <%= form.label :telefono %>
+  <%= form.text_field :telefono, class: 'form-control' %>
+  <%= form.label :celular %>
+  <%= form.text_field :celular, class: 'form-control' %>
+  <%= form.label :correo_electronico %>
+  <%= form.email_field :correo_electronico, class: 'form-control' %>
+  <br><br>
+<% end %>

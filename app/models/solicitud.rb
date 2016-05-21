@@ -107,7 +107,15 @@ class Solicitud
     :web_de_pagos,
     :youtube
     
+    def referencias_comerciales_attributes=(attributes)
+      logger.info "REFERENCIAS COMERCIALES PARAMETROS DESCONOCIDOS #{attributes}"
+    end
+
+    def referencias_personales_attributes=(attributes)
+      logger.info "REFERENCIAS PERSONALES PARAMETROS DESCONOCIDOS #{attributes}"
+    end
+
     def socios_attributes=(attributes)
-      logger.info "PARAMETROS DESCONOCIDOS #{attributes}"
+      logger.info "SOCIOS PARAMETROS DESCONOCIDOS #{attributes}"
     end
 end
