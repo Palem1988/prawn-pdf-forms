@@ -290,6 +290,37 @@ class FormularioCredibanco
     imprimir_referencia(pdf, params[:referencias_comerciales_attributes]["0"])
     pdf.move_down 12
     imprimir_referencia(pdf, params[:referencias_comerciales_attributes]["1"])
+    
+    # Segunda página
+    pdf.start_new_page
+    
+    # Sección información financiera
+    pdf.move_down 15
+    pos_y = pdf.cursor
+    pdf.draw_text params[:ingresos_mensuales], size: 9, at: [80, pos_y-5]
+    pdf.draw_text params[:otros_ingresos], size: 9, at: [243, pos_y-5]
+    pdf.draw_text params[:egresos_mensuales], size: 9, at: [445, pos_y-5]
+    pdf.draw_text params[:total_activos], size: 9, at: [58, pos_y-18]
+    pdf.draw_text params[:total_pasivos], size: 9, at: [243, pos_y-18]
+    case params[:operaciones_internacionales]
+    when "Sí"
+      pdf.draw_text 'X', size: 7, at: [16, pos_y-58]
+    when "No"
+      pdf.draw_text 'X', size: 7, at: [57, pos_y-58]
+    end
+    #numero = NumeroString.new(params[:monto_estimado_mensual_oi])
+    pdf.draw_text params[:monto_estimado_mensual_oi], size: 9, at: [15, pos_y-104]
+    pdf.draw_text 'X', size: 9, at: [241, pos_y-56] if params[:importacion_oi] == "1"
+    pdf.draw_text 'X', size: 9, at: [241, pos_y-68] if params[:prestamos_oi] == "1"
+    pdf.draw_text 'X', size: 9, at: [241, pos_y-80] if params[:exportacion_oi] == "1"
+    pdf.draw_text 'X', size: 9, at: [241, pos_y-93] if params[:pago_de_servicios_oi] == "1"
+    pdf.draw_text 'X', size: 9, at: [241, pos_y-106] if params[:inversiones_oi] == "1"
+    
+    #Firma del representante legal
+    pdf.move_down 442
+    pos_y = pdf.cursor
+    pdf.draw_text params[:nombres_y_apellidos_completos_rl], size: 7, at: [304, pos_y]
+    pdf.draw_text params[:numero_documento_rl], size: 7, at: [304, pos_y-8.5]
 
     pdf
   end

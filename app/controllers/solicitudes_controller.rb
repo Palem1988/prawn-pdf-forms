@@ -9,6 +9,7 @@ class SolicitudesController < ApplicationController
     pdf_combinado << CombinePDF.load("Formulario+de+afiliacion+RBM_agosto+2015.pdf")
     pdf_combinado << CombinePDF.parse(pdf_redeban.render)
     pdf_combinado.pages[0] << CombinePDF.parse(pdf_credibanco.render).pages[0]
+    pdf_combinado.pages[1] << CombinePDF.parse(pdf_credibanco.render).pages[1]
     send_data pdf_combinado.to_pdf, filename: "solicitudes.pdf", type: "application/pdf"
   end
   
@@ -56,9 +57,11 @@ class SolicitudesController < ApplicationController
                                         :direccion_del_establecimiento,
                                         :direccion_pagina_web,
                                         :direccion_residencia_rl,
+                                        :egresos_mensuales,
                                         :exento_de_retencion_de_ica,
                                         :exento_de_retencion_de_iva,
                                         :exento_de_retencion_en_la_fuente,
+                                        :exportacion_oi,
                                         :facebook,
                                         :fax,
                                         :fecha_de_nacimiento_rl,
@@ -66,12 +69,16 @@ class SolicitudesController < ApplicationController
                                         :flickr,
                                         :foursquare,
                                         :horario_atencion,
+                                        :importacion_oi,
+                                        :ingresos_mensuales,
+                                        :inversiones_oi,
                                         :linkedin,
                                         :mall_virtual,
                                         :mcc,
                                         :mi_pago_ta,
                                         :modulo_avanzado_cybersource,
                                         :modulo_basico_afs,
+                                        :monto_estimado_mensual_oi,
                                         :multicomercio_ta,
                                         :naturaleza,
                                         :nit_cc,
@@ -83,12 +90,16 @@ class SolicitudesController < ApplicationController
                                         :numero_documento_comercio,
                                         :numero_documento_rl,
                                         :numero_iata_av,
+                                        :operaciones_internacionales,
+                                        :otros_ingresos,
                                         :paga_cuentas,
+                                        :pago_de_servicios_oi,
                                         :porcentaje_de_impuesto_al_consumo,
                                         :porcentaje_de_iva,
                                         :porcentaje_de_retefuente,
                                         :porcentaje_de_reteica,
                                         :posee_medio_de_acceso,
+                                        :prestamos_oi,
                                         :profesion_ocupacion_rl,
                                         :propietario_medio_acceso,
                                         :pse,
@@ -130,6 +141,8 @@ class SolicitudesController < ApplicationController
                                         :tipo_documento_rl,
                                         :tipo_medio_acceso,
                                         :titular_cuenta,
+                                        :total_activos,
+                                        :total_pasivos,
                                         :twitter,
                                         :venta_no_presencial,
                                         :venta_presencial_ta,

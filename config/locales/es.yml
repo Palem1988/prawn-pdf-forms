@@ -226,6 +226,7 @@ es:
         direccion_residencia_rl: Dirección de residencia
         fecha_de_nacimiento_rl: Fecha de nacimiento
         fecha_expedicion_documento_rl: Fecha de expedición
+        monto_estimado_mensual_oi: Monto estimado mensual
         nit_cc: "Nit/C.C."
         nombres_y_apellidos_completos_rl: Nombres y Apellidos completos del Representante Legal
         numero_documento_rl: Número del documento

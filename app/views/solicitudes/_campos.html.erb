@@ -482,3 +482,48 @@
   <%= form.email_field :correo_electronico, class: 'form-control' %>
   <br><br>
 <% end %>
+
+<h2>Sección Información Financiera</h2>
+<%= f.label :ingresos_mensuales %>
+<%= f.text_field :ingresos_mensuales, class: 'form-control' %>
+<%= f.label :otros_ingresos %>
+<%= f.text_field :otros_ingresos, class: 'form-control' %>
+<%= f.label :egresos_mensuales %>
+<%= f.text_field :egresos_mensuales, class: 'form-control' %>
+<%= f.label :total_activos %>
+<%= f.text_field :total_activos, class: 'form-control' %>
+<%= f.label :total_pasivos %>
+<%= f.text_field :total_pasivos, class: 'form-control' %>
+<h2>Sección Operaciones Internacionales</h2>
+<%= f.label "", "Indique si tiene operaciones internacionales" %>
+<div class="radio">
+  <%= f.radio_button :operaciones_internacionales, "Sí" %>
+  <%= f.label "", "Sí" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :operaciones_internacionales, "No" %>
+  <%= f.label "", "No" %>
+</div>
+<%= f.label :monto_estimado_mensual_oi %>
+<%= f.text_field :monto_estimado_mensual_oi, class: 'form-control' %>
+<%= f.label "", "Tipo de operaciones internacionales" %>
+<div class="checkbox">
+  <%= f.check_box :importacion_oi %>
+  <%= f.label "", "Importación" %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :prestamos_oi %>
+  <%= f.label "", "Préstamos" %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :exportacion_oi %>
+  <%= f.label "", "Exportación" %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :pago_de_servicios_oi %>
+  <%= f.label "", "Pago de servicios" %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :inversiones_oi %>
+  <%= f.label "", "Inversiones" %>
+</div>
