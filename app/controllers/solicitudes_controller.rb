@@ -2,14 +2,14 @@ class SolicitudesController < ApplicationController
   
   def create
     pdf_credibanco = FormularioCredibanco.generar(params_solicitud)
-    pdf_redeban = Prawn::Document.new(left_margin: 50, page_size: [637.92, 1006.56])
+    pdf_redeban = FormularioRedeban.generar(params_solicitud)
     pdf_combinado = CombinePDF.new
     pdf_combinado << CombinePDF.load("solicitud-afiliacion-establecimientos-comercio.pdf")
-    pdf_combinado << CombinePDF.parse(pdf_credibanco.render)
     pdf_combinado << CombinePDF.load("Formulario+de+afiliacion+RBM_agosto+2015.pdf")
     pdf_combinado << CombinePDF.parse(pdf_redeban.render)
     pdf_combinado.pages[0] << CombinePDF.parse(pdf_credibanco.render).pages[0]
     pdf_combinado.pages[1] << CombinePDF.parse(pdf_credibanco.render).pages[1]
+    pdf_combinado.pages[2] << CombinePDF.parse(pdf_redeban.render).pages[0]
     send_data pdf_combinado.to_pdf, filename: "solicitudes.pdf", type: "application/pdf"
   end
   
@@ -40,6 +40,7 @@ class SolicitudesController < ApplicationController
                                         :cargo_rl,
                                         :celular,
                                         :ciudad_correspondencia,
+                                        :ciudad_establecimiento,
                                         :ciudad_expedicion_documento_rl,
                                         :ciudad_nacimiento_rl,
                                         :ciudad_residencia_rl,
@@ -52,7 +53,9 @@ class SolicitudesController < ApplicationController
                                         :comercio_principal_secundario_ta,
                                         :correo_electronico,
                                         :correo_electronico_rl,
+                                        :departamento_establecimiento,
                                         :departamento_nacimiento_rl,
+                                        :digito_de_verificacion,
                                         :direccion_correspondencia,
                                         :direccion_del_establecimiento,
                                         :direccion_pagina_web,
@@ -83,7 +86,9 @@ class SolicitudesController < ApplicationController
                                         :naturaleza,
                                         :nit_cc,
                                         :nit_de_la_fiduciaria,
+                                        :nombre_comercial,
                                         :nombre_del_banco,
+                                        :nombre_en_redes,
                                         :nombres_y_apellidos_completos_rl,
                                         :numero_de_cuenta,
                                         :numero_de_matricula_mercantil,

@@ -1,4 +1,5 @@
 class FormularioCredibanco
+  include Utilitario
   
   def self.generar(params)
     pdf = Prawn::Document.new(left_margin: 50,
@@ -23,8 +24,8 @@ class FormularioCredibanco
     when "C.E."
       pdf.draw_text 'X', size: 10, at: [87, pdf.cursor]
     end
-    pdf.text_box params[:numero_documento_comercio], size: 10, width: 70,
-        at: [125, pdf.cursor+8], character_spacing: 4
+    pdf.text_box (params[:numero_documento_comercio] + "-" + params[:digito_de_verificacion]), size: 10,
+        width: 120, at: [125, pdf.cursor+8], character_spacing: 4
     unless params[:numero_de_matricula_mercantil].blank?
       pdf.draw_text 'X', size: 10, at: [325, pdf.cursor]
       pdf.text_box params[:numero_de_matricula_mercantil], size: 10, width: 60,
@@ -49,7 +50,8 @@ class FormularioCredibanco
     when "Privada"
       pdf.draw_text 'X', size: 10, at: [168, pos_y-16]
     else
-      pdf.draw_text params[:tipo_de_empresa], size: 10, at: [1, pos_y]
+      pdf.draw_text 'X', size: 10, at: [211, pos_y-16]
+      pdf.draw_text params[:tipo_de_empresa], size: 10, at: [255, pos_y-14]
     end
 
     case params[:naturaleza]
@@ -59,6 +61,7 @@ class FormularioCredibanco
       pdf.draw_text 'X', size: 10, at: [475, pos_y-16]
     end
     
+    # Sección venta de tiquetes
     pdf.move_down 32
     pos_y = pdf.cursor
     case params[:agencia_de_viajes]
@@ -360,10 +363,4 @@ class FormularioCredibanco
       pdf.draw_text params[:correo_electronico], size: 6, at: [435, pos_y]
     end
     
-    def self.preprocesar(codigos_responsabilidad_tributaria)
-      # Primero eliminar los separadores que pueden ser: espacio, guión o coma.
-      arreglo = codigos_responsabilidad_tributaria.split((%r{,|-|\s+}))
-      # Se retorna un string concatenando las subcadenas del arreglo
-      arreglo.join
-    end
 end

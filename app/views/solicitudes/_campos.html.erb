@@ -2,6 +2,8 @@
 
 <%= f.label :razon_social %>
 <%= f.text_field :razon_social, class: 'form-control' %>
+<%= f.label :nombre_comercial %>
+<%= f.text_field :nombre_comercial, class: 'form-control' %>
 
 <%= f.label :tipo_documento_comercio %>
 <div class="row">
@@ -34,6 +36,8 @@
 
 <%= f.label :numero_documento_comercio %>
 <%= f.text_field :numero_documento_comercio, class: 'form-control' %>
+<%= f.label :digito_de_verificacion %>
+<%= f.text_field :digito_de_verificacion, class: 'form-control' %>
 <%= f.label :numero_de_matricula_mercantil %>
 <%= f.text_field :numero_de_matricula_mercantil, class: 'form-control' %>
 
@@ -56,6 +60,22 @@
       <%= f.radio_button :tipo_de_empresa, "Sin ánimo de lucro" %>
       <%= f.label :tipo_de_empresa, "Sin ánimo de lucro" %>
     </div>
+    <div class="radio">
+      <%= f.radio_button :tipo_de_empresa, "Empresa unipersonal" %>
+      <%= f.label "", "Empresa unipersonal" %>
+    </div>
+    <div class="radio">
+      <%= f.radio_button :tipo_de_empresa, "Colectiva" %>
+      <%= f.label "", "Colectiva" %>
+    </div>
+    <div class="radio">
+      <%= f.radio_button :tipo_de_empresa, "Comandita por acciones" %>
+      <%= f.label "", "Comandita por acciones" %>
+    </div>
+    <div class="radio">
+      <%= f.radio_button :tipo_de_empresa, "Privada extranjera" %>
+      <%= f.label "", "Privada extranjera" %>
+    </div>
   </div>
   <div class="col-md-6">
     <div class="radio">
@@ -70,6 +90,26 @@
       <%= f.radio_button :tipo_de_empresa, "Privada" %>
       <%= f.label "", "Privada" %>
     </div>
+    <div class="radio">
+      <%= f.radio_button :tipo_de_empresa, "De hecho" %>
+      <%= f.label "", "De hecho" %>
+    </div>
+    <div class="radio">
+      <%= f.radio_button :tipo_de_empresa, "Sociedad cooperativa" %>
+      <%= f.label "", "Sociedad cooperativa" %>
+    </div>
+    <div class="radio">
+      <%= f.radio_button :tipo_de_empresa, "Comandita simple" %>
+      <%= f.label "", "Comandita simple" %>
+    </div>
+    <div class="radio">
+      <%= f.radio_button :tipo_de_empresa, "Sucursales extranjeras" %>
+      <%= f.label "", "Sucursales extranjeras" %>
+    </div>
+    <div class="radio">
+      <%= f.radio_button :tipo_de_empresa, "Persona natural" %>
+      <%= f.label "", "Persona natural" %>
+    </div>
   </div>
 </div>
 <%= f.label :naturaleza %>
@@ -82,6 +122,7 @@
   <%= f.label "", "Natural" %>
 </div>
 
+<h2>Sección Venta de Tiquetes</h2>
 <div class="agencia">
   <div class="radio">
     <%= f.radio_button :agencia_de_viajes, "Agencia de viajes" %>
@@ -205,8 +246,12 @@
 <%= f.text_field :celular, class: 'form-control' %>
 <%= f.label :fax %>
 <%= f.text_field :fax, class: 'form-control' %>
+<%= f.label :ciudad_establecimiento %>
+<%= f.text_field :ciudad_establecimiento, class: 'form-control' %>
 <%= f.label :codigo_ciudad %>
 <%= f.text_field :codigo_ciudad, class: 'form-control' %>
+<%= f.label :departamento_establecimiento %>
+<%= f.text_field :departamento_establecimiento, class: 'form-control' %>
 <%= f.label :codigo_departamento %>
 <%= f.text_field :codigo_departamento, class: 'form-control' %>
 
@@ -259,6 +304,8 @@
   <%= f.check_box :linkedin %>
   <%= f.label :linkedin %>
 </div>
+<%= f.label :nombre_en_redes %>
+<%= f.text_field :nombre_en_redes, class: 'form-control' %>
 
 <h2>Sección Tipo de Establecimiento</h2>
 <%= f.label :tipo_de_establecimiento %>
