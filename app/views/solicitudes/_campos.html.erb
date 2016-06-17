@@ -469,10 +469,11 @@
   <%= f_socio.label :nombres_y_apellidos %>
   <%= f_socio.text_field :nombres_y_apellidos, class: 'form-control' %>
   <%= f_socio.label "", "Tipo de documento" %>
-  <div class="radio">
+<!--  <div class="radio">
     <%= f_socio.radio_button :tipo_documento, "NIT" %>
     <%= f_socio.label "", "NIT" %>
   </div>
+-->
   <div class="radio">
     <%= f_socio.radio_button :tipo_documento, "C.C." %>
     <%= f_socio.label "", "C.C." %>
@@ -483,6 +484,8 @@
   </div>
   <%= f_socio.label :numero_documento %>
   <%= f_socio.text_field :numero_documento, class: 'form-control' %>
+  <%= f_socio.label :porcentaje_participacion %>
+  <%= f_socio.text_field :porcentaje_participacion, class: 'form-control' %>
   <%= f_socio.label :direccion %>
   <%= f_socio.text_field :direccion, class: 'form-control' %>
   <%= f_socio.label :ciudad %>

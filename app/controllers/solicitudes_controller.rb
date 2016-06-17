@@ -132,6 +132,7 @@ class SolicitudesController < ApplicationController
                                                              :direccion,
                                                              :nombres_y_apellidos,
                                                              :numero_documento,
+                                                             :porcentaje_participacion,
                                                              :telefono,
                                                              :tipo_documento]},
                                         :telefono_correspondencia,

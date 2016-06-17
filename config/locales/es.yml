@@ -206,6 +206,7 @@ es:
         
       socio:
         numero_documento: Número de documento
+        porcentaje_participacion: Porcentaje de participación
         
       solicitud:
         cargo_rl: Cargo

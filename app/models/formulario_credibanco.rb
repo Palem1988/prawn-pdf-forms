@@ -274,7 +274,7 @@ class FormularioCredibanco
     pdf.draw_text params[:profesion_ocupacion_rl], size: 8, at: [210, pos_y-124]
     pdf.draw_text params[:cargo_rl], size: 8, at: [421, pos_y-124]
 
-    # Sección datos del representante legal
+    # Sección datos de los socios con participación superior a 5%
     pdf.move_down 166
     imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
     pdf.move_down 15

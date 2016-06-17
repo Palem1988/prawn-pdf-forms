@@ -139,8 +139,8 @@ class FormularioRedeban
     pdf.draw_text 'X', size: 12, at: [250, pos_y+1] if params[:exento_de_retencion_en_la_fuente] == "0"
     pdf.draw_text 'X', size: 12, at: [322, pos_y] if params[:exento_de_retencion_de_ica] == "1"
     pdf.draw_text 'X', size: 12, at: [347, pos_y] if params[:exento_de_retencion_de_ica] == "0"
-    pdf.draw_text 'X', size: 12, at: [422, pos_y] if params[:exento_de_retencion_de_iva] == "1"
-    pdf.draw_text 'X', size: 12, at: [447, pos_y] if params[:exento_de_retencion_de_iva] == "0"
+    pdf.draw_text 'X', size: 12, at: [422, pos_y] if params[:exento_de_retencion_de_iva] == "0"
+    pdf.draw_text 'X', size: 12, at: [447, pos_y] if params[:exento_de_retencion_de_iva] == "1"
     pdf.draw_text 'X', size: 12, at: [516, pos_y] if params[:requiere_propina] == "1"
     pdf.draw_text 'X', size: 12, at: [541, pos_y] if params[:requiere_propina] == "0"
 
@@ -158,7 +158,60 @@ class FormularioRedeban
     pdf.draw_text params[:porcentaje_de_iva], size: 12, at: [373, pos_y-2]
     pdf.draw_text params[:porcentaje_de_impuesto_al_consumo], size: 12, at: [472, pos_y-2]
     
+    # Sección certificado cuenta de depósito
+    pdf.move_down 64
+    pos_y = pdf.cursor
+    pdf.text_box params[:numero_de_cuenta], size: 12,
+        width: 110, at: [-2, pos_y+8], character_spacing: 4.7
+    pdf.text_box params[:codigo_banco], size: 12,
+        width: 30, at: [218, pos_y+8], character_spacing: 4.7
+    pdf.draw_text params[:nombre_del_banco], size: 11, at: [284, pos_y]
+    pdf.text_box params[:codigo_sucursal_banco], size: 12,
+        width: 30, at: [483, pos_y+8], character_spacing: 4.7
+    pdf.text_box params[:titular_cuenta], size: 7, at: [60, pos_y-7],
+        width: 75
+    case params[:tipo_de_cuenta]
+    when "Ahorro"
+      pdf.draw_text 'X', size: 12, at: [339, pos_y-17]
+    when "Corriente"
+      pdf.draw_text 'X', size: 12, at: [429, pos_y-17]
+    when "Fiduciaria"
+      pdf.draw_text 'X', size: 12, at: [524, pos_y-17]
+    end
+    pdf.draw_text params[:nit_cc], size: 11, at: [18, pos_y-34]
+    pdf.draw_text params[:nit_de_la_fiduciaria], size: 11, at: [284, pos_y-34]
+
+    # Sección datos de los socios con participación superior a 5%
+    pdf.move_down 240
+    imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
+    pdf.move_down 32
+    imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
+
     pdf
   end
 
+  private
+  
+    def self.imprimir_datos_socio(pdf, params)
+      pos_y = pdf.cursor
+      pdf.draw_text params[:nombres_y_apellidos], size: 8, at: [-15, pos_y]
+      pdf.text_box params[:porcentaje_participacion], size: 12,
+          width: 30, at: [154, pos_y+12], character_spacing: 4.5, align: :right
+      case params[:tipo_documento]
+      when "NIT"
+        pdf.draw_text 'NIT', size: 7, at: [127, pos_y]
+      when "C.C."
+        pdf.draw_text 'X', size: 12, at: [192, pos_y]
+      when "C.E."
+        pdf.draw_text 'X', size: 12, at: [209, pos_y]
+      end
+      pdf.draw_text params[:numero_documento], size: 11, at: [225, pos_y+15]
+      pdf.text_box params[:ciudad], size: 8, width: 85,
+            at: [396, pos_y+30]
+      pdf.draw_text params[:telefono], size: 11, at: [480, pos_y+15]
+      pdf.draw_text params[:celular], size: 9, at: [225, pos_y]
+      pdf.text_box params[:direccion], size: 6, width: 120,
+            at: [445, pos_y+12]
+    end
+  
 end
