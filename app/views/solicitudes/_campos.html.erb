@@ -520,6 +520,8 @@
 <%= f.fields_for :referencias_comerciales do |form| %>
   <%= form.label :nombres_y_apellidos %>
   <%= form.text_field :nombres_y_apellidos, class: 'form-control' %>
+  <%= form.label :numero_identificacion %>
+  <%= form.text_field :numero_identificacion, class: 'form-control' %>
   <%= form.label :direccion %>
   <%= form.text_field :direccion, class: 'form-control' %>
   <%= form.label :ciudad %>

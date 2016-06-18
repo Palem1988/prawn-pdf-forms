@@ -115,6 +115,7 @@ class SolicitudesController < ApplicationController
                                                              :correo_electronico,
                                                              :direccion,
                                                              :nombres_y_apellidos,
+                                                             :numero_identificacion,
                                                              :telefono]},
                                         {referencias_personales_attributes: [:celular,
                                                              :ciudad,

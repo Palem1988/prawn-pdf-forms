@@ -187,6 +187,12 @@ class FormularioRedeban
     pdf.move_down 32
     imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
 
+    # Sección referencias comerciales del establecimiento
+    pdf.move_down 41
+    imprimir_referencia_comercial(pdf, params[:referencias_comerciales_attributes]["0"])
+    pdf.move_down 14
+    imprimir_referencia_comercial(pdf, params[:referencias_comerciales_attributes]["1"])
+
     pdf
   end
 
@@ -214,4 +220,14 @@ class FormularioRedeban
             at: [445, pos_y+12]
     end
   
+    def self.imprimir_referencia_comercial(pdf, params)
+      pos_y = pdf.cursor
+      pdf.draw_text params[:nombres_y_apellidos], size: 8, at: [-15, pos_y]
+      pdf.draw_text params[:numero_identificacion], size: 11, at: [145, pos_y]
+      pdf.text_box params[:direccion], size: 6, width: 120,
+            at: [235, pos_y+11]
+      pdf.text_box params[:ciudad], size: 7, width: 100, leading: -2,
+            at: [361, pos_y+11]
+      pdf.draw_text params[:telefono], size: 11, at: [459, pos_y]
+    end
 end

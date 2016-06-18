@@ -6,5 +6,6 @@ class Referencia
         :correo_electronico,
         :direccion,
         :nombres_y_apellidos,
+        :numero_identificacion,
         :telefono
 end
