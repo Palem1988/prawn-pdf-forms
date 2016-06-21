@@ -411,8 +411,12 @@
 <%= f.text_field :nit_de_la_fiduciaria, class: 'form-control' %>
 
 <h2>Sección Datos Representante Legal</h2>
-<%= f.label :nombres_y_apellidos_completos_rl %>
-<%= f.text_field :nombres_y_apellidos_completos_rl, class: 'form-control' %>
+<%= f.label :nombres_rl %>
+<%= f.text_field :nombres_rl, class: 'form-control' %>
+<%= f.label :primer_apellido_rl %>
+<%= f.text_field :primer_apellido_rl, class: 'form-control' %>
+<%= f.label :segundo_apellido_rl %>
+<%= f.text_field :segundo_apellido_rl, class: 'form-control' %>
 <%= f.label "", "Tipo de documento" %>
 <div class="radio">
   <%= f.radio_button :tipo_documento_rl, "NIT" %>
@@ -451,18 +455,91 @@
   <%= f.radio_button :sexo_rl, "Masculino" %>
   <%= f.label "Masculino" %>
 </div>
+<%= f.label "", "Estado civil" %>
+<div class="radio">
+  <%= f.radio_button :estado_civil, "Soltero" %>
+  <%= f.label "", "Soltero" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :estado_civil, "Casado" %>
+  <%= f.label "", "Casado" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :estado_civil, "Divorciado" %>
+  <%= f.label "", "Divorciado" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :estado_civil, "Separado" %>
+  <%= f.label "", "Separado" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :estado_civil, "Viudo" %>
+  <%= f.label "", "Viudo" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :estado_civil, "Unión libre" %>
+  <%= f.label "", "Unión libre" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :estado_civil, "Religioso" %>
+  <%= f.label "", "Religioso" %>
+</div>
 <%= f.label :direccion_residencia_rl %>
 <%= f.text_field :direccion_residencia_rl, class: 'form-control' %>
 <%= f.label :ciudad_residencia_rl %>
 <%= f.text_field :ciudad_residencia_rl, class: 'form-control' %>
 <%= f.label :telefono_rl %>
 <%= f.text_field :telefono_rl, class: 'form-control' %>
+<%= f.label :celular_rl %>
+<%= f.text_field :celular_rl, class: 'form-control' %>
 <%= f.label :correo_electronico_rl %>
 <%= f.email_field :correo_electronico_rl, class: 'form-control' %>
 <%= f.label :profesion_ocupacion_rl %>
 <%= f.text_field :profesion_ocupacion_rl, class: 'form-control' %>
+<%= f.label "", "Tipo" %>
+<div class="radio">
+  <%= f.radio_button :tipo_profesion_rl, "Independiente" %>
+  <%= f.label "Independiente" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_profesion_rl, "Empleado" %>
+  <%= f.label "Empleado" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_profesion_rl, "Servidor público" %>
+  <%= f.label "", "Servidor público" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_profesion_rl, "Socios" %>
+  <%= f.label "", "Socios" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_profesion_rl, "Estudiante" %>
+  <%= f.label "", "Estudiante" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_profesion_rl, "Ama de casa" %>
+  <%= f.label "", "Ama de casa" %>
+</div>
+<div class="radio">
+  <%= f.radio_button :tipo_profesion_rl, "Pensionado" %>
+  <%= f.label "", "Pensionado" %>
+</div>
 <%= f.label :cargo_rl %>
 <%= f.text_field :cargo_rl, class: 'form-control' %>
+<%= f.label "", "Favor indicar si:" %>
+<div class="checkbox">
+  <%= f.check_box :administra_recursos_publicos_rl %>
+  <%= f.label "", "Administra recursos públicos" %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :ostenta_algun_grado_de_poder_publico_rl %>
+  <%= f.label "", "Ostenta algun grado de poder público" %>
+</div>
+<div class="checkbox">
+  <%= f.check_box :goza_de_reconocimiento_publico_rl %>
+  <%= f.label "", "Goza de reconocimiento público" %>
+</div>
 
 <h2>Sección Datos Socios con más del 5% del capital social, aporte o participación</h2>
 <%= f.fields_for :socios do |f_socio| %>

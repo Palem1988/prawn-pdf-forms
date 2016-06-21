@@ -211,6 +211,7 @@ es:
         
       solicitud:
         cargo_rl: Cargo
+        celular_rl: Celular del representante legal
         ciudad_correspondencia: Ciudad / Departamento
         ciudad_expedicion_documento_rl: Ciudad de expedición
         ciudad_nacimiento_rl: Ciudad de nacimiento
@@ -230,10 +231,12 @@ es:
         fecha_expedicion_documento_rl: Fecha de expedición
         monto_estimado_mensual_oi: Monto estimado mensual
         nit_cc: "Nit/C.C."
-        nombres_y_apellidos_completos_rl: Nombres y Apellidos completos del Representante Legal
+        nombres_rl: Nombres del representante legal
         numero_documento_rl: Número del documento
+        primer_apellido_rl: Primer apellido del representante legal
         profesion_ocupacion_rl: Profesión u Ocupación
         razon_social: 'Nombres y Apellidos completos o Razón Social'
+        segundo_apellido_rl: Segundo apellido del representante legal
         sexo_rl: Sexo
         responsabilidad_tributaria: Responsabilidad Tributaria (Ver campo 53 RUT. Escribir los códigos separados por coma, guión o espacio)
         telefono_correspondencia: Teléfono

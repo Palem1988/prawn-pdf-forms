@@ -240,7 +240,9 @@ class FormularioCredibanco
     # Sección datos del representante legal
     pdf.move_down 84
     pos_y = pdf.cursor
-    pdf.draw_text params[:nombres_y_apellidos_completos_rl], size: 9, at: [127, pos_y-24]
+    nombres_y_apellidos_rl = params[:nombres_rl] + " " + params[:primer_apellido_rl]
+    nombres_y_apellidos_rl << " " + params[:segundo_apellido_rl]
+    pdf.draw_text nombres_y_apellidos_rl, size: 9, at: [127, pos_y-24]
     case params[:tipo_documento_rl]
     when "NIT"
       pdf.draw_text 'X', size: 8, at: [146, pos_y-38]
@@ -322,7 +324,7 @@ class FormularioCredibanco
     #Firma del representante legal
     pdf.move_down 442
     pos_y = pdf.cursor
-    pdf.draw_text params[:nombres_y_apellidos_completos_rl], size: 7, at: [304, pos_y]
+    pdf.draw_text nombres_y_apellidos_rl, size: 7, at: [304, pos_y]
     pdf.draw_text params[:numero_documento_rl], size: 7, at: [304, pos_y-8.5]
 
     pdf

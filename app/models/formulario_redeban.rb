@@ -193,6 +193,98 @@ class FormularioRedeban
     pdf.move_down 14
     imprimir_referencia_comercial(pdf, params[:referencias_comerciales_attributes]["1"])
 
+    # Sección datos del representante legal
+    pdf.move_down 34
+    pos_y = pdf.cursor
+    pdf.draw_text params[:nombres_rl], size: 9, at: [-15, pos_y]
+    pdf.draw_text params[:primer_apellido_rl], size: 9, at: [145, pos_y]
+    pdf.draw_text params[:segundo_apellido_rl], size: 9, at: [344, pos_y]
+    pdf.move_down 15
+    pos_y = pdf.cursor
+    case params[:tipo_documento_rl]
+    when "NIT"
+      pdf.draw_text 'X', size: 11, at: [60, pos_y]
+    when "C.C."
+      pdf.draw_text 'X', size: 11, at: [150, pos_y]
+    when "C.E."
+      pdf.draw_text 'X', size: 11, at: [96, pos_y-12]
+    end
+    pdf.text_box params[:numero_documento_rl], size: 12,
+        width: 100, at: [179, pos_y+9], character_spacing: 4.7
+    fecha_expedicion_documento_rl = "%02d" % params["fecha_expedicion_documento_rl(3i)"]
+    fecha_expedicion_documento_rl << "%02d" % params["fecha_expedicion_documento_rl(2i)"]
+    fecha_expedicion_documento_rl << params["fecha_expedicion_documento_rl(1i)"]
+    pdf.text_box fecha_expedicion_documento_rl, size: 12,
+        width: 80, at: [224, pos_y-4], character_spacing: 4.7
+    fecha_de_nacimiento_rl = "%02d" % params["fecha_de_nacimiento_rl(3i)"]
+    fecha_de_nacimiento_rl << "%02d" % params["fecha_de_nacimiento_rl(2i)"]
+    fecha_de_nacimiento_rl << params["fecha_de_nacimiento_rl(1i)"]
+    pdf.text_box fecha_de_nacimiento_rl, size: 12,
+        width: 80, at: [320, pos_y-6], character_spacing: 5.7
+    pdf.draw_text params[:ciudad_nacimiento_rl], size: 6, at: [448, pos_y+5]
+    pdf.draw_text params[:departamento_nacimiento_rl], size: 6, at: [475, pos_y-8]
+    pdf.move_down 30
+    pos_y = pdf.cursor
+    case params[:sexo_rl]
+    when "Femenino"
+      pdf.draw_text 'X', size: 12, at: [14, pos_y]
+    when "Masculino"
+      pdf.draw_text 'X', size: 12, at: [40, pos_y]
+    end
+    case params[:estado_civil]
+    when "Soltero"
+      pdf.draw_text 'X', size: 12, at: [132, pos_y]
+    when "Casado"
+      pdf.draw_text 'X', size: 12, at: [172, pos_y]
+    when "Divorciado"
+      pdf.draw_text 'X', size: 12, at: [225, pos_y]
+    when "Separado"
+      pdf.draw_text 'X', size: 12, at: [275, pos_y]
+    when "Viudo"
+      pdf.draw_text 'X', size: 12, at: [309, pos_y]
+    when "Unión libre"
+      pdf.draw_text 'X', size: 12, at: [361, pos_y]
+    when "Religioso"
+      pdf.draw_text 'X', size: 12, at: [408, pos_y]
+    end
+    pdf.text_box params[:correo_electronico_rl], size: 7, width: 115,
+            at: [445, pos_y+12]
+    pdf.move_down 21
+    pos_y = pdf.cursor
+    pdf.draw_text params[:direccion_residencia_rl], size: 7, at: [-15, pos_y]
+    pdf.text_box params[:ciudad_residencia_rl], size: 7, width: 75,
+      at: [235, pos_y+13]
+    pdf.draw_text params[:telefono_rl], size: 11, at: [312, pos_y]
+    pdf.draw_text params[:celular_rl], size: 11, at: [435, pos_y]
+    pdf.move_down 17
+    pos_y = pdf.cursor
+    pdf.draw_text params[:profesion_ocupacion_rl], size: 6, at: [-15, pos_y]
+    case params[:tipo_profesion_rl]
+    when "Independiente"
+      pdf.draw_text 'X', size: 12, at: [138, pos_y+3]
+    when "Empleado"
+      pdf.draw_text 'X', size: 12, at: [187, pos_y+3]
+    when "Servidor público"
+      pdf.draw_text 'X', size: 12, at: [261, pos_y+3]
+    when "Socios"
+      pdf.draw_text 'X', size: 12, at: [299, pos_y+3]
+    when "Estudiante"
+      pdf.draw_text 'X', size: 12, at: [350, pos_y+3]
+    when "Ama de casa"
+      pdf.draw_text 'X', size: 12, at: [406, pos_y+3]
+    when "Pensionado"
+      pdf.draw_text 'X', size: 12, at: [460, pos_y+3]
+    end
+    pdf.draw_text params[:cargo_rl], size: 6, at: [473, pos_y]
+    pdf.move_down 17
+    pos_y = pdf.cursor
+    pdf.draw_text 'X', size: 12, at: [118, pos_y] if params[:administra_recursos_publicos_rl] == "1"
+    pdf.draw_text 'X', size: 12, at: [150, pos_y] if params[:administra_recursos_publicos_rl] == "0"
+    pdf.draw_text 'X', size: 12, at: [334, pos_y] if params[:ostenta_algun_grado_de_poder_publico_rl] == "1"
+    pdf.draw_text 'X', size: 12, at: [362, pos_y] if params[:ostenta_algun_grado_de_poder_publico_rl] == "0"
+    pdf.draw_text 'X', size: 12, at: [520, pos_y] if params[:goza_de_reconocimiento_publico_rl] == "1"
+    pdf.draw_text 'X', size: 12, at: [548, pos_y] if params[:goza_de_reconocimiento_publico_rl] == "0"
+    
     pdf
   end
 
