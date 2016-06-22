@@ -3,7 +3,8 @@ class FormularioRedeban
   
   def self.generar(params)
     pdf = Prawn::Document.new(left_margin: 50,
-                        top_margin:50,
+                        top_margin: 50,
+                        bottom_margin: 20,
                         page_size: [637.92, 1006.56])
     pdf.move_down 125
     pdf.draw_text params[:razon_social], size: 8, at: [-10, pdf.cursor]
@@ -285,6 +286,12 @@ class FormularioRedeban
     pdf.draw_text 'X', size: 12, at: [520, pos_y] if params[:goza_de_reconocimiento_publico_rl] == "1"
     pdf.draw_text 'X', size: 12, at: [548, pos_y] if params[:goza_de_reconocimiento_publico_rl] == "0"
     
+    # Sección referencias personales del representante legal
+    pdf.move_down 44
+    imprimir_referencia_personal(pdf, params[:referencias_personales_attributes]["0"])
+    pdf.move_down 15
+    imprimir_referencia_personal(pdf, params[:referencias_personales_attributes]["1"])
+
     pdf
   end
 
@@ -321,5 +328,15 @@ class FormularioRedeban
       pdf.text_box params[:ciudad], size: 7, width: 100, leading: -2,
             at: [361, pos_y+11]
       pdf.draw_text params[:telefono], size: 11, at: [459, pos_y]
+    end
+
+    def self.imprimir_referencia_personal(pdf, params)
+      pos_y = pdf.cursor
+      pdf.draw_text params[:nombres_y_apellidos], size: 8, at: [-15, pos_y]
+      pdf.text_box params[:direccion], size: 7, width: 140, leading: -2,
+            at: [193, pos_y+11]
+      pdf.text_box params[:ciudad], size: 7, width: 110, leading: -2,
+            at: [334, pos_y+11]
+      pdf.draw_text params[:telefono], size: 11, at: [446, pos_y]
     end
 end
