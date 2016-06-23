@@ -54,6 +54,7 @@ class Solicitud
     :horario_atencion,
     :importacion_oi,
     :ingresos_mensuales,
+    :ingresos_operacionales,
     :inversiones_oi,
     :linkedin,
     :mall_virtual,

@@ -292,6 +292,29 @@ class FormularioRedeban
     pdf.move_down 15
     imprimir_referencia_personal(pdf, params[:referencias_personales_attributes]["1"])
 
+    # Segunda página
+    pdf.start_new_page
+
+    # Sección información económica del establecimiento
+    pdf.move_down 8
+    pos_y = pdf.cursor
+    pdf.draw_text params[:ingresos_operacionales], size: 11, at: [-5, pos_y]
+    pdf.draw_text params[:ingresos_mensuales], size: 11, at: [137, pos_y]
+    pdf.draw_text params[:egresos_mensuales], size: 11, at: [271, pos_y]
+    pdf.draw_text params[:total_activos], size: 11, at: [393, pos_y]
+    pdf.draw_text params[:total_pasivos], size: 11, at: [484, pos_y]
+    case params[:operaciones_internacionales]
+    when "Sí"
+      pdf.draw_text 'X', size: 12, at: [78, pos_y-18]
+    when "No"
+      pdf.draw_text 'X', size: 12, at: [78, pos_y-31.5]
+    end
+    pdf.draw_text 'X', size: 12, at: [343, pos_y-18] if params[:importacion_oi] == "1"
+    pdf.draw_text 'X', size: 12, at: [484, pos_y-18] if params[:prestamos_oi] == "1"
+    pdf.draw_text 'X', size: 12, at: [343, pos_y-31.5] if params[:exportacion_oi] == "1"
+    pdf.draw_text 'X', size: 12, at: [425, pos_y-18] if params[:pago_de_servicios_oi] == "1"
+    pdf.draw_text 'X', size: 12, at: [549, pos_y-18] if params[:inversiones_oi] == "1"    
+
     pdf
   end
 

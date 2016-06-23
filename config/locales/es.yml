@@ -229,6 +229,7 @@ es:
         direccion_residencia_rl: Dirección de residencia
         fecha_de_nacimiento_rl: Fecha de nacimiento
         fecha_expedicion_documento_rl: Fecha de expedición
+        ingresos_operacionales: Ingresos operacionales (persona jurídica)
         monto_estimado_mensual_oi: Monto estimado mensual
         nit_cc: "Nit/C.C."
         nombres_rl: Nombres del representante legal

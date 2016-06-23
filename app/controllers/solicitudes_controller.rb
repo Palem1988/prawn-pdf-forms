@@ -10,6 +10,7 @@ class SolicitudesController < ApplicationController
     pdf_combinado.pages[0] << CombinePDF.parse(pdf_credibanco.render).pages[0]
     pdf_combinado.pages[1] << CombinePDF.parse(pdf_credibanco.render).pages[1]
     pdf_combinado.pages[2] << CombinePDF.parse(pdf_redeban.render).pages[0]
+    pdf_combinado.pages[3] << CombinePDF.parse(pdf_redeban.render).pages[1]
     send_data pdf_combinado.to_pdf, filename: "solicitudes.pdf", type: "application/pdf"
   end
   
@@ -78,6 +79,7 @@ class SolicitudesController < ApplicationController
                                         :horario_atencion,
                                         :importacion_oi,
                                         :ingresos_mensuales,
+                                        :ingresos_operacionales,
                                         :inversiones_oi,
                                         :linkedin,
                                         :mall_virtual,
