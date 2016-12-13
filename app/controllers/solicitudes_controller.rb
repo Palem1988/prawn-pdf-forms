@@ -1,19 +1,18 @@
 class SolicitudesController < ApplicationController
-  
+
   def create
     pdf_credibanco = FormularioCredibanco.generar(params_solicitud)
     pdf_redeban = FormularioRedeban.generar(params_solicitud)
     pdf_combinado = CombinePDF.new
     pdf_combinado << CombinePDF.load("solicitud-afiliacion-establecimientos-comercio.pdf")
     pdf_combinado << CombinePDF.load("Formulario+de+afiliacion+RBM_agosto+2015.pdf")
-    pdf_combinado << CombinePDF.parse(pdf_redeban.render)
     pdf_combinado.pages[0] << CombinePDF.parse(pdf_credibanco.render).pages[0]
     pdf_combinado.pages[1] << CombinePDF.parse(pdf_credibanco.render).pages[1]
     pdf_combinado.pages[2] << CombinePDF.parse(pdf_redeban.render).pages[0]
     pdf_combinado.pages[3] << CombinePDF.parse(pdf_redeban.render).pages[1]
     send_data pdf_combinado.to_pdf, filename: "solicitudes.pdf", type: "application/pdf"
   end
-  
+
   def new
     @solicitud = Solicitud.new
     @solicitud.referencias_comerciales = []
@@ -29,9 +28,9 @@ class SolicitudesController < ApplicationController
       @solicitud.socios << Socio.new
     end
   end
-  
+
   private
-  
+
     def params_solicitud
       params.require(:solicitud).permit(:actividad_comercial,
                                         :administra_recursos_publicos_rl,
