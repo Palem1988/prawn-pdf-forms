@@ -262,6 +262,8 @@
 <%= f.text_field :telefono_correspondencia, class: 'form-control' %>
 <%= f.label :ciudad_correspondencia %>
 <%= f.text_field :ciudad_correspondencia, class: 'form-control' %>
+<%= f.label :departamento_correspondencia %>
+<%= f.text_field :departamento_correspondencia, class: 'form-control' %>
 <%= f.label "Horario de atención" %>
 <div class="radio">
   <%= f.radio_button :horario_atencion, "Diurno" %>
@@ -335,11 +337,11 @@
       <%= f.radio_button :tipo_medio_acceso, "Dial/Lan" %>
       <%= f.label "", "Dial/Lan" %>
     </div>
-    <div class="radio">    
+    <div class="radio">
       <%= f.radio_button :tipo_medio_acceso, "GPRS" %>
       <%= f.label "", "GPRS" %>
     </div>
-    <div class="radio">    
+    <div class="radio">
       <%= f.radio_button :tipo_medio_acceso, "MPOS" %>
       <%= f.label "", "MPOS" %>
     </div>

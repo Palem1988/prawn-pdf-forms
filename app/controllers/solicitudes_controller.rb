@@ -1,15 +1,19 @@
 class SolicitudesController < ApplicationController
 
   def create
+    pdf_form_amex = FormAmex.generar(params_solicitud)
     pdf_credibanco = FormularioCredibanco.generar(params_solicitud)
     pdf_redeban = FormularioRedeban.generar(params_solicitud)
     pdf_combinado = CombinePDF.new
     pdf_combinado << CombinePDF.load("solicitud-afiliacion-establecimientos-comercio.pdf")
     pdf_combinado << CombinePDF.load("Formulario+de+afiliacion+RBM_agosto+2015.pdf")
+    pdf_combinado << CombinePDF.load("F-1386 Solicitud de Afiliacion AMEX V4 2016.pdf")
     pdf_combinado.pages[0] << CombinePDF.parse(pdf_credibanco.render).pages[0]
     pdf_combinado.pages[1] << CombinePDF.parse(pdf_credibanco.render).pages[1]
     pdf_combinado.pages[2] << CombinePDF.parse(pdf_redeban.render).pages[0]
     pdf_combinado.pages[3] << CombinePDF.parse(pdf_redeban.render).pages[1]
+    pdf_combinado.pages[4] << CombinePDF.parse(pdf_form_amex.render).pages[0]
+    pdf_combinado.pages[5] << CombinePDF.parse(pdf_form_amex.render).pages[1]
     send_data pdf_combinado.to_pdf, filename: "solicitudes.pdf", type: "application/pdf"
   end
 
@@ -55,6 +59,7 @@ class SolicitudesController < ApplicationController
                                         :comercio_principal_secundario_ta,
                                         :correo_electronico,
                                         :correo_electronico_rl,
+                                        :departamento_correspondencia,
                                         :departamento_establecimiento,
                                         :departamento_nacimiento_rl,
                                         :digito_de_verificacion,

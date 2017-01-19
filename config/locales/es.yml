@@ -196,7 +196,7 @@ es:
       long: ! '%A, %d de %B de %Y a las %I:%M %p'
       short: ! '%d de %b a las %H:%M hrs'
     pm: pm
-  
+
   activemodel:
     attributes:
       referencia:
@@ -204,15 +204,15 @@ es:
         direccion: Dirección
         numero_identificacion: Nro. identificación
         telefono: Teléfono
-        
+
       socio:
         numero_documento: Número de documento
         porcentaje_participacion: Porcentaje de participación
-        
+
       solicitud:
         cargo_rl: Cargo
         celular_rl: Celular del representante legal
-        ciudad_correspondencia: Ciudad / Departamento
+        ciudad_correspondencia: Ciudad
         ciudad_expedicion_documento_rl: Ciudad de expedición
         ciudad_nacimiento_rl: Ciudad de nacimiento
         ciudad_residencia_rl: Ciudad de residencia
@@ -222,6 +222,7 @@ es:
         codigo_unico: Código único
         correo_electronico: Correo electrónico oficina principal
         correo_electronico_rl: Correo electrónico
+        departamento_correspondencia: Departamento
         departamento_nacimiento_rl: Departamento de nacimiento
         direccion_correspondencia: Dirección de correspondencia
         direccion_del_establecimiento: Dirección del establecimiento
@@ -249,7 +250,7 @@ es:
       titulo: Actualizar Contraseña
     edit_url_notificacion_pago:
       titulo: Actualizar Url para notificación de pagos
-  
+
 
   layouts:
     footer:
@@ -262,7 +263,7 @@ es:
   solicitudes:
     new:
       titulo: Diligenciar los siguientes datos
-        
+
   accion_exitosa: "Acción exitosa."
   accion_exitosa_pendiente: "Acción exitosa, pendiente de autorización."
   accion_no_autorizada: "Acción no autorizada."
@@ -301,7 +302,7 @@ es:
   falla_en_el_servidor: "Hubo una falla en el servidor, por favor vuelva a intentarlo o comuniquese con nosotros."
   fallo_el_pago_del_cobro: "No se pudo realizar el pago del cobro."
   fallo_pago_factura: "Falló el pago de la factura."
-  fallo_mensaje_pago: "El pago fue realizado exitosamente, pero no pudo ser enviado el mensaje de confirmación de pago. El código de recaudo es: %{codigo_recaudo}"          
+  fallo_mensaje_pago: "El pago fue realizado exitosamente, pero no pudo ser enviado el mensaje de confirmación de pago. El código de recaudo es: %{codigo_recaudo}"
   ingresar_codigo: "Por favor ingrese el código de activación que fue enviado a su numero móvil."
   limite_intentos_numero_movil_superado: "Ha superado el límite de modificaciones del número móvil. Por favor, contacte un asesor."
   link_caducado: "El link ha caducado. Vuelva a iniciar el proceso."

@@ -1,7 +1,7 @@
 class Solicitud
   include ActiveModel::Model
   extend ActiveModel::Translation
-  
+
   attr_accessor :actividad_comercial,
     :administra_recursos_publicos_rl,
     :afiliado_a_otro_sistema,
@@ -29,6 +29,7 @@ class Solicitud
     :correo_electronico,
     :correo_electronico_rl,
     :fecha,
+    :departamento_correspondencia,
     :departamento_establecimiento,
     :departamento_nacimiento_rl,
     :digito_de_verificacion,
@@ -124,7 +125,7 @@ class Solicitud
     :visa_distribucion,
     :web_de_pagos,
     :youtube
-    
+
     def referencias_comerciales_attributes=(attributes)
       logger.info "REFERENCIAS COMERCIALES PARAMETROS DESCONOCIDOS #{attributes}"
     end

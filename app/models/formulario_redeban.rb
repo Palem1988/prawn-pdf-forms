@@ -1,6 +1,6 @@
 class FormularioRedeban
   include Utilitario
-  
+
   def self.generar(params)
     pdf = Prawn::Document.new(left_margin: 50,
                         top_margin: 50,
@@ -51,7 +51,7 @@ class FormularioRedeban
     else
       pdf.draw_text params[:tipo_de_empresa], size: 4, at: [508, pos_y-9]
     end
-    
+
     # Sección venta de tiquetes
     pdf.move_down 32
     pos_y = pdf.cursor
@@ -98,7 +98,9 @@ class FormularioRedeban
     pdf.text_box params[:direccion_correspondencia], size: 5, at: [97, pos_y+10],
         width: 115
     pdf.draw_text params[:telefono_correspondencia], size: 8, at: [250, pos_y]
-    pdf.text_box params[:ciudad_correspondencia], size: 6, at: [393, pos_y+10],
+    ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
+            " / " + params[:departamento_correspondencia]
+    pdf.text_box ciudad_departamento_correspondencia, size: 6, at: [393, pos_y+10],
         width: 170
     pdf.move_down 11
     pos_y = pdf.cursor
@@ -158,7 +160,7 @@ class FormularioRedeban
     pdf.draw_text params[:porcentaje_de_reteica], size: 12, at: [277, pos_y-2]
     pdf.draw_text params[:porcentaje_de_iva], size: 12, at: [373, pos_y-2]
     pdf.draw_text params[:porcentaje_de_impuesto_al_consumo], size: 12, at: [472, pos_y-2]
-    
+
     # Sección certificado cuenta de depósito
     pdf.move_down 64
     pos_y = pdf.cursor
@@ -285,7 +287,7 @@ class FormularioRedeban
     pdf.draw_text 'X', size: 12, at: [362, pos_y] if params[:ostenta_algun_grado_de_poder_publico_rl] == "0"
     pdf.draw_text 'X', size: 12, at: [520, pos_y] if params[:goza_de_reconocimiento_publico_rl] == "1"
     pdf.draw_text 'X', size: 12, at: [548, pos_y] if params[:goza_de_reconocimiento_publico_rl] == "0"
-    
+
     # Sección referencias personales del representante legal
     pdf.move_down 44
     imprimir_referencia_personal(pdf, params[:referencias_personales_attributes]["0"])
@@ -313,13 +315,13 @@ class FormularioRedeban
     pdf.draw_text 'X', size: 12, at: [484, pos_y-18] if params[:prestamos_oi] == "1"
     pdf.draw_text 'X', size: 12, at: [343, pos_y-31.5] if params[:exportacion_oi] == "1"
     pdf.draw_text 'X', size: 12, at: [425, pos_y-18] if params[:pago_de_servicios_oi] == "1"
-    pdf.draw_text 'X', size: 12, at: [549, pos_y-18] if params[:inversiones_oi] == "1"    
+    pdf.draw_text 'X', size: 12, at: [549, pos_y-18] if params[:inversiones_oi] == "1"
 
     pdf
   end
 
   private
-  
+
     def self.imprimir_datos_socio(pdf, params)
       pos_y = pdf.cursor
       pdf.draw_text params[:nombres_y_apellidos], size: 8, at: [-15, pos_y]
@@ -341,7 +343,7 @@ class FormularioRedeban
       pdf.text_box params[:direccion], size: 6, width: 120,
             at: [445, pos_y+12]
     end
-  
+
     def self.imprimir_referencia_comercial(pdf, params)
       pos_y = pdf.cursor
       pdf.draw_text params[:nombres_y_apellidos], size: 8, at: [-15, pos_y]

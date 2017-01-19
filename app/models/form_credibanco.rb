@@ -1,10 +1,10 @@
-class FormularioCredibanco
+class FormCredibanco
   include Utilitario
 
   def self.generar(params)
     pdf = Prawn::Document.new(left_margin: 50,
                         top_margin:50,
-                        page_size: [678, 1074.24])
+                        page_size: "LETTER")
     pdf.move_down 30
     pdf.draw_text 'X', size: 10, at: [19, pdf.cursor]
     pdf.draw_text 'X', size: 10, at: [97, pdf.cursor]
