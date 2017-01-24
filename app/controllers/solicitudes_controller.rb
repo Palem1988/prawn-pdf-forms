@@ -2,18 +2,41 @@ class SolicitudesController < ApplicationController
 
   def create
     pdf_form_amex = FormAmex.generar(params_solicitud)
+    pdf_form_novedades = FormNovedades.generar(params_solicitud) #Creamos PDF Prawn
+
     pdf_credibanco = FormularioCredibanco.generar(params_solicitud)
+    pdf_credibanco = FormCredibanco.generar(params_solicitud)
+
     pdf_redeban = FormularioRedeban.generar(params_solicitud)
     pdf_combinado = CombinePDF.new
     pdf_combinado << CombinePDF.load("solicitud-afiliacion-establecimientos-comercio.pdf")
     pdf_combinado << CombinePDF.load("Formulario+de+afiliacion+RBM_agosto+2015.pdf")
     pdf_combinado << CombinePDF.load("F-1386 Solicitud de Afiliacion AMEX V4 2016.pdf")
+
+    pdf_combinado << CombinePDF.load("F-1385-V2 Formato de Novedades Aceptación de Medios de Pago.pdf") 
+    
+    pdf_combinado << CombinePDF.load("solicitud-afiliacion-establecimientos-comercio.pdf") 
+
+    # pdf_combinado << CombinePDF.load("Solicitud de afiliacion Redeban V5 2016 Editable.pdf")
+
+
     pdf_combinado.pages[0] << CombinePDF.parse(pdf_credibanco.render).pages[0]
     pdf_combinado.pages[1] << CombinePDF.parse(pdf_credibanco.render).pages[1]
     pdf_combinado.pages[2] << CombinePDF.parse(pdf_redeban.render).pages[0]
     pdf_combinado.pages[3] << CombinePDF.parse(pdf_redeban.render).pages[1]
     pdf_combinado.pages[4] << CombinePDF.parse(pdf_form_amex.render).pages[0]
     pdf_combinado.pages[5] << CombinePDF.parse(pdf_form_amex.render).pages[1]
+
+    pdf_combinado.pages[6] << CombinePDF.parse(pdf_form_novedades.render).pages[0]  # Express
+    pdf_combinado.pages[7] << CombinePDF.parse(pdf_form_novedades.render).pages[1]  # Express
+
+    pdf_combinado.pages[8] << CombinePDF.parse(pdf_form_credibanco.render).pages[0] # Credibanco
+    pdf_combinado.pages[9] << CombinePDF.parse(pdf_form_credibanco.render).pages[1] # Credibanco
+
+
+    # pdf_combinado.pages[8] << CombinePDF.parse(pdf_form_redeban.render).pages[0]
+    # pdf_combinado.pages[9] << CombinePDF.parse(pdf_form_redeban.render).pages[1]
+
     send_data pdf_combinado.to_pdf, filename: "solicitudes.pdf", type: "application/pdf"
   end
 
