@@ -4,7 +4,7 @@ class SolicitudesController < ApplicationController
     pdf_form_amex = FormAmex.generar(params_solicitud)
     pdf_credibanco = FormularioCredibanco.generar(params_solicitud)
     pdf_redeban = FormularioRedeban.generar(params_solicitud)
-    
+
     pdf_form_novedades = FormNovedades.generar(params_solicitud) #Creamos PDF Prawn
     pdf_form_certificacion_cuenta = FormCertificacionCuenta.generar(params_solicitud)
     pdf_form_credibanco = FormCredibanco.generar(params_solicitud)
@@ -15,14 +15,14 @@ class SolicitudesController < ApplicationController
     pdf_combinado << CombinePDF.load("Formulario+de+afiliacion+RBM_agosto+2015.pdf")
     pdf_combinado << CombinePDF.load("F-1386 Solicitud de Afiliacion AMEX V4 2016.pdf")
 
-    pdf_combinado << CombinePDF.load("F-1385-V2 Formato de Novedades Aceptación de Medios de Pago.pdf") 
-    pdf_combinado << CombinePDF.load("Certificación cuenta depósito Visa VHC02-FT07.pdf") 
-    pdf_combinado << CombinePDF.load("credibanco plano.pdf") 
-    pdf_combinado << CombinePDF.load("redeban plano.pdf") 
-    # pdf_combinado << CombinePDF.load("Formato Solicitud de Afiliacion Credibanco 2016 V23.pdf") 
-    # pdf_combinado << CombinePDF.load("Solicitud de afiliacion Redeban V5 2016 Editable.pdf") 
+    pdf_combinado << CombinePDF.load("F-1385-V2 Formato de Novedades Aceptación de Medios de Pago.pdf")
+    pdf_combinado << CombinePDF.load("Certificación cuenta depósito Visa VHC02-FT07.pdf")
+    pdf_combinado << CombinePDF.load("credibanco plano.pdf")
+    pdf_combinado << CombinePDF.load("redeban plano.pdf")
+    # pdf_combinado << CombinePDF.load("Formato Solicitud de Afiliacion Credibanco 2016 V23.pdf")
+    # pdf_combinado << CombinePDF.load("Solicitud de afiliacion Redeban V5 2016 Editable.pdf")
 
-    
+
 
     # pdf_combinado << CombinePDF.load("Solicitud de afiliacion Redeban V5 2016 Editable.pdf")
 
@@ -37,12 +37,12 @@ class SolicitudesController < ApplicationController
     pdf_combinado.pages[6] << CombinePDF.parse(pdf_form_novedades.render).pages[0]  # Express
     pdf_combinado.pages[7] << CombinePDF.parse(pdf_form_novedades.render).pages[1]  # Express
 
-    pdf_combinado.pages[9] << CombinePDF.parse(pdf_form_certificacion_cuenta.render).pages[0] 
-    pdf_combinado.pages[10] << CombinePDF.parse(pdf_form_credibanco.render).pages[0] 
-    pdf_combinado.pages[11] << CombinePDF.parse(pdf_form_credibanco.render).pages[1] 
-    
-    pdf_combinado.pages[12] << CombinePDF.parse(pdf_form_redeban.render).pages[0] 
-    pdf_combinado.pages[13] << CombinePDF.parse(pdf_form_redeban.render).pages[1] 
+    pdf_combinado.pages[9] << CombinePDF.parse(pdf_form_certificacion_cuenta.render).pages[0]
+    pdf_combinado.pages[10] << CombinePDF.parse(pdf_form_credibanco.render).pages[0]
+    pdf_combinado.pages[11] << CombinePDF.parse(pdf_form_credibanco.render).pages[1]
+
+    pdf_combinado.pages[12] << CombinePDF.parse(pdf_form_redeban.render).pages[0]
+    pdf_combinado.pages[13] << CombinePDF.parse(pdf_form_redeban.render).pages[1]
 
 
     # pdf_combinado.pages[8] << CombinePDF.parse(pdf_form_redeban.render).pages[0]
