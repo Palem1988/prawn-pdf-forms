@@ -7,47 +7,49 @@ class FormRedeban
                         bottom_margin: 20,
                         page_size: "LETTER")
     pdf.move_down 95
-    pdf.draw_text "CCI*" + params[:razon_social], size: 8, at: [4, pdf.cursor]
-    pdf.draw_text params[:nombre_comercial], size: 8, at: [268, pdf.cursor]
-    pdf.text_box params[:numero_documento_comercio], size: 12,
-        width: 80, at: [25, pdf.cursor-4], character_spacing: 2.5
-    pdf.draw_text params[:digito_de_verificacion], size: 12, at: [128, pdf.cursor-12]
-    pdf.text_box params[:codigo_ciiu], size: 12, width: 40,
-            at: [51, pdf.cursor-16], character_spacing: 2.5
-    pdf.text_box params[:codigo_unico], size: 12, width: 70,
-            at: [348, pdf.cursor-3], character_spacing: 2.5
-    pdf.draw_text "X", size: 12, at: [430, pdf.cursor-24] #No adjunta listado de códigos únicos
-    pdf.draw_text params[:numero_de_matricula_mercantil], size: 10, at: [125, pdf.cursor-36]
+    pdf.draw_text "CCI*" + params[:razon_social], size: 6, at: [2, pdf.cursor]
+    pdf.draw_text params[:nombre_comercial], size: 6, at: [228, pdf.cursor]
+
+    pdf.text_box params[:numero_documento_comercio], size: 10,
+        width: 80, at: [25, pdf.cursor-4], character_spacing: 3.5
+    pdf.draw_text params[:digito_de_verificacion], size: 10, at: [128, pdf.cursor-11]
+    pdf.text_box params[:codigo_ciiu], size: 10, width: 40,
+            at: [52, pdf.cursor-17], character_spacing: 3.6
+
+    pdf.text_box params[:codigo_unico], size: 10, width: 70,
+            at: [349.5, pdf.cursor-4], character_spacing: 3.5
+    pdf.draw_text "X", size: 10, at: [430, pdf.cursor-24] #No adjunta listado de códigos únicos
+    pdf.draw_text params[:numero_de_matricula_mercantil], size: 8, at: [125, pdf.cursor-35]
 
     pdf.move_down 48
     pos_y = pdf.cursor
     case params[:tipo_de_empresa]
     when "Anónima"
-      pdf.draw_text 'X', size: 12, at: [56, pos_y-11]
+      pdf.draw_text 'X', size: 10, at: [56, pos_y-11]
     when "Mixta"
-      pdf.draw_text 'X', size: 12, at: [111, pos_y]
+      pdf.draw_text 'X', size: 10, at: [111, pos_y]
     when "Limitada"
-      pdf.draw_text 'X', size: 12, at: [56, pos_y]
+      pdf.draw_text 'X', size: 10, at: [56, pos_y]
     when "De hecho"
-      pdf.draw_text 'X', size: 12, at: [111, pos_y-11]
+      pdf.draw_text 'X', size: 10, at: [111, pos_y-11]
     when "Empresa unipersonal"
-      pdf.draw_text 'X', size: 12, at: [179, pos_y]
+      pdf.draw_text 'X', size: 10, at: [179, pos_y]
     when "Sociedad cooperativa"
-      pdf.draw_text 'X', size: 12, at: [179, pos_y-11]
+      pdf.draw_text 'X', size: 10, at: [179, pos_y-11]
     when "Colectiva"
-      pdf.draw_text 'X', size: 12, at: [240, pos_y]
+      pdf.draw_text 'X', size: 10, at: [240, pos_y]
     when "Comandita simple"
-      pdf.draw_text 'X', size: 12, at: [240, pos_y-11]
+      pdf.draw_text 'X', size: 10, at: [240, pos_y-11]
     when "Comandita por acciones"
-      pdf.draw_text 'X', size: 12, at: [317, pos_y]
+      pdf.draw_text 'X', size: 10, at: [317, pos_y]
     when "Sucursales extranjeras"
-      pdf.draw_text 'X', size: 12, at: [317, pos_y-11]
+      pdf.draw_text 'X', size: 10, at: [317, pos_y-11]
     when "Sin ánimo de lucro"
-      pdf.draw_text 'X', size: 12, at: [380, pos_y]
+      pdf.draw_text 'X', size: 10, at: [380, pos_y]
     when "Privada extranjera"
-      pdf.draw_text 'X', size: 12, at: [380, pos_y-11]
+      pdf.draw_text 'X', size: 10, at: [380, pos_y-11]
     when "Persona natural"
-      pdf.draw_text 'X', size: 12, at: [436, pos_y]
+      pdf.draw_text 'X', size: 10, at: [436, pos_y]
     else
       pdf.draw_text params[:tipo_de_empresa], size: 4, at: [400, pos_y-11]
     end
@@ -82,32 +84,32 @@ class FormRedeban
     pos_y = pdf.cursor
     cadena = preprocesar(params[:responsabilidad_tributaria])
     pdf.text_box cadena, size: 10, width: 250,
-            at: [123, pos_y+5], character_spacing: 2.8
+            at: [123, pos_y+6], character_spacing: 2.6
 
     # Sección Dirección del establecimiento
     pdf.move_down 12
     pos_y = pdf.cursor
-    pdf.text_box params[:direccion_del_establecimiento], size: 7, at: [87, pos_y+4],
+    pdf.text_box params[:direccion_del_establecimiento], size: 5, at: [85, pos_y+4],
         width: 115
-    pdf.draw_text params[:telefono_del_establecimiento], size: 8, at: [203, pos_y]
+    pdf.draw_text params[:telefono_del_establecimiento], size: 7, at: [203, pos_y]
     ciudad_departamento = params[:ciudad_establecimiento] + " / " + params[:departamento_establecimiento]
     pdf.text_box ciudad_departamento, size: 6, at: [327, pos_y+4],
         width: 170
 
     pdf.move_down 11
     pos_y = pdf.cursor
-    pdf.text_box params[:direccion_correspondencia], size: 7, at: [87, pos_y+4],
+    pdf.text_box params[:direccion_correspondencia], size: 5, at: [85, pos_y+4],
         width: 115
-    pdf.draw_text params[:telefono_correspondencia], size: 8, at: [203, pos_y]
+    pdf.draw_text params[:telefono_correspondencia], size: 7, at: [203, pos_y]
     ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
             " / " + params[:departamento_correspondencia]
-    pdf.text_box ciudad_departamento_correspondencia, size: 7, at: [327, pos_y+4],
+    pdf.text_box ciudad_departamento_correspondencia, size: 6, at: [327, pos_y+5],
         width: 170
     pdf.move_down 11
     pos_y = pdf.cursor
-    pdf.draw_text params[:celular], size: 8, at: [70, pos_y]
-    pdf.draw_text params[:fax], size: 8, at: [202, pos_y]
-    pdf.text_box params[:correo_electronico], size: 6, at: [327, pos_y+4],
+    pdf.draw_text params[:celular], size: 7, at: [70, pos_y+1]
+    pdf.draw_text params[:fax], size: 7, at: [202, pos_y+1]
+    pdf.text_box params[:correo_electronico], size: 5, at: [357, pos_y+4],
         width: 110
 
     # Sección presencia en Internet
@@ -133,48 +135,48 @@ class FormRedeban
     pos_y = pdf.cursor
     case params[:horario_atencion]
     when "Diurno"
-      pdf.draw_text 'X', size: 12, at: [54, pos_y]
+      pdf.draw_text 'X', size: 10, at: [54, pos_y]
     when "Nocturno"
-      pdf.draw_text 'X', size: 12, at: [94, pos_y]
+      pdf.draw_text 'X', size: 10, at: [94, pos_y]
     when "24 horas"
-      pdf.draw_text 'X', size: 12, at: [131, pos_y]
+      pdf.draw_text 'X', size: 10, at: [131, pos_y]
     end
-    pdf.draw_text 'X', size: 12, at: [186, pos_y+1] if params[:exento_de_retencion_en_la_fuente] == "1"
-    pdf.draw_text 'X', size: 12, at: [206, pos_y+1] if params[:exento_de_retencion_en_la_fuente] == "0"
-    pdf.draw_text 'X', size: 12, at: [261, pos_y] if params[:exento_de_retencion_de_ica] == "1"
-    pdf.draw_text 'X', size: 12, at: [281, pos_y] if params[:exento_de_retencion_de_ica] == "0"
+    pdf.draw_text 'X', size: 10, at: [186, pos_y+1] if params[:exento_de_retencion_en_la_fuente] == "1"
+    pdf.draw_text 'X', size: 10, at: [206, pos_y+1] if params[:exento_de_retencion_en_la_fuente] == "0"
+    pdf.draw_text 'X', size: 10, at: [261, pos_y] if params[:exento_de_retencion_de_ica] == "1"
+    pdf.draw_text 'X', size: 10, at: [281, pos_y] if params[:exento_de_retencion_de_ica] == "0"
     
-    pdf.draw_text 'X', size: 12, at: [340, pos_y] if params[:exento_de_retencion_de_iva] == "1"
-    pdf.draw_text 'X', size: 12, at: [360, pos_y] if params[:exento_de_retencion_de_iva] == "0"
-    pdf.draw_text 'X', size: 12, at: [413, pos_y] if params[:requiere_propina] == "1"
-    pdf.draw_text 'X', size: 12, at: [433, pos_y] if params[:requiere_propina] == "0"
+    pdf.draw_text 'X', size: 10, at: [340, pos_y] if params[:exento_de_retencion_de_iva] == "1"
+    pdf.draw_text 'X', size: 10, at: [360, pos_y] if params[:exento_de_retencion_de_iva] == "0"
+    pdf.draw_text 'X', size: 10, at: [413, pos_y] if params[:requiere_propina] == "1"
+    pdf.draw_text 'X', size: 10, at: [433, pos_y] if params[:requiere_propina] == "0"
 
     # Renglón tipo de establecimiento
     pdf.move_down 17
     pos_y = pdf.cursor
     case params[:tipo_de_establecimiento]
     when "Principal"
-      pdf.draw_text 'X', size: 12, at: [89, pos_y]
+      pdf.draw_text 'X', size: 10, at: [89, pos_y]
     when "Sucursal"
-      pdf.draw_text 'X', size: 12, at: [130, pos_y]
+      pdf.draw_text 'X', size: 10, at: [130, pos_y]
     end
-    pdf.draw_text params[:porcentaje_de_retefuente], size: 12, at: [176, pos_y]
-    pdf.draw_text params[:porcentaje_de_reteica], size: 12, at: [251, pos_y]
-    pdf.draw_text params[:porcentaje_de_iva], size: 12, at: [330, pos_y]
-    pdf.draw_text params[:porcentaje_de_impuesto_al_consumo], size: 12, at: [403, pos_y]
+    pdf.draw_text params[:porcentaje_de_retefuente], size: 8, at: [176, pos_y]
+    pdf.draw_text params[:porcentaje_de_reteica], size: 8, at: [251, pos_y]
+    pdf.draw_text params[:porcentaje_de_iva], size: 8, at: [330, pos_y]
+    pdf.draw_text params[:porcentaje_de_impuesto_al_consumo], size: 8, at: [403, pos_y]
 
-    pdf.draw_text 'X', size: 12, at: [433, pos_y-17]
+    pdf.draw_text 'X', size: 10, at: [433, pos_y-17]
 
     # Sección certificado cuenta de depósito
     pdf.move_down 42
     pos_y = pdf.cursor
 
-    pdf.text_box "3167041513", size: 10, width: 100, at: [8, pdf.cursor], character_spacing: 3.5
-    pdf.text_box "07", size: 10, width: 100, at: [181, pdf.cursor], character_spacing: 3.5
+    pdf.text_box "3167041513", size: 10, width: 100, at: [8, pdf.cursor-0.5], character_spacing: 3.5
+    pdf.text_box "07", size: 10, width: 100, at: [181, pdf.cursor-1], character_spacing: 3.5
     pdf.draw_text "Bancolombia", size: 9, at: [286, pdf.cursor-8]
     pdf.draw_text 'Central Comercializadora de Internet SAS', size: 3.5, at: [56, pdf.cursor-22]
     pdf.draw_text '900293637-2', size: 9, at: [36, pdf.cursor-34]
-    pdf.draw_text 'X', size: 9, at: [348, pdf.cursor-19]
+    pdf.draw_text 'X', size: 9, at: [348, pdf.cursor-20]
 
     
     # pdf.text_box params[:numero_de_cuenta], size: 12,
@@ -215,20 +217,20 @@ class FormRedeban
     pdf.move_down 71
     pos_y = pdf.cursor
     pdf.draw_text params[:nombres_rl], size: 9, at: [0, pos_y]
-    pdf.draw_text params[:primer_apellido_rl], size: 9, at: [145, pos_y]
-    pdf.draw_text params[:segundo_apellido_rl], size: 9, at: [304, pos_y]
+    pdf.draw_text params[:primer_apellido_rl], size: 9, at: [125, pos_y]
+    pdf.draw_text params[:segundo_apellido_rl], size: 9, at: [278, pos_y]
     pdf.move_down 13
     pos_y = pdf.cursor
     case params[:tipo_documento_rl]
     when "NIT"
-      pdf.draw_text 'X', size: 11, at: [54, pos_y]
+      pdf.draw_text 'X', size: 10, at: [54, pos_y]
     when "C.C."
-      pdf.draw_text 'X', size: 11, at: [126, pos_y]
+      pdf.draw_text 'X', size: 10, at: [126, pos_y]
     when "C.E."
-      pdf.draw_text 'X', size: 11, at: [85, pos_y-10]
+      pdf.draw_text 'X', size: 10, at: [85, pos_y-10]
     end
-    pdf.text_box params[:numero_documento_rl], size: 12,
-        width: 100, at: [149, pos_y+9], character_spacing: 2.5
+    pdf.text_box params[:numero_documento_rl], size: 10,
+        width: 100, at: [149.5, pos_y+8.5], character_spacing: 3.5
 
     fecha_expedicion_documento_rl = "%02d" % params["fecha_expedicion_documento_rl(3i)"]
     fecha_expedicion_documento_rl << "%02d" % params["fecha_expedicion_documento_rl(2i)"]
@@ -239,8 +241,8 @@ class FormRedeban
     fecha_de_nacimiento_rl = "%02d" % params["fecha_de_nacimiento_rl(3i)"]
     fecha_de_nacimiento_rl << "%02d" % params["fecha_de_nacimiento_rl(2i)"]
     fecha_de_nacimiento_rl << params["fecha_de_nacimiento_rl(1i)"]
-    pdf.text_box fecha_de_nacimiento_rl, size: 12,
-        width: 80, at: [260, pos_y-2], character_spacing: 3
+    pdf.text_box fecha_de_nacimiento_rl, size: 9,
+        width: 80, at: [261.5, pos_y-3.5], character_spacing: 4.7
 
     pdf.draw_text params[:ciudad_nacimiento_rl], size: 6, at: [388, pos_y+5]
     pdf.draw_text params[:departamento_nacimiento_rl], size: 6, at: [388, pos_y-8]
@@ -249,35 +251,35 @@ class FormRedeban
     pos_y = pdf.cursor
     case params[:sexo_rl]
     when "Femenino"
-      pdf.draw_text 'X', size: 12, at: [20, pos_y]
+      pdf.draw_text 'X', size: 10, at: [20, pos_y]
     when "Masculino"
-      pdf.draw_text 'X', size: 12, at: [40, pos_y]
+      pdf.draw_text 'X', size: 10, at: [40, pos_y]
     end
     case params[:estado_civil]
     when "Soltero"
-      pdf.draw_text 'X', size: 11, at: [113, pos_y]
+      pdf.draw_text 'X', size: 10, at: [113, pos_y]
     when "Casado"
-      pdf.draw_text 'X', size: 11, at: [145, pos_y]
+      pdf.draw_text 'X', size: 10, at: [145, pos_y]
     when "Divorciado"
-      pdf.draw_text 'X', size: 11, at: [187, pos_y]
+      pdf.draw_text 'X', size: 10, at: [187, pos_y]
     when "Separado"
-      pdf.draw_text 'X', size: 11, at: [225, pos_y]
+      pdf.draw_text 'X', size: 10, at: [225, pos_y]
     when "Viudo"
-      pdf.draw_text 'X', size: 11, at: [252, pos_y]
+      pdf.draw_text 'X', size: 10, at: [252, pos_y]
     when "Unión libre"
-      pdf.draw_text 'X', size: 11, at: [292, pos_y]
+      pdf.draw_text 'X', size: 10, at: [292, pos_y]
     when "Religioso"
-      pdf.draw_text 'X', size: 11, at: [330, pos_y]
+      pdf.draw_text 'X', size: 10, at: [330, pos_y]
     end
-    pdf.text_box params[:correo_electronico_rl], size: 7, width: 115,
-            at: [367, pos_y+6]
+    pdf.text_box params[:correo_electronico_rl], size: 5, width: 115,
+            at: [359, pos_y+6]
 
     pdf.move_down 15
     pos_y = pdf.cursor
-    pdf.draw_text params[:direccion_residencia_rl], size: 7, at: [60, pos_y]
+    pdf.draw_text params[:direccion_residencia_rl], size: 7, at: [58, pos_y]
     pdf.text_box params[:ciudad_residencia_rl], size: 7, width: 75,
       at: [195, pos_y+6]
-    pdf.draw_text params[:telefono_rl], size: 9, at: [291, pos_y]
+    pdf.draw_text params[:telefono_rl], size: 9, at: [283, pos_y]
     pdf.draw_text params[:celular_rl], size: 9, at: [375, pos_y]
 
     pdf.move_down 14
@@ -376,8 +378,8 @@ class FormRedeban
     def self.imprimir_datos_socio(pdf, params)
       pos_y = pdf.cursor
       pdf.draw_text params[:nombres_y_apellidos], size: 8, at: [0, pos_y]
-      pdf.text_box params[:porcentaje_participacion], size: 10,
-          width: 30, at: [116, pos_y+10], character_spacing: 3.5, align: :right
+      pdf.text_box params[:porcentaje_participacion], size: 9,
+          width: 30, at: [116, pos_y+8.5], character_spacing: 3.5, align: :right
       case params[:tipo_documento]
       # when "NIT"
       #   pdf.draw_text 'NIT', size: 8, at: [127, pos_y]
@@ -386,13 +388,13 @@ class FormRedeban
       when "C.E."
         pdf.draw_text 'X', size: 9, at: [175, pos_y]
       end
-      pdf.draw_text params[:numero_documento], size: 9, at: [233, pos_y+12]
-      pdf.text_box params[:ciudad], size: 8, width: 85,
-            at: [326, pos_y+18]
+      pdf.draw_text params[:numero_documento], size: 9, at: [235, pos_y+12]
+      pdf.text_box params[:ciudad], size: 6, width: 85,
+            at: [323, pos_y+16]
       pdf.draw_text params[:telefono], size: 8, at: [390, pos_y+11]
-      pdf.draw_text params[:celular], size: 9, at: [233, pos_y]
+      pdf.draw_text params[:celular], size: 9, at: [235, pos_y]
       pdf.text_box params[:direccion], size: 6, width: 120,
-            at: [363, pos_y+5]
+            at: [361, pos_y+5]
     end
 
     def self.imprimir_referencia_comercial(pdf, params)

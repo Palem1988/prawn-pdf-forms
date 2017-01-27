@@ -7,29 +7,33 @@ class FormCertificacionCuenta
                         page_size: "LETTER")
     pdf.move_down 38
 
-    pdf.draw_text 'X', size: 8, at: [97, pdf.cursor] 
+    pdf.draw_text 'X', size: 9, at: [97, pdf.cursor] 
 
 
     # Codigo Banco adquiriente
     pdf.draw_text "07", size: 9, at: [140, pdf.cursor-71]
     pdf.draw_text "Bancolombia", size: 9, at: [360, pdf.cursor-71]
-    pdf.draw_text params[:ciudad_expedicion_documento_rl], size: 9, at: [130, pdf.cursor-83]
+    pdf.draw_text "Bogotá", size: 9, at: [130, pdf.cursor-83]
     pdf.draw_text "Centro Internacional", size: 9, at: [360, pdf.cursor-83]
     pdf.draw_text "3167041513", size: 9, at: [360, pdf.cursor-93]
 
     # # if params[:tipo_de_cuenta]
-    pdf.draw_text 'X', size: 8, at: [112, pdf.cursor-105]
+    pdf.draw_text 'X', size: 9, at: [112, pdf.cursor-105]
     # # end
     pdf.draw_text '900293637-2', size: 9, at: [360, pdf.cursor-113]
-    pdf.draw_text 'Central Comercializadora de Internet SAS', size: 9, at: [88, pdf.cursor-123]
+    pdf.draw_text 'Central Comercializadora de Internet SAS', size: 9, at: [88, pdf.cursor-124]
 
     # Venta presencial
-    pdf.draw_text 'X', size: 6, at: [70, pdf.cursor-195]
+    pdf.draw_text 'X', size: 6, at: [69, pdf.cursor-195]
 
     pdf.move_down 485
 
-    pdf.draw_text params[:razon_social], size: 9, at: [55, pdf.cursor]
-    pdf.draw_text params[:numero_documento_comercio], size: 9, at: [55, pdf.cursor-9]
+    pdf.draw_text params[:nombres_rl]+' '+params[:primer_apellido_rl]+' '+params[:segundo_apellido_rl],
+                         size: 9, at: [55, pdf.cursor]
+    pdf.draw_text params[:numero_documento_rl], size: 9, at: [55, pdf.cursor-9]
+
+    # pdf.draw_text params[:razon_social], size: 9, at: [55, pdf.cursor]
+    # pdf.draw_text params[:numero_documento_comercio], size: 9, at: [55, pdf.cursor-9]
 
 
 

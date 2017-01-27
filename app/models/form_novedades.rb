@@ -7,7 +7,7 @@ class FormNovedades
                         page_size: "LETTER")
     pdf.move_down 107
     pdf.draw_text 'CCI*' + params[:razon_social], size: 9, at: [0, pdf.cursor]
-    pdf.draw_text params[:nombre_comercial], size: 8, at: [223, pdf.cursor]
+    pdf.draw_text params[:nombre_comercial], size: 9, at: [223, pdf.cursor]
 
     case params[:tipo_documento_comercio]
     when "NIT"
@@ -18,11 +18,12 @@ class FormNovedades
       pdf.draw_text 'X', size: 8, at: [440, pdf.cursor+12]
     end
 
-    pdf.draw_text params[:numero_documento_comercio], size: 8, at: [475, pdf.cursor]
+    pdf.draw_text params[:numero_documento_comercio], size: 9, at: [473, pdf.cursor]
 
     pdf.move_down 22
 
-    pdf.draw_text params[:ciudad_expedicion_documento_rl], size: 9, at: [440, pdf.cursor]
+
+    pdf.draw_text params[:ciudad_expedicion_documento_rl], size: 9, at: [423, pdf.cursor]
 
 
 
@@ -367,21 +368,29 @@ class FormNovedades
     pdf.move_down 218
     pos_y = pdf.cursor
     pdf.draw_text 'CCI*' + params[:razon_social], size: 9, at: [1, pos_y]
-    pdf.draw_text params[:nombre_comercial], size: 9, at: [283, pos_y]
+    pdf.draw_text params[:nombre_comercial], size: 9, at: [279, pos_y]
 
-    pdf.draw_text params[:nit_cc], size: 9, at: [30, pos_y-23]
+    # Documento comercio
+    pdf.draw_text params[:numero_documento_comercio], size: 9, at: [17, pos_y-23]
 
+    # Codigo unico
+    pdf.draw_text params[:codigo_unico], size: 9, at: [115, pdf.cursor-23]
     # if params[:tipo_de_cuenta]
     pdf.draw_text 'X', size: 8, at: [320, pos_y-23]
     # end
     # Número
-    pdf.draw_text '3167041513', size: 9, at: [420, pos_y-23]
+    pdf.draw_text '3167041513', size: 9, at: [385, pos_y-23]
     # Titular de la cuenta
-    pdf.draw_text 'Central Comercializadora de Internet SAS', size: 9, at: [30, pos_y-61]
-    pdf.draw_text '900.293.637-2', size: 9, at: [410, pos_y-61]
+    pdf.draw_text 'Central Comercializadora de Internet SAS', size: 9, at: [17, pos_y-61]
+    pdf.draw_text '900.293.637-2', size: 9, at: [385, pos_y-61]
 
-    pdf.draw_text params[:razon_social], size: 9, at: [45, pos_y-150]
-    pdf.draw_text params[:nit_cc], size: 9, at: [87, pos_y-163]
+    # Representante Legal
+    pdf.draw_text params[:nombres_rl]+' '+params[:primer_apellido_rl]+' '+params[:segundo_apellido_rl],
+                         size: 9, at: [45, pos_y-150]
+    pdf.draw_text params[:numero_documento_rl], size: 9, at: [87, pos_y-163]
+
+    # pdf.draw_text params[:razon_social], size: 9, at: [45, pos_y-150]
+    # pdf.draw_text params[:nit_cc], size: 9, at: [87, pos_y-163]
 
 
     # pdf.draw_text nombres_y_apellidos_rl(params), size: 8, at: [1, pos_y-40]
