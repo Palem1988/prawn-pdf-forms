@@ -51,7 +51,7 @@ class FormRedeban
     when "Persona natural"
       pdf.draw_text 'X', size: 10, at: [436, pos_y]
     else
-      pdf.draw_text params[:tipo_de_empresa], size: 4, at: [400, pos_y-11]
+      pdf.draw_text params[:tipo_de_empresa], size: 4, at: [410, pos_y-5]
     end
 
     # Sección venta de tiquetes
@@ -93,7 +93,7 @@ class FormRedeban
         width: 85
     pdf.draw_text params[:telefono_del_establecimiento], size: 5, at: [203, pos_y]
     ciudad_departamento = params[:ciudad_establecimiento] + " / " + params[:departamento_establecimiento]
-    pdf.text_box ciudad_departamento, size: 6, at: [319, pos_y+4],
+    pdf.text_box ciudad_departamento, size: 5, at: [319, pos_y+4],
         width: 170
 
     pdf.move_down 11
@@ -279,8 +279,8 @@ class FormRedeban
     pdf.text_box params[:direccion_residencia_rl], size: 6, width: 120,
             at: [58, pos_y+10.5]
     # pdf.draw_text params[:direccion_residencia_rl], size: 6, at: [58, pos_y+6]
-    pdf.text_box params[:ciudad_residencia_rl], size: 6, width: 75,
-      at: [177, pos_y+5]
+    pdf.text_box params[:ciudad_residencia_rl], size: 6, width: 61,
+      at: [196, pos_y+10.5]
     pdf.draw_text params[:telefono_rl], size: 6, at: [257, pos_y]
     pdf.draw_text params[:celular_rl], size: 6, at: [353, pos_y]
 
