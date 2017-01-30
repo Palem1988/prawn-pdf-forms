@@ -91,7 +91,7 @@ class FormCredibanco
     pdf.draw_text params[:actividad_comercial], size: 9, at: [61, pos_y]
     cadena = preprocesar(params[:responsabilidad_tributaria])
     pdf.text_box cadena, size: 10, width: 210,
-            at: [7, pos_y+17-40], character_spacing: 2.8
+            at: [7, pos_y+17-40], character_spacing: 2.3
     pdf.text_box params[:codigo_ciiu], size: 7, at: [327, pos_y+26-40], character_spacing: 3.7
     pdf.text_box params[:mcc], size: 7, at: [327, pos_y+16-40], character_spacing: 3.7
 

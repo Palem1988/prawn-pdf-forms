@@ -84,7 +84,7 @@ class FormRedeban
     pos_y = pdf.cursor
     cadena = preprocesar(params[:responsabilidad_tributaria])
     pdf.text_box cadena, size: 10, width: 250,
-            at: [123, pos_y+6], character_spacing: 2.6
+            at: [122.5, pos_y+7], character_spacing: 2.1
 
     # Sección Dirección del establecimiento
     pdf.move_down 12
