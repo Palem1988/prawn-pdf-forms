@@ -29,8 +29,8 @@ class FormCertificacionCuenta
     pdf.move_down 485
 
     pdf.draw_text params[:nombres_rl]+' '+params[:primer_apellido_rl]+' '+params[:segundo_apellido_rl],
-                         size: 9, at: [55, pdf.cursor]
-    pdf.draw_text params[:numero_documento_rl], size: 9, at: [55, pdf.cursor-9]
+                         size: 7.5, at: [51, pdf.cursor]
+    pdf.draw_text params[:numero_documento_rl], size: 7.5, at: [51, pdf.cursor-9]
 
     # pdf.draw_text params[:razon_social], size: 9, at: [55, pdf.cursor]
     # pdf.draw_text params[:numero_documento_comercio], size: 9, at: [55, pdf.cursor-9]

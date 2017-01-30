@@ -6,8 +6,8 @@ class FormNovedades
                         top_margin:29,
                         page_size: "LETTER")
     pdf.move_down 107
-    pdf.draw_text 'CCI*' + params[:razon_social], size: 9, at: [0, pdf.cursor]
-    pdf.draw_text params[:nombre_comercial], size: 9, at: [223, pdf.cursor]
+    pdf.draw_text 'CCI*' + params[:razon_social], size: 7.5, at: [0, pdf.cursor]
+    pdf.draw_text params[:nombre_comercial], size: 8, at: [223, pdf.cursor]
 
     case params[:tipo_documento_comercio]
     when "NIT"
@@ -18,12 +18,15 @@ class FormNovedades
       pdf.draw_text 'X', size: 8, at: [440, pdf.cursor+12]
     end
 
-    pdf.draw_text params[:numero_documento_comercio], size: 9, at: [473, pdf.cursor]
+    pdf.draw_text params[:numero_documento_comercio], size: 8, at: [471, pdf.cursor]
 
     pdf.move_down 22
 
+    pdf.draw_text params[:nombres_rl]+' '+params[:primer_apellido_rl]+' '+params[:segundo_apellido_rl],
+                         size: 8, at: [0, pdf.cursor]
+    pdf.draw_text params[:numero_documento_rl], size: 8, at: [316, pdf.cursor]
 
-    pdf.draw_text params[:ciudad_expedicion_documento_rl], size: 9, at: [423, pdf.cursor]
+    pdf.draw_text params[:ciudad_expedicion_documento_rl], size: 8, at: [423, pdf.cursor]
 
 
 
@@ -386,8 +389,8 @@ class FormNovedades
 
     # Representante Legal
     pdf.draw_text params[:nombres_rl]+' '+params[:primer_apellido_rl]+' '+params[:segundo_apellido_rl],
-                         size: 9, at: [45, pos_y-150]
-    pdf.draw_text params[:numero_documento_rl], size: 9, at: [87, pos_y-163]
+                         size: 7, at: [45, pos_y-150]
+    pdf.draw_text params[:numero_documento_rl], size: 7.5, at: [87, pos_y-163]
 
     # pdf.draw_text params[:razon_social], size: 9, at: [45, pos_y-150]
     # pdf.draw_text params[:nit_cc], size: 9, at: [87, pos_y-163]
