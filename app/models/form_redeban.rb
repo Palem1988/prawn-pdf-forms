@@ -245,7 +245,7 @@ class FormRedeban
         width: 80, at: [261.5, pos_y-3.5], character_spacing: 4.7
 
     pdf.draw_text params[:ciudad_nacimiento_rl], size: 6, at: [363, pos_y+5]
-    pdf.draw_text params[:departamento_nacimiento_rl], size: 6, at: [385, pos_y-6]
+    pdf.draw_text params[:departamento_nacimiento_rl], size: 5, at: [384, pos_y-6]
     
     pdf.move_down 23
     pos_y = pdf.cursor
@@ -350,6 +350,17 @@ class FormRedeban
     pdf.draw_text 'X', size: 9, at: [36, pos_y]
     pdf.draw_text 'X', size: 9, at: [136, pos_y-20]
     pdf.draw_text 'X', size: 9, at: [210, pos_y-25]
+
+
+    pdf.move_down 255
+    pos_y = pdf.cursor
+
+    if params[:numero_documento_rl]   
+        pdf.draw_text params[:numero_documento_rl], size: 7, at: [42, pos_y]
+    else
+        pdf.draw_text params[:numero_documento_comercio], size: 7, at: [42, pos_y]
+    end
+
 
 
     # USO EXCLUSIVO DE REDEBAN
