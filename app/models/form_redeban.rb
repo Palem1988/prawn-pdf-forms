@@ -141,15 +141,15 @@ class FormRedeban
     when "24 horas"
       pdf.draw_text 'X', size: 10, at: [131, pos_y]
     end
-    pdf.draw_text 'X', size: 10, at: [186, pos_y+1] if params[:exento_de_retencion_en_la_fuente] == "1"
-    pdf.draw_text 'X', size: 10, at: [206, pos_y+1] if params[:exento_de_retencion_en_la_fuente] == "0"
-    pdf.draw_text 'X', size: 10, at: [261, pos_y] if params[:exento_de_retencion_de_ica] == "1"
-    pdf.draw_text 'X', size: 10, at: [281, pos_y] if params[:exento_de_retencion_de_ica] == "0"
+    # pdf.draw_text 'X', size: 10, at: [186, pos_y+1] if params[:exento_de_retencion_en_la_fuente] == "1"
+    # pdf.draw_text 'X', size: 10, at: [206, pos_y+1] if params[:exento_de_retencion_en_la_fuente] == "0"
+    # pdf.draw_text 'X', size: 10, at: [261, pos_y] if params[:exento_de_retencion_de_ica] == "1"
+    # pdf.draw_text 'X', size: 10, at: [281, pos_y] if params[:exento_de_retencion_de_ica] == "0"
     
-    pdf.draw_text 'X', size: 10, at: [340, pos_y] if params[:exento_de_retencion_de_iva] == "1"
-    pdf.draw_text 'X', size: 10, at: [360, pos_y] if params[:exento_de_retencion_de_iva] == "0"
-    pdf.draw_text 'X', size: 10, at: [413, pos_y] if params[:requiere_propina] == "1"
-    pdf.draw_text 'X', size: 10, at: [433, pos_y] if params[:requiere_propina] == "0"
+    # pdf.draw_text 'X', size: 10, at: [340, pos_y] if params[:exento_de_retencion_de_iva] == "1"
+    # pdf.draw_text 'X', size: 10, at: [360, pos_y] if params[:exento_de_retencion_de_iva] == "0"
+    # pdf.draw_text 'X', size: 10, at: [413, pos_y] if params[:requiere_propina] == "1"
+    # pdf.draw_text 'X', size: 10, at: [433, pos_y] if params[:requiere_propina] == "0"
 
     # Renglón tipo de establecimiento
     pdf.move_down 17
@@ -174,7 +174,9 @@ class FormRedeban
     pdf.text_box "3167041513", size: 10, width: 100, at: [8, pdf.cursor-0.5], character_spacing: 3.5
     pdf.text_box "07", size: 10, width: 100, at: [181, pdf.cursor-1], character_spacing: 3.5
     pdf.draw_text "Bancolombia", size: 9, at: [286, pdf.cursor-8]
-    pdf.draw_text 'Central Comercializadora de Internet SAS', size: 3.5, at: [56, pdf.cursor-22]
+    pdf.text_box 'Central Comercializadora de Internet SAS', size: 5, at: [56, pdf.cursor-12],
+        width: 73
+    # pdf.draw_text 'Central Comercializadora de Internet SAS', size: 3.5, at: [56, pdf.cursor-22]
     pdf.draw_text '900293637-2', size: 9, at: [36, pdf.cursor-34]
     pdf.draw_text 'X', size: 9, at: [348, pdf.cursor-20]
 
