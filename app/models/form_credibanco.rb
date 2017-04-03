@@ -22,9 +22,9 @@ class FormCredibanco
       pdf.draw_text 'X', size: 5, at: [71, pdf.cursor]
     end
 
-    pdf.text_box params[:numero_documento_comercio], size: 7, at: [99, pdf.cursor+5.5], 
+    pdf.text_box params[:numero_documento_comercio], size: 7, at: [99, pdf.cursor+5.5],
     character_spacing: 3.7
-    pdf.text_box params[:numero_de_matricula_mercantil], size: 7, at: [280, pdf.cursor+5.5], 
+    pdf.text_box params[:numero_de_matricula_mercantil], size: 7, at: [280, pdf.cursor+5.5],
     character_spacing: 3.7
     # unless params[:numero_de_matricula_mercantil].blank?
     #   pdf.draw_text 'X', size: 10, at: [325, pdf.cursor]

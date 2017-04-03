@@ -1,0 +1,75 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap
+//= require turbolinks
+//= require_tree .
+
+$(document).on('click', '#solicitud_naturaleza_natural', function() {
+  if ($(this).prop("checked", true)) {
+    $('.reveal-if-active').hide();
+    $('.reveal-if-active').find('.radio > input').prop('checked', false);
+  }
+})
+$(document).on('click', '#solicitud_naturaleza_jurdica', function() {
+  if ($(this).prop("checked", true)) {
+    $('.reveal-if-active').show();
+    $('.rlDoc').find('input').prop('checked', false);
+    $('.rlDoc').find('input').val('');
+  }
+})
+
+
+$(document).on('click', '#solicitud_nombres_rl', function() {
+  if ($('.naturaleza').find("#solicitud_naturaleza_natural").is(':checked')) {
+    let words = $('#solicitud_razon_social').val().split(' ');
+    let totalWords = words.length;
+    switch(totalWords) {
+      case 2:
+        $(this).val(words[0]);
+        $('#solicitud_primer_apellido_rl').val(words[1]);
+        break;
+      case 3:
+        $(this).val(words[0]);
+        $('#solicitud_primer_apellido_rl').val(words[1]);
+        $('#solicitud_segundo_apellido_rl').val(words[2]);
+        break;
+      case 4:
+        $(this).val(words[0] + ' ' + words[1]);
+        $('#solicitud_primer_apellido_rl').val(words[2]);
+        $('#solicitud_segundo_apellido_rl').val(words[3]);
+        break;
+    }
+
+    let docType = $('.doc').find("input[name='solicitud[tipo_documento_comercio]']:checked").val();
+    if (docType){
+      $('.rlDoc').find("input[value='" + docType + "']").prop('checked', true);
+    }
+
+    let docNumber = $('#solicitud_numero_documento_comercio').val();
+    $('#solicitud_numero_documento_rl').val(docNumber);
+  }
+})
+
+CITIES = {"Medellin":  ["054", "Antioquia", "005"],
+          "Bogota": ["091", "Cundinamarca", "009"],
+          "Barranquilla": ["073", "Atlantico", "007"]};
+
+$(document).on('change', '.citydata', function() {
+  let cityname = $(this).find('.ciudad_establecimiento').val();
+  let data = CITIES[cityname];
+  $(this).find('.codigo_ciudad').val(data[0])
+  $(this).find('.departamento_establecimiento').val(data[1])
+  $(this).find('.codigo_departamento').val(data[2])
+})

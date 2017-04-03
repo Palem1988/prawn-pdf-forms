@@ -1,5 +1,8 @@
 class SolicitudesController < ApplicationController
 
+  def welcome
+  end
+
   def create
     pdf_form_amex = FormAmex.generar(params_solicitud)
     pdf_credibanco = FormularioCredibanco.generar(params_solicitud)
@@ -37,12 +40,12 @@ class SolicitudesController < ApplicationController
     pdf_combinado.pages[6] << CombinePDF.parse(pdf_form_novedades.render).pages[0]  # Express
     pdf_combinado.pages[7] << CombinePDF.parse(pdf_form_novedades.render).pages[1]  # Express
 
-    pdf_combinado.pages[9] << CombinePDF.parse(pdf_form_certificacion_cuenta.render).pages[0]
-    pdf_combinado.pages[10] << CombinePDF.parse(pdf_form_credibanco.render).pages[0]
-    pdf_combinado.pages[11] << CombinePDF.parse(pdf_form_credibanco.render).pages[1]
+    pdf_combinado.pages[8] << CombinePDF.parse(pdf_form_certificacion_cuenta.render).pages[0]
+    pdf_combinado.pages[9] << CombinePDF.parse(pdf_form_credibanco.render).pages[0]
+    pdf_combinado.pages[10] << CombinePDF.parse(pdf_form_credibanco.render).pages[1]
 
-    pdf_combinado.pages[12] << CombinePDF.parse(pdf_form_redeban.render).pages[0]
-    pdf_combinado.pages[13] << CombinePDF.parse(pdf_form_redeban.render).pages[1]
+    pdf_combinado.pages[11] << CombinePDF.parse(pdf_form_redeban.render).pages[0]
+    pdf_combinado.pages[12] << CombinePDF.parse(pdf_form_redeban.render).pages[1]
 
 
     # pdf_combinado.pages[8] << CombinePDF.parse(pdf_form_redeban.render).pages[0]
