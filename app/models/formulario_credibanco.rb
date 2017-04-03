@@ -95,8 +95,8 @@ class FormularioCredibanco
             at: [7, pos_y+8-40], character_spacing: 4.5
     pdf.text_box params[:codigo_ciiu], size: 9, width: 30,
             at: [416, pos_y+8-27], character_spacing: 4.8
-    pdf.text_box params[:mcc], size: 9, width: 30,
-            at: [416, pos_y+8-39], character_spacing: 4.8
+    # pdf.text_box params[:mcc], size: 9, width: 30,
+    #         at: [416, pos_y+8-39], character_spacing: 4.8
 
     # Sección Tipo de afiliación
     pdf.move_down 70
@@ -142,13 +142,13 @@ class FormularioCredibanco
     # Sección Dirección de correspondencia/notificaciones
     pdf.move_down 25
     pos_y = pdf.cursor
-    pdf.text_box params[:direccion_correspondencia], size: 7, at: [1, pos_y+13],
-        width: 160
+    # pdf.text_box params[:direccion_correspondencia], size: 7, at: [1, pos_y+13],
+    #     width: 160
     pdf.draw_text params[:telefono_correspondencia], size: 10, at: [175, pos_y]
-    ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
-            " / " + params[:departamento_correspondencia]
-    pdf.text_box ciudad_departamento_correspondencia, size: 7, at: [285, pos_y+13],
-        width: 110
+    # ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
+    #         " / " + params[:departamento_correspondencia]
+    # pdf.text_box ciudad_departamento_correspondencia, size: 7, at: [285, pos_y+13],
+    #     width: 110
     case params[:horario_atencion]
     when "Diurno"
       pdf.draw_text 'X', size: 10, at: [421, pos_y+1]
@@ -181,8 +181,8 @@ class FormularioCredibanco
     end
     pdf.draw_text 'X', size: 9, at: [287, pos_y] if params[:afiliado_a_otro_sistema] == "1"
     pdf.draw_text 'X', size: 9, at: [314, pos_y] if params[:afiliado_a_otro_sistema] == "0"
-    pdf.text_box params[:codigo_unico], size: 9, width: 50,
-            at: [382, pos_y+6], character_spacing: 4.5
+    # pdf.text_box params[:codigo_unico], size: 9, width: 50,
+    #         at: [382, pos_y+6], character_spacing: 4.5
     pdf.draw_text 'X', size: 9, at: [99, pos_y-15] if params[:posee_medio_de_acceso] == "1"
     pdf.draw_text 'X', size: 9, at: [127, pos_y-15] if params[:posee_medio_de_acceso] == "0"
     case params[:tipo_medio_acceso]
@@ -220,13 +220,13 @@ class FormularioCredibanco
     # Sección cuenta bancaria para abonos
     pdf.move_down 36
     pos_y = pdf.cursor
-    pdf.text_box params[:numero_de_cuenta], size: 10, width: 100,
-            at: [2, pos_y+8], character_spacing: 5.7
-    pdf.text_box params[:codigo_banco], size: 10, width: 20,
-            at: [188, pos_y+8], character_spacing: 11
-    pdf.draw_text params[:nombre_del_banco], size: 9, at: [222, pos_y]
-    pdf.text_box params[:codigo_sucursal_banco], size: 10, width: 30,
-            at: [511, pos_y+8], character_spacing: 11
+    # pdf.text_box params[:numero_de_cuenta], size: 10, width: 100,
+    #         at: [2, pos_y+8], character_spacing: 5.7
+    # pdf.text_box params[:codigo_banco], size: 10, width: 20,
+    #         at: [188, pos_y+8], character_spacing: 11
+    # pdf.draw_text params[:nombre_del_banco], size: 9, at: [222, pos_y]
+    # pdf.text_box params[:codigo_sucursal_banco], size: 10, width: 30,
+    #         at: [511, pos_y+8], character_spacing: 11
     pdf.draw_text params[:titular_cuenta], size: 7, at: [4, pos_y-25]
     pdf.draw_text params[:nit_cc], size: 9, at: [222, pos_y-25]
     case params[:tipo_de_cuenta]
@@ -280,11 +280,11 @@ class FormularioCredibanco
 
     # Sección datos de los socios con participación superior a 5%
     pdf.move_down 166
-    imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
+    # imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
     pdf.move_down 15
-    imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
+    # imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
     pdf.move_down 15
-    imprimir_datos_socio(pdf, params[:socios_attributes]["2"])
+    # imprimir_datos_socio(pdf, params[:socios_attributes]["2"])
 
     # Sección referencias personales del propietario
     pdf.move_down 51

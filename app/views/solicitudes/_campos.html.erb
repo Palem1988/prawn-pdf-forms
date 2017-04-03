@@ -6,7 +6,7 @@
 <%= f.text_field :nombre_comercial, class: 'form-control' %>
 
 <%= f.label :tipo_documento_comercio %>
-<div class="row">
+<div class="row doc">
   <div class="col-md-3">
     <div class="col-md-2 text-left">
     <%= f.label :tipo_documento_comercio, 'NIT'%>
@@ -41,88 +41,95 @@
 <%= f.label :numero_de_matricula_mercantil %>
 <%= f.text_field :numero_de_matricula_mercantil, class: 'form-control' %>
 
-<%= f.label :tipo_de_empresa %>
-<div class="row">
-  <div class="col-md-6">
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Anónima"%>
-      <%= f.label :tipo_de_empresa, 'Anónima'%>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "S.A.S." %>
-      <%= f.label :tipo_de_empresa, "S.A.S." %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Limitada" %>
-      <%= f.label :tipo_de_empresa, "Limitada" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Sin ánimo de lucro" %>
-      <%= f.label :tipo_de_empresa, "Sin ánimo de lucro" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Empresa unipersonal" %>
-      <%= f.label "", "Empresa unipersonal" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Colectiva" %>
-      <%= f.label "", "Colectiva" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Comandita por acciones" %>
-      <%= f.label "", "Comandita por acciones" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Privada extranjera" %>
-      <%= f.label "", "Privada extranjera" %>
-    </div>
+<div class="naturaleza">
+  <%= f.label :naturaleza %>
+  <div class="radio">
+    <%= f.radio_button :naturaleza, "Natural" %>
+    <%= f.label "", "Persona Natural" %>
   </div>
-  <div class="col-md-6">
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Pública" %>
-      <%= f.label "", "Pública" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Mixta" %>
-      <%= f.label "", "Mixta" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Privada" %>
-      <%= f.label "", "Privada" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "De hecho" %>
-      <%= f.label "", "De hecho" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Sociedad cooperativa" %>
-      <%= f.label "", "Sociedad cooperativa" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Comandita simple" %>
-      <%= f.label "", "Comandita simple" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Sucursales extranjeras" %>
-      <%= f.label "", "Sucursales extranjeras" %>
-    </div>
-    <div class="radio">
-      <%= f.radio_button :tipo_de_empresa, "Persona natural" %>
-      <%= f.label "", "Persona natural" %>
-    </div>
+  <div class="radio">
+    <%= f.radio_button :naturaleza, "Jurídica" %>
+    <%= f.label "", "Persona Jurídica" %>
   </div>
-</div>
-<%= f.label :naturaleza %>
-<div class="radio">
-  <%= f.radio_button :naturaleza, "Jurídica" %>
-  <%= f.label "", "Jurídica" %>
-</div>
-<div class="radio">
-  <%= f.radio_button :naturaleza, "Natural" %>
-  <%= f.label "", "Natural" %>
 </div>
 
-<h2>Sección Venta de Tiquetes</h2>
+
+<div class="reveal-if-active">
+  <%= f.label :tipo_de_empresa %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Anónima"%>
+        <%= f.label :tipo_de_empresa, 'Anónima'%>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "S.A.S." %>
+        <%= f.label :tipo_de_empresa, "S.A.S." %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Limitada" %>
+        <%= f.label :tipo_de_empresa, "Limitada" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Sin ánimo de lucro" %>
+        <%= f.label :tipo_de_empresa, "Sin ánimo de lucro" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Empresa unipersonal" %>
+        <%= f.label "", "Empresa unipersonal" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Colectiva" %>
+        <%= f.label "", "Colectiva" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Comandita por acciones" %>
+        <%= f.label "", "Comandita por acciones" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Privada extranjera" %>
+        <%= f.label "", "Privada extranjera" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Pública" %>
+        <%= f.label "", "Pública" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Mixta" %>
+        <%= f.label "", "Mixta" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Privada" %>
+        <%= f.label "", "Privada" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "De hecho" %>
+        <%= f.label "", "De hecho" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Sociedad cooperativa" %>
+        <%= f.label "", "Sociedad cooperativa" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Comandita simple" %>
+        <%= f.label "", "Comandita simple" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Sucursales extranjeras" %>
+        <%= f.label "", "Sucursales extranjeras" %>
+      </div>
+      <div class="radio">
+        <%= f.radio_button :tipo_de_empresa, "Persona natural" %>
+        <%= f.label "", "Persona natural" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <h2>Sección Venta de Tiquetes</h2>
 <div class="agencia">
   <div class="radio">
     <%= f.radio_button :agencia_de_viajes, "Agencia de viajes" %>
@@ -151,7 +158,7 @@
     <%= f.radio_button :requiere_impuestos_av, "No" %>
     <%= f.label "No" %>
   </div>
-</div>
+</div> -->
 
 <%= f.label :actividad_comercial %>
 <%= f.text_field :actividad_comercial, class: 'form-control' %>
@@ -159,15 +166,16 @@
 <%= f.text_field :responsabilidad_tributaria, class: 'form-control' %>
 <%= f.label :codigo_ciiu %>
 <%= f.text_field :codigo_ciiu, class: 'form-control' %>
-<%= f.label :mcc %>
-<%= f.text_field :mcc, class: 'form-control' %>
 
-<%= f.label :tipo_de_afiliacion %>
-<div class="checkbox">
-  <%= f.check_box :venta_presencial_ta %>
+<!-- <%= f.label :mcc %> -->
+<!-- <%= f.text_field :mcc, class: 'form-control' %> -->
+
+<!-- <%= f.label :tipo_de_afiliacion %> -->
+<div class="checkbox hide-this">
+  <%= f.check_box :venta_presencial_ta, checked: true %>
   <%= f.label "", "Venta presencial" %>
 </div>
-<div class="checkbox">
+<!-- <div class="checkbox">
   <%= f.check_box :mi_pago_ta %>
   <%= f.label "", "Mi pago" %>
 </div>
@@ -182,9 +190,10 @@
 <div class="radio">
   <%= f.radio_button :comercio_principal_secundario_ta, "Secundario" %>
   <%= f.label "", "Comercio secundario" %>
-</div>
+</div> -->
 
-<h2>Sección Venta No Presencial</h2>
+
+<!-- <h2>Sección Venta No Presencial</h2>
 <div class="checkbox">
   <%= f.check_box :venta_no_presencial %>
   <%= f.label "", "Venta No Presencial" %>
@@ -226,8 +235,10 @@
       <%= f.label "", "Mall virtual" %>
     </div>
   </div>
-</div>
-<h2>Manejo de Herramientas de Seguridad</h2>
+</div> -->
+
+
+<!-- <h2>Manejo de Herramientas de Seguridad</h2>
 <div class="checkbox">
   <%= f.check_box :modulo_basico_afs %>
   <%= f.label "", "Módulo Básico - AFS" %>
@@ -235,7 +246,8 @@
 <div class="checkbox">
   <%= f.check_box :modulo_avanzado_cybersource %>
   <%= f.label "", "Módulo Avanzado - Cybersource" %>
-</div>
+</div> -->
+
 
 <h2>Sección Dirección del Establecimiento</h2>
 <%= f.label :direccion_del_establecimiento %>
@@ -246,16 +258,23 @@
 <%= f.text_field :celular, class: 'form-control' %>
 <%= f.label :fax %>
 <%= f.text_field :fax, class: 'form-control' %>
-<%= f.label :ciudad_establecimiento %>
-<%= f.text_field :ciudad_establecimiento, class: 'form-control' %>
-<%= f.label :codigo_ciudad %>
-<%= f.text_field :codigo_ciudad, class: 'form-control' %>
-<%= f.label :departamento_establecimiento %>
-<%= f.text_field :departamento_establecimiento, class: 'form-control' %>
-<%= f.label :codigo_departamento %>
-<%= f.text_field :codigo_departamento, class: 'form-control' %>
 
-<h2>Sección Dirección de Correspondencia/Notificaciones</h2>
+
+<div class="citydata">
+  <%= f.label :ciudad_establecimiento %>
+  <%= f.collection_select :ciudad_establecimiento, Solicitud::CITIES, :to_s, :to_s, {include_blank: true}, {class: "form-control ciudad_establecimiento"} %>
+
+  <!-- <%= f.label :ciudad_establecimiento %> -->
+  <!-- <%= f.text_field :ciudad_establecimiento, class: 'form-control' %> -->
+  <%= f.label :codigo_ciudad %>
+  <%= f.text_field :codigo_ciudad, class: 'form-control codigo_ciudad' %>
+  <%= f.label :departamento_establecimiento %>
+  <%= f.text_field :departamento_establecimiento, class: 'form-control departamento_establecimiento' %>
+  <%= f.label :codigo_departamento %>
+  <%= f.text_field :codigo_departamento, class: 'form-control codigo_departamento' %>
+</div>
+
+<!-- <h2>Sección Dirección de Correspondencia/Notificaciones</h2>
 <%= f.label :direccion_correspondencia %>
 <%= f.text_field :direccion_correspondencia, class: 'form-control' %>
 <%= f.label :telefono_correspondencia %>
@@ -263,7 +282,7 @@
 <%= f.label :ciudad_correspondencia %>
 <%= f.text_field :ciudad_correspondencia, class: 'form-control' %>
 <%= f.label :departamento_correspondencia %>
-<%= f.text_field :departamento_correspondencia, class: 'form-control' %>
+<%= f.text_field :departamento_correspondencia, class: 'form-control' %> -->
 <%= f.label "Horario de atención" %>
 <div class="radio">
   <%= f.radio_button :horario_atencion, "Diurno" %>
@@ -281,7 +300,8 @@
 <%= f.text_field :correo_electronico, class: 'form-control' %>
 <%= f.label :direccion_pagina_web %>
 <%= f.text_field :direccion_pagina_web, class: 'form-control' %>
-<h2>Sección Redes Sociales</h2>
+
+<!-- <h2>Sección Redes Sociales</h2>
 <div class="checkbox">
   <%= f.check_box :facebook %>
   <%= f.label :facebook %>
@@ -307,9 +327,10 @@
   <%= f.label :linkedin %>
 </div>
 <%= f.label :nombre_en_redes %>
-<%= f.text_field :nombre_en_redes, class: 'form-control' %>
+<%= f.text_field :nombre_en_redes, class: 'form-control' %> -->
 
-<h2>Sección Tipo de Establecimiento</h2>
+
+<!-- <h2>Sección Tipo de Establecimiento</h2>
 <%= f.label :tipo_de_establecimiento %>
 <div class="radio">
   <%= f.radio_button :tipo_de_establecimiento, "Principal" %>
@@ -381,9 +402,11 @@
 <%= f.label :porcentaje_de_retefuente %>
 <%= f.text_field :porcentaje_de_retefuente, class: 'form-control' %>
 <%= f.label :porcentaje_de_impuesto_al_consumo %>
-<%= f.text_field :porcentaje_de_impuesto_al_consumo, class: 'form-control' %>
+<%= f.text_field :porcentaje_de_impuesto_al_consumo, class: 'form-control' %> -->
 
-<h2>Sección Cuenta Bancaria Para Abonos</h2>
+
+
+<!-- <h2>Sección Cuenta Bancaria Para Abonos</h2>
 <%= f.label :numero_de_cuenta %>
 <%= f.text_field :numero_de_cuenta, class: 'form-control' %>
 <%= f.label :codigo_banco %>
@@ -410,30 +433,37 @@
   <%= f.label "Fiduciaria" %>
 </div>
 <%= f.label :nit_de_la_fiduciaria %>
-<%= f.text_field :nit_de_la_fiduciaria, class: 'form-control' %>
+<%= f.text_field :nit_de_la_fiduciaria, class: 'form-control' %> -->
+
+
 
 <h2>Sección Datos Representante Legal</h2>
-<%= f.label :nombres_rl %>
-<%= f.text_field :nombres_rl, class: 'form-control' %>
-<%= f.label :primer_apellido_rl %>
-<%= f.text_field :primer_apellido_rl, class: 'form-control' %>
-<%= f.label :segundo_apellido_rl %>
-<%= f.text_field :segundo_apellido_rl, class: 'form-control' %>
-<%= f.label "", "Tipo de documento" %>
-<div class="radio">
-  <%= f.radio_button :tipo_documento_rl, "NIT" %>
-  <%= f.label "", "NIT" %>
+<div class="rlDoc">
+  <%= f.label :nombres_rl %>
+  <%= f.text_field :nombres_rl, class: 'form-control' %>
+  <%= f.label :primer_apellido_rl %>
+  <%= f.text_field :primer_apellido_rl, class: 'form-control' %>
+  <%= f.label :segundo_apellido_rl %>
+  <%= f.text_field :segundo_apellido_rl, class: 'form-control' %>
+
+
+  <%= f.label "", "Tipo de documento" %>
+  <div class="radio">
+    <%= f.radio_button :tipo_documento_rl, "NIT" %>
+    <%= f.label "", "NIT" %>
+  </div>
+  <div class="radio">
+    <%= f.radio_button :tipo_documento_rl, "C.C." %>
+    <%= f.label "", "C.C." %>
+  </div>
+  <div class="radio">
+    <%= f.radio_button :tipo_documento_rl, "C.E." %>
+    <%= f.label "", "C.E." %>
+  </div>
+  <%= f.label :numero_documento_rl %>
+  <%= f.text_field :numero_documento_rl, class: 'form-control' %>
 </div>
-<div class="radio">
-  <%= f.radio_button :tipo_documento_rl, "C.C." %>
-  <%= f.label "", "C.C." %>
-</div>
-<div class="radio">
-  <%= f.radio_button :tipo_documento_rl, "C.E." %>
-  <%= f.label "", "C.E." %>
-</div>
-<%= f.label :numero_documento_rl %>
-<%= f.text_field :numero_documento_rl, class: 'form-control' %>
+
 <div class="radio">
   <%= f.label :fecha_expedicion_documento_rl %>
   <%= f.date_select :fecha_expedicion_documento_rl, start_year: 1940 %>
@@ -529,8 +559,8 @@
 </div>
 <%= f.label :cargo_rl %>
 <%= f.text_field :cargo_rl, class: 'form-control' %>
-<%= f.label "", "Favor indicar si:" %>
-<div class="checkbox">
+<!-- <%= f.label "", "Favor indicar si:" %> -->
+<!-- <div class="checkbox">
   <%= f.check_box :administra_recursos_publicos_rl %>
   <%= f.label "", "Administra recursos públicos" %>
 </div>
@@ -541,19 +571,19 @@
 <div class="checkbox">
   <%= f.check_box :goza_de_reconocimiento_publico_rl %>
   <%= f.label "", "Goza de reconocimiento público" %>
-</div>
+</div> -->
 
-<h2>Sección Datos Socios con más del 5% del capital social, aporte o participación</h2>
+<!-- <h2>Sección Datos Socios con más del 5% del capital social, aporte o participación</h2>
 <%= f.fields_for :socios do |f_socio| %>
   <%= f_socio.label :nombres_y_apellidos %>
   <%= f_socio.text_field :nombres_y_apellidos, class: 'form-control' %>
-  <%= f_socio.label "", "Tipo de documento" %>
+  <%= f_socio.label "", "Tipo de documento" %> -->
 <!--  <div class="radio">
     <%= f_socio.radio_button :tipo_documento, "NIT" %>
     <%= f_socio.label "", "NIT" %>
   </div>
 -->
-  <div class="radio">
+  <!-- <div class="radio">
     <%= f_socio.radio_button :tipo_documento, "C.C." %>
     <%= f_socio.label "", "C.C." %>
   </div>
@@ -576,7 +606,7 @@
   <%= f_socio.label :correo_electronico %>
   <%= f_socio.email_field :correo_electronico, class: 'form-control' %>
   <br><br>
-<% end %>
+<% end %> -->
 
 <h2>Sección Referencias Personales del Propietario o Representante Legal</h2>
 <%= f.fields_for :referencias_personales do |form| %>
@@ -614,7 +644,8 @@
   <br><br>
 <% end %>
 
-<h2>Sección Información Financiera</h2>
+
+<!-- <h2>Sección Información Financiera</h2>
 <%= f.label :ingresos_operacionales %>
 <%= f.text_field :ingresos_operacionales, class: 'form-control' %>
 <%= f.label :ingresos_mensuales %>
@@ -626,8 +657,10 @@
 <%= f.label :total_activos %>
 <%= f.text_field :total_activos, class: 'form-control' %>
 <%= f.label :total_pasivos %>
-<%= f.text_field :total_pasivos, class: 'form-control' %>
-<h2>Sección Operaciones Internacionales</h2>
+<%= f.text_field :total_pasivos, class: 'form-control' %> -->
+
+
+<!-- <h2>Sección Operaciones Internacionales</h2>
 <%= f.label "", "Indique si tiene operaciones internacionales" %>
 <div class="radio">
   <%= f.radio_button :operaciones_internacionales, "Sí" %>
@@ -659,4 +692,4 @@
 <div class="checkbox">
   <%= f.check_box :inversiones_oi %>
   <%= f.label "", "Inversiones" %>
-</div>
+</div> -->

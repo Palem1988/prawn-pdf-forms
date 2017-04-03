@@ -14,8 +14,8 @@ class FormularioRedeban
     pdf.draw_text params[:digito_de_verificacion], size: 12, at: [150, pdf.cursor-15]
     pdf.text_box params[:codigo_ciiu], size: 12, width: 40,
             at: [55, pdf.cursor-23], character_spacing: 4
-    pdf.text_box params[:codigo_unico], size: 12, width: 70,
-            at: [433, pdf.cursor-7], character_spacing: 4.7
+    # pdf.text_box params[:codigo_unico], size: 12, width: 70,
+    #         at: [433, pdf.cursor-7], character_spacing: 4.7
     pdf.draw_text "X", size: 12, at: [535, pdf.cursor-32] #No adjunta listado de códigos únicos
     pdf.draw_text params[:numero_de_matricula_mercantil], size: 10, at: [140, pdf.cursor-46]
 
@@ -95,13 +95,13 @@ class FormularioRedeban
         width: 170
     pdf.move_down 14
     pos_y = pdf.cursor
-    pdf.text_box params[:direccion_correspondencia], size: 5, at: [97, pos_y+10],
-        width: 115
-    pdf.draw_text params[:telefono_correspondencia], size: 8, at: [250, pos_y]
-    ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
-            " / " + params[:departamento_correspondencia]
-    pdf.text_box ciudad_departamento_correspondencia, size: 6, at: [393, pos_y+10],
-        width: 170
+    # pdf.text_box params[:direccion_correspondencia], size: 5, at: [97, pos_y+10],
+    #     width: 115
+    # pdf.draw_text params[:telefono_correspondencia], size: 8, at: [250, pos_y]
+    # ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
+    #         " / " + params[:departamento_correspondencia]
+    # pdf.text_box ciudad_departamento_correspondencia, size: 6, at: [393, pos_y+10],
+    #     width: 170
     pdf.move_down 11
     pos_y = pdf.cursor
     pdf.draw_text params[:celular], size: 8, at: [70, pos_y]
@@ -123,7 +123,7 @@ class FormularioRedeban
       otras_redes << "Flickr"
     end
     pdf.text_box otras_redes, size: 7, at: [236, pos_y+12], width: 40
-    pdf.text_box params[:nombre_en_redes], size: 7, at: [335, pos_y+12], width: 80
+    # pdf.text_box params[:nombre_en_redes], size: 7, at: [335, pos_y+12], width: 80
     pdf.text_box params[:direccion_pagina_web], size: 6, at: [458, pos_y+12],
         width: 105
 
@@ -164,15 +164,15 @@ class FormularioRedeban
     # Sección certificado cuenta de depósito
     pdf.move_down 64
     pos_y = pdf.cursor
-    pdf.text_box params[:numero_de_cuenta], size: 12,
-        width: 110, at: [-2, pos_y+8], character_spacing: 4.7
-    pdf.text_box params[:codigo_banco], size: 12,
-        width: 30, at: [218, pos_y+8], character_spacing: 4.7
-    pdf.draw_text params[:nombre_del_banco], size: 11, at: [284, pos_y]
-    pdf.text_box params[:codigo_sucursal_banco], size: 12,
-        width: 30, at: [483, pos_y+8], character_spacing: 4.7
-    pdf.text_box params[:titular_cuenta], size: 7, at: [60, pos_y-7],
-        width: 75
+    # pdf.text_box params[:numero_de_cuenta], size: 12,
+    #     width: 110, at: [-2, pos_y+8], character_spacing: 4.7
+    # pdf.text_box params[:codigo_banco], size: 12,
+    #     width: 30, at: [218, pos_y+8], character_spacing: 4.7
+    # pdf.draw_text params[:nombre_del_banco], size: 11, at: [284, pos_y]
+    # pdf.text_box params[:codigo_sucursal_banco], size: 12,
+    #     width: 30, at: [483, pos_y+8], character_spacing: 4.7
+    # pdf.text_box params[:titular_cuenta], size: 7, at: [60, pos_y-7],
+    #     width: 75
     case params[:tipo_de_cuenta]
     when "Ahorro"
       pdf.draw_text 'X', size: 12, at: [339, pos_y-17]
@@ -186,9 +186,9 @@ class FormularioRedeban
 
     # Sección datos de los socios con participación superior a 5%
     pdf.move_down 240
-    imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
+    # imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
     pdf.move_down 32
-    imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
+    # imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
 
     # Sección referencias comerciales del establecimiento
     pdf.move_down 41

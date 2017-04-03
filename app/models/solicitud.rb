@@ -13,15 +13,15 @@ class Solicitud
     :celular,
     :celular_rl,
     :ciudad_correspondencia,
-    :ciudad_establecimiento,
+    :ciudad_establecimiento,      # ---------------------
     :ciudad_expedicion_documento_rl,
     :ciudad_nacimiento_rl,
     :ciudad_radicacion,
     :ciudad_residencia_rl,
     :codigo_banco,
     :codigo_ciiu,
-    :codigo_ciudad,
-    :codigo_departamento,
+    :codigo_ciudad,             # ---------------------
+    :codigo_departamento,       # ---------------------
     :codigo_principal_ta,
     :codigo_sucursal_banco,
     :codigo_unico,
@@ -30,7 +30,7 @@ class Solicitud
     :correo_electronico_rl,
     :fecha,
     :departamento_correspondencia,
-    :departamento_establecimiento,
+    :departamento_establecimiento, # ---------------------
     :departamento_nacimiento_rl,
     :digito_de_verificacion,
     :direccion_correspondencia,
@@ -137,4 +137,12 @@ class Solicitud
     def socios_attributes=(attributes)
       logger.info "SOCIOS PARAMETROS DESCONOCIDOS #{attributes}"
     end
+
+
+    CITIES =  ["medellin", "bogota", "barranquilla"].sort.map(&:capitalize)
+
+    CITIES2 = {
+        bogota: ["Bogotá", "123citycode", "Cundinamarca", "123departcode"],
+        medellin: ["Medellín", "321code", "Antioquia", "321departcode"]
+    }
 end

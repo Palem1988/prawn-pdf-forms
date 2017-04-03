@@ -16,8 +16,8 @@ class FormRedeban
     pdf.text_box params[:codigo_ciiu], size: 10, width: 40,
             at: [52, pdf.cursor-17], character_spacing: 3.6
 
-    pdf.text_box params[:codigo_unico], size: 10, width: 70,
-            at: [349.5, pdf.cursor-4], character_spacing: 3.5
+    # pdf.text_box params[:codigo_unico], size: 10, width: 70,
+    #         at: [349.5, pdf.cursor-4], character_spacing: 3.5
     pdf.draw_text "X", size: 10, at: [430, pdf.cursor-24] #No adjunta listado de códigos únicos
     pdf.draw_text params[:numero_de_matricula_mercantil], size: 8, at: [125, pdf.cursor-35]
 
@@ -98,13 +98,13 @@ class FormRedeban
 
     pdf.move_down 11
     pos_y = pdf.cursor
-    pdf.text_box params[:direccion_correspondencia], size: 5, at: [85, pos_y+8],
-        width: 85
-    pdf.draw_text params[:telefono_correspondencia], size: 5, at: [203, pos_y]
-    ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
-            " / " + params[:departamento_correspondencia]
-    pdf.text_box ciudad_departamento_correspondencia, size: 6, at: [319, pos_y+5],
-        width: 170
+    # pdf.text_box params[:direccion_correspondencia], size: 5, at: [85, pos_y+8],
+    #     width: 85
+    # pdf.draw_text params[:telefono_correspondencia], size: 5, at: [203, pos_y]
+    # ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
+    #         " / " + params[:departamento_correspondencia]
+    # pdf.text_box ciudad_departamento_correspondencia, size: 6, at: [319, pos_y+5],
+    #     width: 170
     pdf.move_down 11
     pos_y = pdf.cursor
     pdf.draw_text params[:celular], size: 6, at: [50, pos_y+1]
@@ -145,7 +145,7 @@ class FormRedeban
     # pdf.draw_text 'X', size: 10, at: [206, pos_y+1] if params[:exento_de_retencion_en_la_fuente] == "0"
     # pdf.draw_text 'X', size: 10, at: [261, pos_y] if params[:exento_de_retencion_de_ica] == "1"
     # pdf.draw_text 'X', size: 10, at: [281, pos_y] if params[:exento_de_retencion_de_ica] == "0"
-    
+
     # pdf.draw_text 'X', size: 10, at: [340, pos_y] if params[:exento_de_retencion_de_iva] == "1"
     # pdf.draw_text 'X', size: 10, at: [360, pos_y] if params[:exento_de_retencion_de_iva] == "0"
     # pdf.draw_text 'X', size: 10, at: [413, pos_y] if params[:requiere_propina] == "1"
@@ -180,7 +180,7 @@ class FormRedeban
     pdf.draw_text '900293637-2', size: 9, at: [36, pdf.cursor-34]
     pdf.draw_text 'X', size: 9, at: [348, pdf.cursor-20]
 
-    
+
     # pdf.text_box params[:numero_de_cuenta], size: 12,
     #     width: 110, at: [-2, pos_y+8], character_spacing: 4.7
     # pdf.text_box params[:codigo_banco], size: 12,
@@ -203,9 +203,9 @@ class FormRedeban
 
     # Sección datos de los socios con participación superior a 5%
     pdf.move_down 194
-    imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
+    # imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
     pdf.move_down 25
-    imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
+    # imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
 
 
     # Sección referencias comerciales del establecimiento
@@ -248,7 +248,7 @@ class FormRedeban
 
     pdf.draw_text params[:ciudad_nacimiento_rl], size: 6, at: [363, pos_y+5]
     pdf.draw_text params[:departamento_nacimiento_rl], size: 5, at: [384, pos_y-6]
-    
+
     pdf.move_down 23
     pos_y = pdf.cursor
     case params[:sexo_rl]
@@ -357,7 +357,7 @@ class FormRedeban
     pdf.move_down 255
     pos_y = pdf.cursor
 
-    if params[:numero_documento_rl]   
+    if params[:numero_documento_rl]
         pdf.draw_text params[:numero_documento_rl], size: 7, at: [42, pos_y]
     else
         pdf.draw_text params[:numero_documento_comercio], size: 7, at: [42, pos_y]

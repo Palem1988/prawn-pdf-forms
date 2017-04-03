@@ -93,7 +93,7 @@ class FormCredibanco
     pdf.text_box cadena, size: 10, width: 210,
             at: [7, pos_y+17-40], character_spacing: 2.3
     pdf.text_box params[:codigo_ciiu], size: 7, at: [327, pos_y+26-40], character_spacing: 3.7
-    pdf.text_box params[:mcc], size: 7, at: [327, pos_y+16-40], character_spacing: 3.7
+    # pdf.text_box params[:mcc], size: 7, at: [327, pos_y+16-40], character_spacing: 3.7
 
 
 
@@ -146,13 +146,13 @@ class FormCredibanco
     pos_y = pdf.cursor
 
     # Direccion en 2 espacios
-    pdf.text_box params[:direccion_correspondencia], size: 6, width: 134, leading: -2,
-            at: [2, pos_y+10]
+    # pdf.text_box params[:direccion_correspondencia], size: 6, width: 134, leading: -2,
+    #         at: [2, pos_y+10]
     # pdf.draw_text params[:direccion_correspondencia], size: 7, at: [2, pos_y]
-    pdf.draw_text params[:telefono_correspondencia], size: 7, at: [137, pos_y]
+    # pdf.draw_text params[:telefono_correspondencia], size: 7, at: [137, pos_y]
     # ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
     #         " / " + params[:departamento_correspondencia]
-    pdf.draw_text params[:ciudad_correspondencia], size: 7, at: [224, pos_y]
+    # pdf.draw_text params[:ciudad_correspondencia], size: 7, at: [224, pos_y]
 
     case params[:horario_atencion]
     when "Diurno"
@@ -189,7 +189,7 @@ class FormCredibanco
     end
     pdf.draw_text 'X', size: 5, at: [227, pos_y] if params[:afiliado_a_otro_sistema] == "1"
     pdf.draw_text 'X', size: 5, at: [250, pos_y] if params[:afiliado_a_otro_sistema] == "0"
-    pdf.text_box params[:codigo_unico], width: 50, size: 7, at: [301, pos_y+6], character_spacing: 3.7
+    # pdf.text_box params[:codigo_unico], width: 50, size: 7, at: [301, pos_y+6], character_spacing: 3.7
     pdf.draw_text 'X', size: 5, at: [80, pos_y-11] if params[:posee_medio_de_acceso] == "1"
     pdf.draw_text 'X', size: 5, at: [102, pos_y-11] if params[:posee_medio_de_acceso] == "0"
     case params[:tipo_medio_acceso]
@@ -343,7 +343,7 @@ class FormCredibanco
     pdf.draw_text "10.000.000", size: 9, at: [70, pos_y-10]
     pdf.draw_text "3.000.000", size: 9, at: [210, pos_y-10]
     pdf.draw_text 'X', size: 5, at: [48, pos_y-41]
-    
+
 
     # pdf.draw_text params[:ingresos_mensuales], size: 9, at: [80, pos_y-5]
     # pdf.draw_text params[:otros_ingresos], size: 9, at: [243, pos_y-5]
