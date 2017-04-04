@@ -12,3 +12,13 @@
   </div>
   <%= link_to "Continuar", new_solicitud_path, class: "btn btn-success btn-lg pull-right" %>
 </div>
+
+<br><br><br>
+<div class="hide-this file">
+  <div class="row">
+    <%= form_tag import_cities_path, multipart: true do %>
+      <div class="col-xs-7"><%= file_field_tag :file %></div>
+      <div class="col-xs-2"><%= submit_tag "Importar", class: "btn btn-primary btn-sm " %></div>
+    <% end %>
+  </div>
+</div>

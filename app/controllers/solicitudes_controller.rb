@@ -1,6 +1,7 @@
 class SolicitudesController < ApplicationController
 
   def welcome
+    @city = City.new
   end
 
   def create
@@ -73,6 +74,12 @@ class SolicitudesController < ApplicationController
   private
 
     def params_solicitud
+      if params[:solicitud][:ciudad_establecimiento]
+        city = City.find_by_city_name(params[:solicitud][:ciudad_establecimiento])
+        params[:solicitud][:codigo_ciudad] = city.city_code
+        params[:solicitud][:departamento_establecimiento] = city.department
+        params[:solicitud][:codigo_departamento] = city.department_code
+      end
       params.require(:solicitud).permit(:actividad_comercial,
                                         :administra_recursos_publicos_rl,
                                         :afiliado_a_otro_sistema,

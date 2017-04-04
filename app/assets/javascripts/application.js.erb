@@ -68,8 +68,18 @@ CITIES = {"Medellin":  ["054", "Antioquia", "005"],
 
 $(document).on('change', '.citydata', function() {
   let cityname = $(this).find('.ciudad_establecimiento').val();
-  let data = CITIES[cityname];
-  $(this).find('.codigo_ciudad').val(data[0])
-  $(this).find('.departamento_establecimiento').val(data[1])
-  $(this).find('.codigo_departamento').val(data[2])
+  // let data = CITIES[cityname];
+  // $(this).find('.codigo_ciudad').val(data[0])
+  // $(this).find('.departamento_establecimiento').val(data[1])
+  // $(this).find('.codigo_departamento').val(data[2])
+})
+
+let contador = 0;
+$(document).on('keydown', function(e) {
+  if(e.keyCode === 39) {
+    contador += 1;
+  }
+  if (contador == 5) {
+    $('.file').show();
+  }
 })

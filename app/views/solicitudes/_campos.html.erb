@@ -262,16 +262,16 @@
 
 <div class="citydata">
   <%= f.label :ciudad_establecimiento %>
-  <%= f.collection_select :ciudad_establecimiento, Solicitud::CITIES, :to_s, :to_s, {include_blank: true}, {class: "form-control ciudad_establecimiento"} %>
+  <%= f.collection_select :ciudad_establecimiento, City.order("city_name"), :city_name, :city_name, {include_blank: true}, {class: "form-control ciudad_establecimiento"} %>
 
   <!-- <%= f.label :ciudad_establecimiento %> -->
   <!-- <%= f.text_field :ciudad_establecimiento, class: 'form-control' %> -->
-  <%= f.label :codigo_ciudad %>
+ <!--  <%= f.label :codigo_ciudad %>
   <%= f.text_field :codigo_ciudad, class: 'form-control codigo_ciudad' %>
   <%= f.label :departamento_establecimiento %>
   <%= f.text_field :departamento_establecimiento, class: 'form-control departamento_establecimiento' %>
   <%= f.label :codigo_departamento %>
-  <%= f.text_field :codigo_departamento, class: 'form-control codigo_departamento' %>
+  <%= f.text_field :codigo_departamento, class: 'form-control codigo_departamento' %> -->
 </div>
 
 <!-- <h2>Sección Dirección de Correspondencia/Notificaciones</h2>

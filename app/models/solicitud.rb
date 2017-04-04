@@ -137,12 +137,4 @@ class Solicitud
     def socios_attributes=(attributes)
       logger.info "SOCIOS PARAMETROS DESCONOCIDOS #{attributes}"
     end
-
-
-    CITIES =  ["medellin", "bogota", "barranquilla"].sort.map(&:capitalize)
-
-    CITIES2 = {
-        bogota: ["Bogotá", "123citycode", "Cundinamarca", "123departcode"],
-        medellin: ["Medellín", "321code", "Antioquia", "321departcode"]
-    }
 end
