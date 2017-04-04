@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resource :solicitud
+  resources :cities do
+    collection {post :import}
+  end
 
   root 'solicitudes#welcome'
   # The priority is based upon order of creation: first created -> highest priority.
