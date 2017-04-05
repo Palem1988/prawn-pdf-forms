@@ -33,8 +33,8 @@ $(document).on('click', '#solicitud_naturaleza_jurdica', function() {
 
 $(document).on('click', '#solicitud_nombres_rl', function() {
   if ($('.naturaleza').find("#solicitud_naturaleza_natural").is(':checked')) {
-    let words = $('#solicitud_razon_social').val().split(' ');
-    let totalWords = words.length;
+    var words = $('#solicitud_razon_social').val().split(' ');
+    var totalWords = words.length;
     switch(totalWords) {
       case 2:
         $(this).val(words[0]);
@@ -52,12 +52,12 @@ $(document).on('click', '#solicitud_nombres_rl', function() {
         break;
     }
 
-    let docType = $('.doc').find("input[name='solicitud[tipo_documento_comercio]']:checked").val();
+    var docType = $('.doc').find("input[name='solicitud[tipo_documento_comercio]']:checked").val();
     if (docType){
       $('.rlDoc').find("input[value='" + docType + "']").prop('checked', true);
     }
 
-    let docNumber = $('#solicitud_numero_documento_comercio').val();
+    var docNumber = $('#solicitud_numero_documento_comercio').val();
     $('#solicitud_numero_documento_rl').val(docNumber);
   }
 })
@@ -67,14 +67,14 @@ CITIES = {"Medellin":  ["054", "Antioquia", "005"],
           "Barranquilla": ["073", "Atlantico", "007"]};
 
 $(document).on('change', '.citydata', function() {
-  let cityname = $(this).find('.ciudad_establecimiento').val();
-  // let data = CITIES[cityname];
+  var cityname = $(this).find('.ciudad_establecimiento').val();
+  // var data = CITIES[cityname];
   // $(this).find('.codigo_ciudad').val(data[0])
   // $(this).find('.departamento_establecimiento').val(data[1])
   // $(this).find('.codigo_departamento').val(data[2])
 })
 
-let contador = 0;
+var contador = 0;
 $(document).on('keydown', function(e) {
   if(e.keyCode === 39) {
     contador += 1;
