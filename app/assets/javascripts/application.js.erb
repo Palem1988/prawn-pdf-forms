@@ -26,12 +26,12 @@ $(document).on('click', '#solicitud_naturaleza_jurdica', function() {
   if ($(this).prop("checked", true)) {
     $('.reveal-if-active').show();
     $('.rlDoc').find('input').prop('checked', false);
-    $('.rlDoc').find('input').val('');
+    $('.rlDoc').find('.rp').val('');
   }
 })
 
 
-$(document).on('click', '#solicitud_nombres_rl', function() {
+$(document).on('click focus', '#solicitud_nombres_rl', function() {
   if ($('.naturaleza').find("#solicitud_naturaleza_natural").is(':checked')) {
     var words = $('#solicitud_razon_social').val().split(' ');
     var totalWords = words.length;
