@@ -65,7 +65,7 @@ class SolicitudesController < ApplicationController
       @solicitud.referencias_personales << Referencia.new
     end
     @solicitud.socios = []
-    3.times do
+    1.times do
       @solicitud.socios << Socio.new
     end
   end
@@ -73,12 +73,30 @@ class SolicitudesController < ApplicationController
   private
 
     def params_solicitud
-      if params[:solicitud][:ciudad_establecimiento]
+      if !params[:solicitud][:ciudad_establecimiento].empty?
         city = City.find_by_city_name(params[:solicitud][:ciudad_establecimiento])
         params[:solicitud][:codigo_ciudad] = city.city_code
         params[:solicitud][:departamento_establecimiento] = city.department
         params[:solicitud][:codigo_departamento] = city.department_code
+
+        # Mismos datos Correspondencia y Establecimiento
+        params[:solicitud][:direccion_correspondencia] = params[:solicitud][:direccion_del_establecimiento]
+        params[:solicitud][:telefono_correspondencia] = params[:solicitud][:telefono_del_establecimiento]
+        params[:solicitud][:ciudad_correspondencia] = params[:solicitud][:ciudad_establecimiento]
+        params[:solicitud][:departamento_correspondencia] = city.department
       end
+
+      if params[:solicitud][:naturaleza] == "Natural"
+        params[:solicitud][:socios_attributes]["0"][:nombres_y_apellidos] = params[:solicitud][:razon_social]
+        params[:solicitud][:socios_attributes]["0"][:numero_documento] = params[:solicitud][:numero_documento_comercio]
+        params[:solicitud][:socios_attributes]["0"][:direccion] = params[:solicitud][:direccion_residencia_rl]
+        params[:solicitud][:socios_attributes]["0"][:ciudad] = params[:solicitud][:ciudad_residencia_rl]
+        params[:solicitud][:socios_attributes]["0"][:telefono] = params[:solicitud][:telefono_rl]
+        params[:solicitud][:socios_attributes]["0"][:celular] = params[:solicitud][:celular_rl]
+        params[:solicitud][:socios_attributes]["0"][:correo_electronico] = params[:solicitud][:correo_electronico_rl]
+        params[:solicitud][:socios_attributes]["0"][:tipo_documento] = params[:solicitud][:tipo_documento_comercio]
+      end
+
       params.require(:solicitud).permit(:actividad_comercial,
                                         :administra_recursos_publicos_rl,
                                         :afiliado_a_otro_sistema,
