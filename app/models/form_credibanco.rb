@@ -146,13 +146,12 @@ class FormCredibanco
     pos_y = pdf.cursor
 
     # Direccion en 2 espacios
-    # pdf.text_box params[:direccion_correspondencia], size: 6, width: 134, leading: -2,
-    #         at: [2, pos_y+10]
+    pdf.text_box params[:direccion_correspondencia], size: 6, width: 134, leading: -2, at: [2, pos_y+10]
     # pdf.draw_text params[:direccion_correspondencia], size: 7, at: [2, pos_y]
-    # pdf.draw_text params[:telefono_correspondencia], size: 7, at: [137, pos_y]
-    # ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
-    #         " / " + params[:departamento_correspondencia]
-    # pdf.draw_text params[:ciudad_correspondencia], size: 7, at: [224, pos_y]
+    pdf.draw_text params[:telefono_correspondencia], size: 7, at: [137, pos_y]
+    ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
+            " / " + params[:departamento_correspondencia]
+    pdf.draw_text params[:ciudad_correspondencia], size: 7, at: [224, pos_y]
 
     case params[:horario_atencion]
     when "Diurno"
@@ -231,6 +230,7 @@ class FormCredibanco
     pdf.text_box "3167041513", size: 10, width: 100, at: [2, pdf.cursor+8], character_spacing: 3.4
     pdf.text_box "07", size: 10, width: 100, at: [151, pdf.cursor+8], character_spacing: 3.8
     pdf.draw_text "Bancolombia", size: 9, at: [182, pdf.cursor+1]
+    pdf.text_box "31", size: 10, width: 100, at: [403, pdf.cursor+8], character_spacing: 3.8
     pdf.draw_text 'Central Comercializadora de Internet SAS', size: 9, at: [2, pdf.cursor-20]
     pdf.draw_text '900293637-2', size: 9, at: [182, pdf.cursor-20]
     pdf.draw_text 'X', size: 5, at: [404, pdf.cursor-8]
@@ -310,9 +310,9 @@ class FormCredibanco
     pdf.draw_text params[:profesion_ocupacion_rl], size: 7, at: [160, pos_y-95]
     pdf.draw_text params[:cargo_rl], size: 7, at: [331, pos_y-95]
 
-    # # Sección datos de los socios con participación superior a 5%
-    # pdf.move_down 166
-    # imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
+    # Sección datos de los socios con participación superior a 5%
+    pdf.move_down 151
+    imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
     # pdf.move_down 15
     # imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
     # pdf.move_down 15
@@ -377,23 +377,27 @@ class FormCredibanco
 
     def self.imprimir_datos_socio(pdf, params)
       pos_y = pdf.cursor
-      pdf.draw_text params[:nombres_y_apellidos], size: 7, at: [1, pos_y]
+      pdf.text_box params[:nombres_y_apellidos], size: 7, width: 100,
+              at: [2, pos_y+8]
+      # pdf.draw_text params[:nombres_y_apellidos], size: 7, at: [1, pos_y]
       case params[:tipo_documento]
       when "NIT"
-        pdf.draw_text 'NIT', size: 7, at: [127, pos_y]
+        pdf.draw_text 'NIT', size: 7, at: [100, pos_y]
       when "C.C."
-        pdf.draw_text 'C.C.', size: 7, at: [127, pos_y]
+        pdf.draw_text 'C.C.', size: 7, at: [100, pos_y]
       when "C.E."
-        pdf.draw_text 'C.E.', size: 7, at: [127, pos_y]
+        pdf.draw_text 'C.E.', size: 7, at: [100, pos_y]
       end
-      pdf.draw_text params[:numero_documento], size: 7, at: [150, pos_y]
-      pdf.text_box params[:direccion], size: 5, width: 90,
-            at: [210, pos_y+8]
-      pdf.text_box params[:ciudad], size: 5, width: 60,
-            at: [300, pos_y+8]
-      pdf.draw_text params[:telefono], size: 7, at: [362, pos_y]
-      pdf.draw_text params[:celular], size: 7, at: [410, pos_y]
-      pdf.draw_text params[:correo_electronico], size: 6, at: [464, pos_y]
+      pdf.draw_text params[:numero_documento], size: 7, at: [120, pos_y]
+      pdf.text_box params[:direccion], size: 5.5, width: 90,
+            at: [168, pos_y+8]
+      pdf.text_box params[:ciudad], size: 5.5, width: 60,
+            at: [238, pos_y+8]
+      pdf.draw_text params[:telefono], size: 6, at: [286, pos_y]
+      pdf.draw_text params[:celular], size: 6, at: [325, pos_y]
+      pdf.text_box params[:correo_electronico], size: 6, width: 90,
+              at: [365, pos_y+8]
+      # pdf.draw_text params[:correo_electronico], size: 6, at: [365, pos_y]
     end
 
     def self.imprimir_referencia(pdf, params)

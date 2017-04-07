@@ -12,9 +12,9 @@ class FormAmex
     when "NIT"
       pdf.draw_text 'X', size: 8, at: [488, pdf.cursor+12]
     when "C.C."
-      pdf.draw_text 'X', size: 10, at: [55, pdf.cursor]
+      pdf.draw_text 'X', size: 10, at: [488, pdf.cursor]
     when "C.E."
-      pdf.draw_text 'X', size: 10, at: [87, pdf.cursor]
+      pdf.draw_text 'X', size: 10, at: [508, pdf.cursor+12]
     end
 
     pdf.move_down 16

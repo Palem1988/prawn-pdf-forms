@@ -7,8 +7,11 @@ class FormCertificacionCuenta
                         page_size: "LETTER")
     pdf.move_down 38
 
-    pdf.draw_text 'X', size: 9, at: [97, pdf.cursor] 
+    pdf.draw_text 'X', size: 9, at: [97, pdf.cursor]
 
+
+    pdf.draw_text 'Central Comercializadora de Internet SAS', size: 9, at: [320, pdf.cursor-20]
+    pdf.draw_text '900293637-2', size: 9, at: [360, pdf.cursor-40]
 
     # Codigo Banco adquiriente
     pdf.draw_text "07", size: 9, at: [140, pdf.cursor-71]
@@ -19,6 +22,7 @@ class FormCertificacionCuenta
 
     # # if params[:tipo_de_cuenta]
     pdf.draw_text 'X', size: 9, at: [112, pdf.cursor-105]
+    pdf.draw_text '18/10/2016', size: 9, at: [360, pdf.cursor-104]
     # # end
     pdf.draw_text '900293637-2', size: 9, at: [360, pdf.cursor-113]
     pdf.draw_text 'Central Comercializadora de Internet SAS', size: 9, at: [88, pdf.cursor-124]
@@ -39,7 +43,7 @@ class FormCertificacionCuenta
 
 
 
-    
+
     # pdf.draw_text params[:nombre_comercial], size: 8, at: [253, pdf.cursor]
     # case params[:tipo_documento_comercio]
     # when "NIT"

@@ -53,6 +53,7 @@ class FormRedeban
     else
       pdf.draw_text params[:tipo_de_empresa], size: 4, at: [410, pos_y-5]
     end
+    pdf.draw_text 'X', size: 10, at: [436, pos_y] if params[:naturaleza] == "Natural"
 
     # Sección venta de tiquetes
     # pdf.move_down 32
@@ -98,13 +99,13 @@ class FormRedeban
 
     pdf.move_down 11
     pos_y = pdf.cursor
-    # pdf.text_box params[:direccion_correspondencia], size: 5, at: [85, pos_y+8],
-    #     width: 85
-    # pdf.draw_text params[:telefono_correspondencia], size: 5, at: [203, pos_y]
-    # ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
-    #         " / " + params[:departamento_correspondencia]
-    # pdf.text_box ciudad_departamento_correspondencia, size: 6, at: [319, pos_y+5],
-    #     width: 170
+    pdf.text_box params[:direccion_correspondencia], size: 5, at: [85, pos_y+8],
+        width: 85
+    pdf.draw_text params[:telefono_correspondencia], size: 5, at: [203, pos_y]
+    ciudad_departamento_correspondencia = params[:ciudad_correspondencia] +
+            " / " + params[:departamento_correspondencia]
+    pdf.text_box ciudad_departamento_correspondencia, size: 6, at: [319, pos_y+5],
+        width: 170
     pdf.move_down 11
     pos_y = pdf.cursor
     pdf.draw_text params[:celular], size: 6, at: [50, pos_y+1]
@@ -174,6 +175,7 @@ class FormRedeban
     pdf.text_box "3167041513", size: 10, width: 100, at: [8, pdf.cursor-0.5], character_spacing: 3.5
     pdf.text_box "07", size: 10, width: 100, at: [181, pdf.cursor-1], character_spacing: 3.5
     pdf.draw_text "Bancolombia", size: 9, at: [286, pdf.cursor-8]
+    pdf.text_box "31", size: 10, width: 100, at: [389, pdf.cursor], character_spacing: 3.5
     pdf.text_box 'Central Comercializadora de Internet SAS', size: 5, at: [56, pdf.cursor-12],
         width: 73
     # pdf.draw_text 'Central Comercializadora de Internet SAS', size: 3.5, at: [56, pdf.cursor-22]
@@ -203,20 +205,20 @@ class FormRedeban
 
     # Sección datos de los socios con participación superior a 5%
     pdf.move_down 194
-    # imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
+    imprimir_datos_socio(pdf, params[:socios_attributes]["0"])
     pdf.move_down 25
     # imprimir_datos_socio(pdf, params[:socios_attributes]["1"])
 
 
     # Sección referencias comerciales del establecimiento
-    # pdf.move_down 41
-    # imprimir_referencia_comercial(pdf, params[:referencias_comerciales_attributes]["0"])
-    # pdf.move_down 14
-    # imprimir_referencia_comercial(pdf, params[:referencias_comerciales_attributes]["1"])
+    pdf.move_down 31
+    imprimir_referencia_comercial(pdf, params[:referencias_comerciales_attributes]["0"])
+    pdf.move_down 12
+    imprimir_referencia_comercial(pdf, params[:referencias_comerciales_attributes]["1"])
 
 
     # Sección datos del representante legal
-    pdf.move_down 71
+    pdf.move_down 28
     pos_y = pdf.cursor
     pdf.draw_text params[:nombres_rl], size: 9, at: [0, pos_y]
     pdf.draw_text params[:primer_apellido_rl], size: 9, at: [125, pos_y]
@@ -321,11 +323,12 @@ class FormRedeban
     pdf.draw_text 'X', size: 9, at: [418, pos_y] if params[:goza_de_reconocimiento_publico_rl] == "1"
     pdf.draw_text 'X', size: 9, at: [439, pos_y] if params[:goza_de_reconocimiento_publico_rl] == "0"
 
+
     # Sección referencias personales del representante legal
-    # pdf.move_down 44
-    # imprimir_referencia_personal(pdf, params[:referencias_personales_attributes]["0"])
-    # pdf.move_down 15
-    # imprimir_referencia_personal(pdf, params[:referencias_personales_attributes]["1"])
+    pdf.move_down 34
+    imprimir_referencia_personal(pdf, params[:referencias_personales_attributes]["0"])
+    pdf.move_down 11
+    imprimir_referencia_personal(pdf, params[:referencias_personales_attributes]["1"])
 
 
 
@@ -422,22 +425,22 @@ class FormRedeban
 
     def self.imprimir_referencia_comercial(pdf, params)
       pos_y = pdf.cursor
-      pdf.draw_text params[:nombres_y_apellidos], size: 8, at: [-15, pos_y]
-      pdf.draw_text params[:numero_identificacion], size: 11, at: [145, pos_y]
-      pdf.text_box params[:direccion], size: 6, width: 120,
-            at: [235, pos_y+11]
-      pdf.text_box params[:ciudad], size: 7, width: 100, leading: -2,
-            at: [361, pos_y+11]
-      pdf.draw_text params[:telefono], size: 11, at: [459, pos_y]
+      pdf.draw_text params[:nombres_y_apellidos], size: 7, at: [0, pos_y]
+      pdf.draw_text params[:numero_identificacion], size: 7, at: [125, pos_y]
+      pdf.text_box params[:direccion], size: 6, width: 90,
+            at: [195, pos_y+7.6]
+      pdf.text_box params[:ciudad], size: 6, width: 100, leading: -2,
+            at: [293, pos_y+6]
+      pdf.draw_text params[:telefono], size: 7, at: [375, pos_y]
     end
 
     def self.imprimir_referencia_personal(pdf, params)
       pos_y = pdf.cursor
-      pdf.draw_text params[:nombres_y_apellidos], size: 8, at: [-15, pos_y]
+      pdf.draw_text params[:nombres_y_apellidos], size: 8, at: [1, pos_y]
       pdf.text_box params[:direccion], size: 7, width: 140, leading: -2,
-            at: [193, pos_y+11]
+            at: [162, pos_y+6]
       pdf.text_box params[:ciudad], size: 7, width: 110, leading: -2,
-            at: [334, pos_y+11]
-      pdf.draw_text params[:telefono], size: 11, at: [446, pos_y]
+            at: [272, pos_y+6]
+      pdf.draw_text params[:telefono], size: 7, at: [366, pos_y]
     end
 end
