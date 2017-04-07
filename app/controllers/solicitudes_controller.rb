@@ -1,13 +1,12 @@
 class SolicitudesController < ApplicationController
 
   def welcome
-    @city = City.new
   end
 
   def create
     pdf_form_amex = FormAmex.generar(params_solicitud)
-    pdf_credibanco = FormularioCredibanco.generar(params_solicitud)
-    pdf_redeban = FormularioRedeban.generar(params_solicitud)
+    # pdf_credibanco = FormularioCredibanco.generar(params_solicitud)
+    # pdf_redeban = FormularioRedeban.generar(params_solicitud)
 
     pdf_form_novedades = FormNovedades.generar(params_solicitud) #Creamos PDF Prawn
     pdf_form_certificacion_cuenta = FormCertificacionCuenta.generar(params_solicitud)

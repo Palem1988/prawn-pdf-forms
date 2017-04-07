@@ -10,7 +10,12 @@
     <p>Al finalizar el proceso se generará un archivo pdf con los cinco (5)
       formatos requeridos llenos. </p>
   </div>
-  <%= link_to "Continuar", new_solicitud_path, class: "btn btn-success btn-lg pull-right" %>
+
+  <div class="pull-right">
+    <%= link_to "Cancelar", "http://www.cajero.co", class: "btn btn-danger btn-lg" %>
+    <%= link_to "Continuar", new_solicitud_path, class: "btn btn-success btn-lg" %>
+  </div>
+
 </div>
 
 <br><br><br>
