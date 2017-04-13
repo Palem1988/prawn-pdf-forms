@@ -367,8 +367,17 @@ class FormNovedades
     # imprimir_referencia(pdf, params[:referencias_comerciales_attributes]["1"])
     #
 
+    # Envío información para la conciliación
+    pdf.move_down 90
+    pos_y = pdf.cursor
+    pdf.draw_text 'Carlos Neira', size: 9, at: [1, pos_y]
+    pdf.draw_text '3203336598', size: 9, at: [220, pos_y]
+    pdf.draw_text 'carlos@mi.com.co', size: 9, at: [300, pos_y]
+
+    pdf.draw_text 'X', size: 9, at: [311, pos_y - 56]
+
     #Firma del representante legal
-    pdf.move_down 218
+    pdf.move_down 128
     pos_y = pdf.cursor
     pdf.draw_text 'CCI*' + params[:razon_social], size: 9, at: [1, pos_y]
     pdf.draw_text params[:nombre_comercial], size: 9, at: [279, pos_y]

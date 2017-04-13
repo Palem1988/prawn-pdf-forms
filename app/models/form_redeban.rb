@@ -352,9 +352,10 @@ class FormRedeban
     pdf.move_down 234
     pos_y = pdf.cursor
 
-    pdf.draw_text 'X', size: 9, at: [36, pos_y]
-    pdf.draw_text 'X', size: 9, at: [136, pos_y-20]
-    pdf.draw_text 'X', size: 9, at: [210, pos_y-25]
+    # Productos y/o servicios
+    # pdf.draw_text 'X', size: 9, at: [36, pos_y]
+    # pdf.draw_text 'X', size: 9, at: [136, pos_y-20]
+    # pdf.draw_text 'X', size: 9, at: [210, pos_y-25]
 
 
     pdf.move_down 255

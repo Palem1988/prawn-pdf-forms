@@ -10,8 +10,8 @@ class FormCertificacionCuenta
     pdf.draw_text 'X', size: 9, at: [97, pdf.cursor]
 
 
-    pdf.draw_text 'Central Comercializadora de Internet SAS', size: 9, at: [320, pdf.cursor-20]
-    pdf.draw_text '900293637-2', size: 9, at: [360, pdf.cursor-40]
+    pdf.draw_text params[:nombre_comercial], size: 9, at: [320, pdf.cursor-20]
+    pdf.draw_text params[:numero_documento_comercio], size: 9, at: [360, pdf.cursor-40]
 
     # Codigo Banco adquiriente
     pdf.draw_text "07", size: 9, at: [140, pdf.cursor-71]
