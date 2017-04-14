@@ -86,6 +86,10 @@ class SolicitudesController < ApplicationController
         params[:solicitud][:telefono_correspondencia] = params[:solicitud][:telefono_del_establecimiento]
         params[:solicitud][:ciudad_correspondencia] = params[:solicitud][:ciudad_establecimiento]
         params[:solicitud][:departamento_correspondencia] = city.department
+      else
+        params[:solicitud][:codigo_ciudad] = ""
+        params[:solicitud][:departamento_establecimiento] = ""
+        params[:solicitud][:codigo_departamento] = ""
       end
 
       if params[:solicitud][:naturaleza] == "Natural"
