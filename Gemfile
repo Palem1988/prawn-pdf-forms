@@ -33,6 +33,12 @@ gem "roo", "~> 2.7.0"  #implements read access for all common spreadsheet types 
 gem 'roo-xls'
 gem 'iconv'
 
+# Exporting file in xlsx format
+# gem 'rubyzip', '= 1.0.0'
+# gem 'zip-zip'
+# gem 'axlsx', '= 2.0.1'
+# gem 'axlsx_rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

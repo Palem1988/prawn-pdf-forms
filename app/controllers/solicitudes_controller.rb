@@ -4,6 +4,8 @@ class SolicitudesController < ApplicationController
   end
 
   def create
+    Client.generate(params_solicitud)
+
     pdf_form_amex = FormAmex.generar(params_solicitud)
     # pdf_credibanco = FormularioCredibanco.generar(params_solicitud)
     # pdf_redeban = FormularioRedeban.generar(params_solicitud)

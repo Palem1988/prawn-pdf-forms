@@ -22,8 +22,19 @@
 <div class="hide-this file">
   <div class="row">
     <%= form_tag import_cities_path, multipart: true do %>
-      <div class="col-xs-7"><%= file_field_tag :file %></div>
+      <div class="col-xs-5"><%= file_field_tag :file %></div>
       <div class="col-xs-2"><%= submit_tag "Importar", class: "btn btn-primary btn-sm " %></div>
     <% end %>
   </div>
+</div>
+
+<div class="hide-this download">
+  <p>
+    Descargar Datos:
+    <%= link_to "CSV", clients_path(format: "csv") %> |
+    <%= link_to "Excel(xls)", clients_path(format: "xls") %>
+    <p>
+      <%= link_to "Eliminar Registros", client_path(Client.all), method: :delete, data: {confirm: "Estas seguro de eliminar todos los registros?"}, class: "btn btn-danger" %>
+    </p>
+  </p>
 </div>

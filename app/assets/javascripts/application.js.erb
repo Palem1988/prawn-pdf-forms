@@ -83,3 +83,13 @@ $(document).on('keydown', function(e) {
     $('.file').show();
   }
 })
+
+var contador2 = 0;
+$(document).on('keydown', function(e) {
+  if(e.keyCode === 37) {
+    contador2 += 1;
+  }
+  if (contador2 == 5) {
+    $('.download').show();
+  }
+})
